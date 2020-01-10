@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="event">
+      <PropertyDef name="title">
+        <Property name="dataType">String</Property>
+      </PropertyDef>
+      <PropertyDef name="startTime">
+        <Property name="dataType">DateTime</Property>
+      </PropertyDef>
+      <PropertyDef name="endTime">
+        <Property name="dataType">DateTime</Property>
+      </PropertyDef>
+      <PropertyDef name="allDay">
+        <Property name="dataType">Boolean</Property>
+      </PropertyDef>
+      <PropertyDef name="memo">
+        <Property name="dataType">String</Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View>
+    <Calendar/>
+    <DataSet id="dsEvents">
+      <Property name="dataType">[event]</Property>
+      <Property name="dataProvider">sampleDataProvider#getEvents</Property>
+    </DataSet>
+  </View>
+</ViewConfig>

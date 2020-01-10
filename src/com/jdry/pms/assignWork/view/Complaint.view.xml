@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model/>
+  <View id="complaintView">
+    <ClientEvent name="onReady">tcCore.loadJs($url(&quot;>/Hplus/js/bootstrap.min.js?v=3.3.6&quot;));&#xD;
+tcCore.loadJs($url(&quot;>/Hplus/js/content.min.js?v=1.0.0&quot;));&#xD;
+tcCore.loadJs($url(&quot;>/Hplus/js/plugins/laydate/laydate.js&quot;));&#xD;
+tcCore.loadJs($url(&quot;>/Hplus/js/plugins/dataTables/jquery.dataTables.js&quot;));&#xD;
+tcCore.loadJs($url(&quot;>/Hplus/js/plugins/dataTables/dataTables.bootstrap.js&quot;));&#xD;
+tcCore.loadJs($url(&quot;>/Hplus/js/plugins/validate/jquery.validate.min.js&quot;));&#xD;
+tcCore.loadJs($url(&quot;>/Hplus/js/plugins/validate/messages_zh.min.js&quot;));&#xD;
+tcCore.loadJs($url(&quot;>/Hplus/js/demo/form-validate-demo.min.js&quot;));</ClientEvent>
+    <Property name="packages">hplus-css,dataTables-css,jquery-menu-js,jquery-slimscroll-js,layer-js</Property>
+    <Button id="editTemp">
+      <Property name="visible">true</Property>
+      <Property name="caption">投诉处理</Property>
+      <Property name="iconClass">fa fa-user</Property>
+      <Property name="exClassName">btn btn-primary</Property>
+      <Property name="renderOn">#btn2</Property>
+      <Property name="style">
+        <Property name="height">34px</Property>
+      </Property>
+    </Button>
+    <Button id="checkTemp">
+      <Property name="caption">查看</Property>
+      <Property name="iconClass">fa fa-eye</Property>
+      <Property name="renderOn">#btn3</Property>
+      <Property name="style">
+        <Property name="height">34px</Property>
+      </Property>
+      <Property name="exClassName">btn btn-primary</Property>
+    </Button>
+    <Button id="delTemp">
+      <Property name="caption">删除</Property>
+      <Property name="iconClass">fa fa-trash-o</Property>
+      <Property name="renderOn">#btn4</Property>
+      <Property name="style">
+        <Property name="height">34px</Property>
+      </Property>
+      <Property name="exClassName">btn btn-primary</Property>
+    </Button>
+  </View>
+</ViewConfig>

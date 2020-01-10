@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="temp">
+      <Property name="creationType">com.jdry.pms.basicInfo.pojo.Emp</Property>
+      <PropertyDef name="empId">
+        <Property></Property>
+        <Property name="label">员工ID</Property>
+      </PropertyDef>
+      <PropertyDef name="empNo">
+        <Property></Property>
+        <Property name="label">工号</Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="empName">
+        <Property></Property>
+        <Property name="label">姓名</Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="empSex">
+        <Property></Property>
+        <Property name="label">性别</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Collection>
+              <Entity>
+                <Property name="key">0</Property>
+                <Property name="value">女</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">1</Property>
+                <Property name="value">男</Property>
+              </Entity>
+            </Collection>
+          </Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="empBirth">
+        <Property name="dataType">Date</Property>
+        <Property name="label">出生日期</Property>
+        <Property name="displayFormat">Y-m-d</Property>
+      </PropertyDef>
+      <PropertyDef name="empIdNo">
+        <Property></Property>
+        <Property name="label">身份证号</Property>
+      </PropertyDef>
+      <PropertyDef name="empNation">
+        <Property></Property>
+        <Property name="label">民族</Property>
+      </PropertyDef>
+      <PropertyDef name="empNp">
+        <Property></Property>
+        <Property name="label">籍贯</Property>
+      </PropertyDef>
+      <PropertyDef name="empDeptId">
+        <Property></Property>
+        <Property name="label">部门</Property>
+        <Property name="required">true</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;propertyManagerView#getDeptId&quot;).getResult()}</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="empPostId">
+        <Property></Property>
+        <Property name="label">岗位</Property>
+        <Property name="required">true</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;propertyManagerView#getPostId&quot;).getResult()}</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="empPostLev">
+        <Property></Property>
+        <Property name="label">岗位级别</Property>
+      </PropertyDef>
+      <PropertyDef name="empTitle">
+        <Property></Property>
+        <Property name="label">技术职称</Property>
+      </PropertyDef>
+      <PropertyDef name="empPhone">
+        <Property></Property>
+        <Property name="label">联系电话</Property>
+      </PropertyDef>
+      <PropertyDef name="empEmail">
+        <Property></Property>
+        <Property name="label">邮箱</Property>
+      </PropertyDef>
+      <PropertyDef name="empContact">
+        <Property></Property>
+        <Property name="label">紧急联系人</Property>
+      </PropertyDef>
+      <PropertyDef name="empContactPhone">
+        <Property></Property>
+        <Property name="label">紧急联系人电话</Property>
+      </PropertyDef>
+      <PropertyDef name="empEntryTime">
+        <Property name="dataType">Date</Property>
+        <Property name="label">入职时间</Property>
+      </PropertyDef>
+      <PropertyDef name="empQuitTime">
+        <Property name="dataType">Date</Property>
+        <Property name="label">离职时间</Property>
+      </PropertyDef>
+      <PropertyDef name="empStatus">
+        <Property></Property>
+        <Property name="label">员工状态</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Collection>
+              <Entity>
+                <Property name="key">0</Property>
+                <Property name="value">试用期</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">1</Property>
+                <Property name="value">在职</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">2</Property>
+                <Property name="value">离职</Property>
+              </Entity>
+            </Collection>
+          </Property>
+        </Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="DefaultDept">
+      <Property name="creationType">com.bstek.bdf2.core.model.DefaultDept</Property>
+      <PropertyDef name="id">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="name">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="desc">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="companyId">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="createDate">
+        <Property name="dataType">Date</Property>
+      </PropertyDef>
+      <PropertyDef name="parentId">
+        <Property></Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="DefaultPosition">
+      <Property name="creationType">com.bstek.bdf2.core.model.DefaultPosition</Property>
+      <PropertyDef name="id">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="name">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="desc">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="companyId">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="createDate">
+        <Property name="dataType">Date</Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View id="tableView">
+    <ClientEvent name="onReady">tcCore.loadCss($url(&quot;>/Hplus/css/plugins/sweetalert/sweetalert.css?v=4.1.0&quot;));&#xD;
+tcCore.loadCss($url(&quot;>/Hplus/css/plugins/dataTables/dataTables.bootstrap.css?v=4.1.0&quot;));&#xD;
+&#xD;
+&#xD;
+tcCore.loadJs($url(&quot;>/Hplus/js/bootstrap.min.js?v=3.3.6&quot;));&#xD;
+tcCore.loadJs($url(&quot;>/Hplus/js/content.min.js?v=1.0.0&quot;));&#xD;
+tcCore.loadJs($url(&quot;>/Hplus/js/plugins/laydate/laydate.js&quot;));&#xD;
+tcCore.loadJs($url(&quot;>/Hplus/js/plugins/suggest/bootstrap-suggest.min.js&quot;));&#xD;
+tcCore.loadJs($url(&quot;>/Hplus/js/plugins/dataTables/jquery.dataTables.js&quot;));&#xD;
+tcCore.loadJs($url(&quot;>/Hplus/js/plugins/dataTables/dataTables.bootstrap.js&quot;));&#xD;
+tcCore.loadJs($url(&quot;>/Hplus/js/plugins/validate/jquery.validate.min.js&quot;));&#xD;
+tcCore.loadJs($url(&quot;>/Hplus/js/plugins/validate/messages_zh.min.js&quot;));&#xD;
+tcCore.loadJs($url(&quot;>/Hplus/js/plugins/iCheck/icheck.min.js&quot;));&#xD;
+tcCore.loadJs($url(&quot;>/Hplus/js/demo/form-validate-demo.min.js&quot;));&#xD;
+tcCore.loadJs($url(&quot;>/Hplus/js/plugins/sweetalert/sweetalert.min.js&quot;));</ClientEvent>
+    <Property name="style">
+      <Property name="display"></Property>
+    </Property>
+    <Property name="packages">hplus-css,dataTables-css,jquery-menu-js,jquery-slimscroll-js,layer-js,iCheck-css</Property>
+    <DataSet id="dsTemp">
+      <Property name="dataType">[temp]</Property>
+      <Property name="dataProvider">propertyManagerView#queryPropertyManager</Property>
+      <Property name="pageSize">1000000</Property>
+      <Property name="parameter"></Property>
+    </DataSet>
+    <DataSet id="dsDept">
+      <Property name="dataType">[DefaultDept]</Property>
+      <Property name="dataProvider">propertyManagerView#queryDept</Property>
+    </DataSet>
+    <DataSet id="dsPosition">
+      <Property name="dataType">[DefaultPosition]</Property>
+      <Property name="dataProvider">propertyManagerView#queryPosition</Property>
+    </DataSet>
+    <Button id="addTemp">
+      <Property name="caption">新增</Property>
+      <Property name="visible">true</Property>
+      <Property name="iconClass">fa fa-plus</Property>
+      <Property name="exClassName">btn btn-primary</Property>
+      <Property name="renderOn">#btn1</Property>
+    </Button>
+    <Button id="editTemp">
+      <Property name="visible">true</Property>
+      <Property name="caption">编辑</Property>
+      <Property name="iconClass">fa fa-edit</Property>
+      <Property name="exClassName">btn btn-primary</Property>
+      <Property name="renderOn">#btn2</Property>
+      <Property name="style">
+        <Property name="height">34px</Property>
+      </Property>
+    </Button>
+    <Button id="delTemp">
+      <Property name="caption">删除</Property>
+      <Property name="iconClass">fa fa-trash-o</Property>
+      <Property name="renderOn">#btn3</Property>
+      <Property name="style">
+        <Property name="height">34px</Property>
+      </Property>
+      <Property name="exClassName">btn btn-primary</Property>
+    </Button>
+    <AjaxAction id="add">
+      <Property name="service">propertyManagerView#add_Emp</Property>
+      <Property name="async">false</Property>
+    </AjaxAction>
+    <AjaxAction id="getTemp">
+      <Property name="service">propertyManagerView#getTemp</Property>
+      <Property name="async">false</Property>
+    </AjaxAction>
+    <AjaxAction id="delTempAjax">
+      <Property name="async">false</Property>
+      <Property name="service">propertyManagerView#delTemp</Property>
+    </AjaxAction>
+    <AjaxAction id="updateTemp">
+      <Property name="service">propertyManagerView#update_Emp</Property>
+    </AjaxAction>
+  </View>
+</ViewConfig>

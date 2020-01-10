@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dataTypeItemFiles">
+      <Property name="creationType">com.jdry.pms.assertStockManage.pojo.Titmsfiles</Property>
+      <PropertyDef name="item_id">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="item_code">
+        <Property></Property>
+        <Property name="label">物品编码</Property>
+      </PropertyDef>
+      <PropertyDef name="bar_code">
+        <Property></Property>
+        <Property name="label">物品条码</Property>
+      </PropertyDef>
+      <PropertyDef name="item_name">
+        <Property></Property>
+        <Property name="label">物品名称</Property>
+      </PropertyDef>
+      <PropertyDef name="item_type">
+        <Property></Property>
+        <Property name="label">物品型号</Property>
+      </PropertyDef>
+      <PropertyDef name="item_unit">
+        <Property></Property>
+        <Property name="label">单位</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Collection>
+              <Entity>
+                <Property name="key">01</Property>
+                <Property name="value">个</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">02</Property>
+                <Property name="value">米</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">03</Property>
+                <Property name="value">套</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">04</Property>
+                <Property name="value">盒</Property>
+              </Entity>
+            </Collection>
+          </Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="stock_uplimit">
+        <Property name="dataType">double</Property>
+        <Property name="label">库存上限</Property>
+      </PropertyDef>
+      <PropertyDef name="stock_lowerlimit">
+        <Property name="dataType">double</Property>
+        <Property name="label">库存下限</Property>
+      </PropertyDef>
+      <PropertyDef name="defu_inprice">
+        <Property name="dataType">double</Property>
+        <Property name="label">默认入库价</Property>
+      </PropertyDef>
+      <PropertyDef name="defu_outprice">
+        <Property name="dataType">double</Property>
+        <Property name="label">默认出库价</Property>
+      </PropertyDef>
+      <PropertyDef name="Stock_avgprice">
+        <Property name="dataType">double</Property>
+        <Property name="label">库存平均价</Property>
+      </PropertyDef>
+      <PropertyDef name="item_flag">
+        <Property name="label">物品类别</Property>
+      </PropertyDef>
+      <PropertyDef name="type_name">
+        <Property name="label">物品类别</Property>
+      </PropertyDef>
+      <PropertyDef name="suppliy_num">
+        <Property name="label">现有库存量</Property>
+      </PropertyDef>
+      <PropertyDef name="item_flagName">
+        <Property name="label">物品类型</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dataTypeSupplieType">
+      <Property name="creationType">com.jdry.pms.assertStockManage.pojo.SupplieType</Property>
+      <PropertyDef name="supplytype_id">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="supply_code">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="type_name">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="type_orther">
+        <Property></Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View>
+    <DataSet id="dsItemFiles">
+      <Property name="pageSize">10</Property>
+      <Property name="dataType">[dataTypeItemFiles]</Property>
+      <Property name="dataProvider">itmsfilesView#quaryItmsfilesInfo</Property>
+    </DataSet>
+    <DataSet id="dsSupplieType">
+      <Property name="dataProvider">supplieTypeView#getSuplieTypeInfo</Property>
+      <Property name="pageSize">100</Property>
+      <Property name="dataType">[dataTypeSupplieType]</Property>
+    </DataSet>
+    <FieldSet>
+      <Property name="caption">查询</Property>
+      <Property name="buttonAlign">right</Property>
+      <Buttons>
+        <Button>
+          <ClientEvent name="onClick">view.set(&quot;#searchItemFiles.entity&quot;,{});</ClientEvent>
+          <Property name="caption">清空</Property>
+        </Button>
+        <Button>
+          <ClientEvent name="onClick">var data = view.get(&quot;#searchItemFiles.entity&quot;);&#xD;
+with (view.get(&quot;#dsItemFiles&quot;)) {&#xD;
+	set(&quot;parameter&quot;, data);&#xD;
+	flush();&#xD;
+}&#xD;
+&#xD;
+</ClientEvent>
+          <Property name="caption">查询</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm id="searchItemFiles">
+          <Property name="dataType">dataTypeItemFiles</Property>
+          <Property name="cols">*,*,*</Property>
+          <AutoFormElement>
+            <Property name="name">item_code</Property>
+            <Property name="property">item_code</Property>
+            <Property name="label">物品编码：</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">bar_code</Property>
+            <Property name="property">bar_code</Property>
+            <Property name="label">物品条码：</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">item_name</Property>
+            <Property name="property">item_name</Property>
+            <Property name="label">物品名称：</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">item_type</Property>
+            <Property name="property">item_type</Property>
+            <Property name="label">物品型号：</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">item_unit</Property>
+            <Property name="property">item_unit</Property>
+            <Property name="label">单位：</Property>
+            <Editor>
+              <TextEditor>
+                <Property name="mapping">
+                  <Property name="mapValues">
+                    <Collection>
+                      <Entity>
+                        <Property name="key">01</Property>
+                        <Property name="value">个</Property>
+                      </Entity>
+                      <Entity>
+                        <Property name="key">02</Property>
+                        <Property name="value">米</Property>
+                      </Entity>
+                      <Entity>
+                        <Property name="key">03</Property>
+                        <Property name="value">套</Property>
+                      </Entity>
+                      <Entity>
+                        <Property name="key">04</Property>
+                        <Property name="value">盒</Property>
+                      </Entity>
+                    </Collection>
+                  </Property>
+                </Property>
+                <Property name="trigger">autoMappingDropDown1</Property>
+              </TextEditor>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">item_flagName</Property>
+            <Property name="property">item_flagName</Property>
+            <Property name="trigger">dsDropDownSuppliyType</Property>
+            <Property name="label">物品类别</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="label">物品类别：</Property>
+            <Property name="name">item_flag</Property>
+            <Property name="property">item_flag</Property>
+            <Property name="visible">false</Property>
+            <Editor/>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+    </FieldSet>
+    <ToolBar>
+      <Property name="fixRight">true</Property>
+      <ToolBarLabel>
+        <Property name="text">物品档案信息</Property>
+      </ToolBarLabel>
+      <Fill/>
+      <ToolBarButton>
+        <ClientEvent name="onClick">view.get(&quot;#addItemfiles&quot;).set(&quot;caption&quot;,&quot;增加&quot;);&#xD;
+view.get(&quot;#addItemfiles&quot;).show();&#xD;
+var data=view.get(&quot;#dsItemFiles.data&quot;);&#xD;
+data.insert();</ClientEvent>
+        <Property name="caption">增加</Property>
+        <Property name="icon">url(>skin>common/icons.gif) -120px -0px</Property>
+      </ToolBarButton>
+      <ToolBarButton>
+        <ClientEvent name="onClick">view.get(&quot;#addItemfiles&quot;).set(&quot;caption&quot;,&quot;编辑&quot;);&#xD;
+view.get(&quot;#addItemfiles&quot;).show();</ClientEvent>
+        <Property name="caption">编辑</Property>
+        <Property name="icon">url(>skin>common/icons.gif) -200px -0px</Property>
+      </ToolBarButton>
+      <ToolBarButton>
+        <ClientEvent name="onClick">dorado.MessageBox.confirm(&quot;确定要删除选中的记录吗？&quot;,function(){&#xD;
+	var entity=view.get(&quot;#dsItemFiles.data:#&quot;);&#xD;
+	var updateItemsInfoeaction=view.get(&quot;#updateItemsInfoeaction&quot;);&#xD;
+	if(entity){&#xD;
+	    entity.remove();&#xD;
+		updateItemsInfoeaction.execute();&#xD;
+	}else{&#xD;
+	    dorado.MessageBox.alert(&quot;必须选中一行记录！&quot;);&#xD;
+	}&#xD;
+});&#xD;
+&#xD;
+</ClientEvent>
+        <Property name="caption">删除</Property>
+        <Property name="icon">url(>skin>common/icons.gif) -140px -0px</Property>
+      </ToolBarButton>
+    </ToolBar>
+    <DataSetDropDown id="dsDropDownSuppliyType">
+      <Property name="assignmentMap">item_flag=supply_code,item_flagName=type_name</Property>
+      <Property name="autoOpen">true</Property>
+      <Property name="dataSet">dsSupplieType</Property>
+      <Property name="dynaFilter">true</Property>
+      <Property name="property">type_name</Property>
+      <Property name="reloadDataOnOpen">true</Property>
+    </DataSetDropDown>
+    <DataGrid id="itemFilesDataGrid">
+      <Property name="selectionMode">multiRows</Property>
+      <Property name="dataSet">dsItemFiles</Property>
+      <Property name="readOnly">true</Property>
+      <Property name="height">310px</Property>
+      <RowNumColumn/>
+      <DataColumn name="item_code">
+        <Property name="property">item_code</Property>
+        <Property name="align">center</Property>
+      </DataColumn>
+      <DataColumn name="bar_code">
+        <Property name="property">bar_code</Property>
+        <Property name="align">center</Property>
+      </DataColumn>
+      <DataColumn name="item_name">
+        <Property name="property">item_name</Property>
+        <Property name="align">center</Property>
+      </DataColumn>
+      <DataColumn name="item_type">
+        <Property name="property">item_type</Property>
+        <Property name="align">center</Property>
+      </DataColumn>
+      <DataColumn>
+        <Property name="name">type_name</Property>
+        <Property name="property">type_name</Property>
+        <Property name="readOnly">true</Property>
+        <Property name="align">center</Property>
+        <Editor/>
+      </DataColumn>
+      <DataColumn name="suppliy_num">
+        <Property name="property">suppliy_num</Property>
+        <Property name="align">center</Property>
+      </DataColumn>
+      <DataColumn name="item_unit">
+        <Property name="property">item_unit</Property>
+        <Property name="align">center</Property>
+      </DataColumn>
+      <DataColumn name="stock_lowerlimit">
+        <Property name="property">stock_lowerlimit</Property>
+        <Property name="align">center</Property>
+      </DataColumn>
+      <DataColumn name="stock_uplimit">
+        <Property name="property">stock_uplimit</Property>
+        <Property name="align">center</Property>
+      </DataColumn>
+      <DataColumn name="defu_inprice">
+        <Property name="property">defu_inprice</Property>
+        <Property name="align">center</Property>
+      </DataColumn>
+      <DataColumn name="defu_outprice">
+        <Property name="property">defu_outprice</Property>
+        <Property name="align">center</Property>
+      </DataColumn>
+    </DataGrid>
+    <ToolBar>
+      <DataPilot>
+        <Property name="itemCodes">pages</Property>
+        <Property name="dataSet">dsItemFiles</Property>
+      </DataPilot>
+    </ToolBar>
+    <Dialog id="addItemfiles">
+      <ClientEvent name="onClose">view.get(&quot;#dsTemp&quot;).flush();</ClientEvent>
+      <Property name="height">500px</Property>
+      <Property name="width">800px</Property>
+      <Property name="icon">url(>skin>common/icons.gif) -280px -100px</Property>
+      <Buttons>
+        <Button>
+          <ClientEvent name="onClick">dorado.MessageBox.confirm(&quot;确定添加？&quot;,function(){&#xD;
+	var updateItemsInfoeaction=view.get(&quot;#updateItemsInfoeaction&quot;);&#xD;
+	updateItemsInfoeaction.execute(function(result){&#xD;
+	&#xD;
+	dorado.MessageBox.alert(&quot;添加成功！&quot;);&#xD;
+	view.get(&quot;#addItemfiles&quot;).hide();&#xD;
+	});&#xD;
+});</ClientEvent>
+          <Property name="caption">确定</Property>
+          <Property name="icon">url(>skin>common/icons.gif) -20px -0px</Property>
+        </Button>
+        <Button>
+          <ClientEvent name="onClick">view.get(&quot;#addItemfiles&quot;).hide();&#xD;
+&#xD;
+</ClientEvent>
+          <Property name="caption">取消</Property>
+          <Property name="icon">url(>skin>common/icons.gif) -40px -0px</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm>
+          <Property name="dataSet">dsItemFiles</Property>
+          <Property name="cols">*,*,*</Property>
+          <AutoFormElement>
+            <Property name="name">bar_code</Property>
+            <Property name="property">bar_code</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">item_name</Property>
+            <Property name="property">item_name</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">item_type</Property>
+            <Property name="property">item_type</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">stock_uplimit</Property>
+            <Property name="property">stock_uplimit</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">item_flagName</Property>
+            <Property name="property">item_flagName</Property>
+            <Property name="trigger">dsDropDownSuppliyType</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">item_unit</Property>
+            <Property name="property">item_unit</Property>
+            <Editor>
+              <TextEditor>
+                <Property name="mapping">
+                  <Property name="mapValues">
+                    <Collection>
+                      <Entity>
+                        <Property name="key">01</Property>
+                        <Property name="value">个</Property>
+                      </Entity>
+                    </Collection>
+                  </Property>
+                </Property>
+                <Property name="trigger">autoMappingDropDown1</Property>
+              </TextEditor>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">stock_lowerlimit</Property>
+            <Property name="property">stock_lowerlimit</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">defu_inprice</Property>
+            <Property name="property">defu_inprice</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">defu_outprice</Property>
+            <Property name="property">defu_outprice</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">Stock_avgprice</Property>
+            <Property name="property">Stock_avgprice</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">item_flag</Property>
+            <Property name="property">item_flag</Property>
+            <Property name="visible">false</Property>
+            <Editor/>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <UpdateAction id="updateItemsInfoeaction">
+      <Property name="dataResolver">itmsfilesView#saveItmsfilesInfo</Property>
+      <UpdateItem>
+        <Property name="dataSet">dsItemFiles</Property>
+      </UpdateItem>
+    </UpdateAction>
+  </View>
+</ViewConfig>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dtDirectoryDetail">
+      <Property name="creationType">com.jdry.pms.dir.pojo.DirDirectoryDetail</Property>
+      <PropertyDef name="id">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="code">
+        <Property/>
+      </PropertyDef>
+      <PropertyDef name="code_detail">
+        <Property/>
+      </PropertyDef>
+      <PropertyDef name="code_detail_name">
+        <Property/>
+      </PropertyDef>
+      <PropertyDef name="memo">
+        <Property/>
+      </PropertyDef>
+      <PropertyDef name="delete_id">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="create_id">
+        <Property/>
+      </PropertyDef>
+      <PropertyDef name="create_time">
+        <Property name="dataType">Date</Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View>
+    <DataSet id="dataSet1"/>
+  </View>
+</ViewConfig>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="msgTemp">
+      <Property name="creationType">com.jdry.pms.msgandnotice.pojo.MessageTempMain</Property>
+      <PropertyDef name="msgTempId">
+        <Property name="dataType">String</Property>
+      </PropertyDef>
+      <PropertyDef name="msgTempSubject">
+        <Property name="dataType">String</Property>
+        <Property name="label">模板标题</Property>
+      </PropertyDef>
+      <PropertyDef name="msgTempContent">
+        <Property name="dataType">String</Property>
+        <Property name="label">模板内容</Property>
+      </PropertyDef>
+      <PropertyDef name="msgTempCtime">
+        <Property name="dataType">DateTime</Property>
+        <Property name="label">创建时间</Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View>
+    <DataSet id="dsMsgTemp">
+      <Property name="dataType">[msgTemp]</Property>
+      <Property name="pageSize">10</Property>
+      <Property name="dataProvider">messageTemplateView#getMsgTemp</Property>
+    </DataSet>
+    <ToolBar>
+      <ToolBarLabel>
+        <Property name="text">公告</Property>
+      </ToolBarLabel>
+      <Fill/>
+      <DataPilot>
+        <Property name="dataSet">dsMsgTemp</Property>
+      </DataPilot>
+      <ToolBarButton>
+        <ClientEvent name="onClick">view.get(&quot;#addTemp&quot;).set(&quot;caption&quot;,&quot;增加&quot;);&#xD;
+view.get(&quot;#addTemp&quot;).show();&#xD;
+var data=view.get(&quot;#dsMsgTemp.data&quot;);&#xD;
+var date = new Date(); &#xD;
+data.insert({&quot;msgTempCtime&quot;:date});</ClientEvent>
+        <Property name="caption">增加</Property>
+        <Property name="icon">url(>skin>common/icons.gif) -120px -0px</Property>
+      </ToolBarButton>
+      <ToolBarButton>
+        <ClientEvent name="onClick">view.get(&quot;#addTemp&quot;).set(&quot;caption&quot;,&quot;编辑&quot;);&#xD;
+view.get(&quot;#addTemp&quot;).show();</ClientEvent>
+        <Property name="caption">编辑</Property>
+        <Property name="icon">url(>skin>common/icons.gif) -200px -0px</Property>
+      </ToolBarButton>
+      <ToolBarButton>
+        <ClientEvent name="onClick">dorado.MessageBox.confirm(&quot;真的要删除选中的记录吗？&quot;,function(){&#xD;
+	var entity=view.get(&quot;#dsMsgTemp.data:#&quot;);&#xD;
+	var updateAction=view.get(&quot;#updateTemp&quot;);&#xD;
+	if(entity){&#xD;
+	    entity.remove();&#xD;
+		updateAction.execute();&#xD;
+	  &#xD;
+	}else{&#xD;
+	    dorado.MessageBox.alert(&quot;必须选中一行记录！&quot;);&#xD;
+	}&#xD;
+});</ClientEvent>
+        <Property name="caption">删除</Property>
+        <Property name="icon">url(>skin>common/icons.gif) -140px -0px</Property>
+      </ToolBarButton>
+    </ToolBar>
+    <DataGrid id="tableMessages">
+      <Property name="dataSet">dsMsgTemp</Property>
+      <Property name="readOnly">true</Property>
+      <Property name="filterMode">serverSide</Property>
+      <Property name="showFilterBar">true</Property>
+      <Property name="height">286px</Property>
+      <DataColumn name="msgTempSubject">
+        <Property name="property">msgTempSubject</Property>
+      </DataColumn>
+      <DataColumn name="msgTempContent">
+        <Property name="property">msgTempContent</Property>
+      </DataColumn>
+      <DataColumn name="msgTempCtime">
+        <Property name="property">msgTempCtime</Property>
+      </DataColumn>
+    </DataGrid>
+    <ToolBar>
+      <Fill/>
+      <DataPilot>
+        <Property name="dataSet">dsMsgTemp</Property>
+      </DataPilot>
+    </ToolBar>
+    <Dialog id="addTemp">
+      <ClientEvent name="onClose">//view.get(&quot;#dsNotice&quot;).flush();&#xD;
+&#xD;
+view.get(&quot;#dsMsgTemp.data:#&quot;).cancel();</ClientEvent>
+      <ClientEvent name="onHide">//view.get(&quot;#dsNotice&quot;).flush();&#xD;
+view.get(&quot;#dsMsgTemp.data:#&quot;).cancel();</ClientEvent>
+      <Property name="height">400px</Property>
+      <Property name="width">800px</Property>
+      <Property name="icon">url(>skin>common/icons.gif) -280px -100px</Property>
+      <Buttons>
+        <Button>
+          <ClientEvent name="onClick">dorado.MessageBox.confirm(&quot;确定保存？&quot;,function(){&#xD;
+	var updateTemp=view.get(&quot;#updateTemp&quot;);&#xD;
+	updateTemp.execute(function(result){&#xD;
+	&#xD;
+	dorado.MessageBox.alert(&quot;保存成功！&quot;);&#xD;
+	view.get(&quot;#addTemp&quot;).hide();&#xD;
+	});&#xD;
+});</ClientEvent>
+          <Property name="caption">保存</Property>
+          <Property name="icon">url(>skin>common/icons.gif) -20px -0px</Property>
+        </Button>
+        <Button>
+          <ClientEvent name="onClick">view.get(&quot;#addTemp&quot;).hide();&#xD;
+&#xD;
+</ClientEvent>
+          <Property name="caption">取消</Property>
+          <Property name="icon">url(>skin>common/icons.gif) -40px -0px</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm id="addNoticeForm">
+          <Property name="cols">*,*</Property>
+          <Property name="labelAlign">right</Property>
+          <Property name="dataSet">dsMsgTemp</Property>
+          <AutoFormElement>
+            <Property name="name">msgTempSubject</Property>
+            <Property name="property">msgTempSubject</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:2">
+            <Property name="name">msgTempContent</Property>
+            <Property name="property">msgTempContent</Property>
+            <Editor>
+              <TextArea>
+                <Property name="height">100</Property>
+              </TextArea>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">msgTempCtime</Property>
+            <Property name="property">msgTempCtime</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <UpdateAction id="updateTemp">
+      <Property name="dataResolver">messageTemplateView#saveMsgTemp</Property>
+      <UpdateItem>
+        <Property name="dataSet">dsMsgTemp</Property>
+      </UpdateItem>
+    </UpdateAction>
+  </View>
+</ViewConfig>

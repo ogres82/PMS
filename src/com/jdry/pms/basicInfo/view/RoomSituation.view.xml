@@ -1,0 +1,647 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="AllArea">
+      <Property name="creationType">com.jdry.pms.basicInfo.pojo.AllArea</Property>
+      <PropertyDef name="buildId">
+        <Property></Property>
+        <Property name="label">楼盘ID</Property>
+      </PropertyDef>
+      <PropertyDef name="buildName">
+        <Property></Property>
+        <Property name="label">楼盘名称</Property>
+        <Property name="required">true</Property>
+        <Validator type="ajax">
+          <Property name="name">checkName</Property>
+          <Property name="executingMessage">正在校验...</Property>
+          <Property name="service">allAreaView#checkAllArea</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="remark">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <Reference name="areaProperty">
+        <Property name="dataType">[AreaProperty]</Property>
+        <Property name="dataProvider">areaPropertyView#queryAreaPropertyByParent</Property>
+        <Property name="parameter">$${this.buildId}</Property>
+      </Reference>
+    </DataType>
+    <DataType name="AreaProperty">
+      <Property name="creationType">com.jdry.pms.basicInfo.pojo.AreaProperty</Property>
+      <PropertyDef name="communityId">
+        <Property></Property>
+        <Property name="label">小区ID</Property>
+      </PropertyDef>
+      <PropertyDef name="communityName">
+        <Property></Property>
+        <Property name="label">小区名称</Property>
+      </PropertyDef>
+      <PropertyDef name="belongBuildId">
+        <Property></Property>
+        <Property name="label">所属楼盘</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;areaPropertyView#getAllAreaId&quot;).getResult()}</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="remark">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <PropertyDef name="belongBuildName">
+        <Property name="label">所属楼盘</Property>
+      </PropertyDef>
+      <Reference name="buildingProperty">
+        <Property name="parameter">$${this.communityId}</Property>
+        <Property name="dataType">[BuildingProperty]</Property>
+        <Property name="dataProvider">buildingPropertyView#queryBuildingPropertyByParent</Property>
+      </Reference>
+    </DataType>
+    <DataType name="BuildingProperty">
+      <Property name="creationType">com.jdry.pms.basicInfo.pojo.BuildingProperty</Property>
+      <PropertyDef name="storiedBuildId">
+        <Property></Property>
+        <Property name="label">楼栋ID</Property>
+      </PropertyDef>
+      <PropertyDef name="storiedBuildName">
+        <Property></Property>
+        <Property name="label">楼栋名称</Property>
+        <Validator type="ajax">
+          <Property name="name">checkName</Property>
+          <Property name="service">buildingPropertyView#checkBuidName</Property>
+          <Property name="executingMessage">正在验证...</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="belongCommId">
+        <Property></Property>
+        <Property name="label">所属小区</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;buildingPropertyView#getCommId&quot;).getResult()}</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="remark">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <Reference name="houseProperty">
+        <Property name="dataType">[HouseProperty]</Property>
+        <Property name="parameter">$${this.storiedBuildId}</Property>
+        <Property name="dataProvider">housePropertyView#queryHousePropertyByParent</Property>
+      </Reference>
+    </DataType>
+    <DataType name="HouseProperty">
+      <Property name="creationType">com.jdry.pms.basicInfo.pojo.HouseProperty</Property>
+      <PropertyDef name="roomId">
+        <Property></Property>
+        <Property name="label">房间ID</Property>
+      </PropertyDef>
+      <PropertyDef name="roomNo">
+        <Property></Property>
+        <Property name="label">房间号</Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="belongSbId">
+        <Property></Property>
+        <Property name="label">所属楼栋</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;housePropertyView#getBuilding&quot;).getResult()}</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="houseType">
+        <Property></Property>
+        <Property name="label">户型</Property>
+      </PropertyDef>
+      <PropertyDef name="buildArea">
+        <Property name="dataType">Float</Property>
+        <Property name="label">建筑面积</Property>
+        <Property name="displayFormat">#.00</Property>
+      </PropertyDef>
+      <PropertyDef name="withinArea">
+        <Property name="dataType">Float</Property>
+        <Property name="label">套内面积</Property>
+        <Property name="displayFormat">#.00</Property>
+      </PropertyDef>
+      <PropertyDef name="roomType">
+        <Property></Property>
+        <Property name="label">房间类型</Property>
+        <Property name="required">true</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;housePropertyView#getRoomType&quot;).getResult()}</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="roomState">
+        <Property></Property>
+        <Property name="label">房间状态</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;housePropertyView#getRoomState&quot;).getResult()}</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="chargeObject">
+        <Property></Property>
+        <Property name="label">收费对象</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;housePropertyView#getChargeObject&quot;).getResult()}</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="remark">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <PropertyDef name="buildName">
+        <Property name="label">所属楼盘</Property>
+      </PropertyDef>
+      <PropertyDef name="buildId"/>
+      <PropertyDef name="areaName">
+        <Property name="label">所属小区</Property>
+      </PropertyDef>
+      <PropertyDef name="areaId"/>
+      <PropertyDef name="buildingName">
+        <Property name="label">所属楼宇</Property>
+      </PropertyDef>
+      <PropertyDef name="buildingId"/>
+    </DataType>
+    <DataType name="TpropertyOwner">
+      <Property name="creationType">com.jdry.pms.basicInfo.pojo.PropertyOwner</Property>
+      <PropertyDef name="ownerId">
+        <Property></Property>
+        <Property name="label">业主ID</Property>
+      </PropertyDef>
+      <PropertyDef name="roomId">
+        <Property></Property>
+        <Property name="label">房间ID</Property>
+      </PropertyDef>
+      <PropertyDef name="roomNo">
+        <Property></Property>
+        <Property name="label">房间号</Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="ownerName">
+        <Property></Property>
+        <Property name="label">业主姓名</Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="phone">
+        <Property></Property>
+        <Property name="label">联系电话</Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="cardId">
+        <Property></Property>
+        <Property name="label">身份证号</Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="carId">
+        <Property></Property>
+        <Property name="label">车牌号</Property>
+      </PropertyDef>
+      <PropertyDef name="ownerType">
+        <Property></Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Collection>
+              <Entity>
+                <Property name="key">0</Property>
+                <Property name="value">一般</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">1</Property>
+                <Property name="value">重要</Property>
+              </Entity>
+            </Collection>
+          </Property>
+        </Property>
+        <Property name="label">业主类型</Property>
+      </PropertyDef>
+      <PropertyDef name="makeRoomDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">交房日期</Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="decorateDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">装修日期</Property>
+      </PropertyDef>
+      <PropertyDef name="remark">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="searchForm">
+      <PropertyDef name="buildId">
+        <Property></Property>
+        <Property name="label">楼盘ID</Property>
+      </PropertyDef>
+      <PropertyDef name="buildName">
+        <Property></Property>
+        <Property name="label">楼盘名称</Property>
+        <Property name="required">true</Property>
+        <Validator type="ajax">
+          <Property name="name">checkName</Property>
+          <Property name="executingMessage">正在校验...</Property>
+          <Property name="service">allAreaView#checkAllArea</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="keyWord"/>
+    </DataType>
+  </Model>
+  <View>
+    <DataSet id="dsAllArea">
+      <Property name="dataType">[AllArea]</Property>
+      <Property name="dataProvider">allAreaView#queryAllAreaByParam</Property>
+      <Property name="parameter"></Property>
+    </DataSet>
+    <DataSet id="dsHouse">
+      <Property name="dataType">[HouseProperty]</Property>
+      <Property name="dataProvider">housePropertyView#queryHouseProperty</Property>
+      <Property name="parameter"></Property>
+      <Property name="pageSize">1</Property>
+      <Property name="loadMode">manual</Property>
+    </DataSet>
+    <DataSet id="dsOwner">
+      <Property name="dataType">[TpropertyOwner]</Property>
+      <Property name="dataProvider">ownerInfoView#queryOwnerInfo</Property>
+      <Property name="pageSize">1</Property>
+      <Property name="parameter"></Property>
+      <Property name="loadMode">manual</Property>
+    </DataSet>
+    <DataSet id="dsRoomAndOwner">
+      <Property name="dataProvider">roomSituationView#queryRoomAndOwnerByJdbc</Property>
+      <Property name="loadMode">manual</Property>
+      <Property name="dataType">[TpropertyOwner]</Property>
+    </DataSet>
+    <SplitPanel>
+      <Property name="position">235</Property>
+      <MainControl>
+        <TabControl>
+          <ControlTab>
+            <Property name="caption">基本信息</Property>
+            <Container>
+              <Label id="noSelectTip">
+                <Property name="text">请选择房间后查看信息！</Property>
+                <Property name="style">
+                  <Property name="font-size">16px</Property>
+                  <Property name="color">red</Property>
+                  <Property name="margin-left">30%</Property>
+                  <Property name="margin-top">200px</Property>
+                  <Property name="background">url(/PMS/images/tip.gif) left center no-repeat</Property>
+                  <Property name="line-height">70px</Property>
+                  <Property name="padding-left">74px</Property>
+                </Property>
+                <Property name="hideMode">display</Property>
+                <Property name="width">300px</Property>
+                <Property name="height">70px</Property>
+              </Label>
+              <Label id="fjzl">
+                <Property name="text">房间资料</Property>
+                <Property name="style">
+                  <Property name="font-weight">bold</Property>
+                  <Property name="visibility">hidden</Property>
+                  <Property name="margin-left">9px</Property>
+                  <Property name="margin-top">10px</Property>
+                </Property>
+              </Label>
+              <AutoForm id="roomDetail">
+                <ClientEvent name="onReady">$(&quot;.d-text-box&quot;).css({&quot;background&quot;:&quot;#fff&quot;});&#xD;
+</ClientEvent>
+                <Property name="dataSet">dsHouse</Property>
+                <Property name="style">
+                  <Property name="visibility">hidden</Property>
+                </Property>
+                <Property name="readOnly">true</Property>
+                <Property name="labelWidth">110</Property>
+                <AutoFormElement>
+                  <Property name="name">buildName</Property>
+                  <Property name="property">buildName</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">areaName</Property>
+                  <Property name="property">areaName</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">buildingName</Property>
+                  <Property name="property">buildingName</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">roomNo</Property>
+                  <Property name="property">roomNo</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">houseType</Property>
+                  <Property name="property">houseType</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">buildArea</Property>
+                  <Property name="property">buildArea</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">withinArea</Property>
+                  <Property name="property">withinArea</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">roomType</Property>
+                  <Property name="property">roomType</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">roomState</Property>
+                  <Property name="property">roomState</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">chargeObject</Property>
+                  <Property name="property">chargeObject</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement layoutConstraint="colSpan:2">
+                  <Property name="name">remark</Property>
+                  <Property name="property">remark</Property>
+                  <Editor/>
+                </AutoFormElement>
+              </AutoForm>
+              <Label id="yzzl">
+                <Property name="text">业主资料</Property>
+                <Property name="style">
+                  <Property name="font-weight">bold</Property>
+                  <Property name="margin-left">9px</Property>
+                  <Property name="margin-top">10px</Property>
+                  <Property name="visibility">hidden</Property>
+                </Property>
+              </Label>
+              <AutoForm id="ownerInfo">
+                <Property name="dataSet">dsOwner</Property>
+                <Property name="labelWidth">110</Property>
+                <Property name="style">
+                  <Property name="visibility">hidden</Property>
+                </Property>
+                <AutoFormElement>
+                  <Property name="name">roomNo</Property>
+                  <Property name="property">roomNo</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">ownerName</Property>
+                  <Property name="property">ownerName</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">phone</Property>
+                  <Property name="property">phone</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">cardId</Property>
+                  <Property name="property">cardId</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">carId</Property>
+                  <Property name="property">carId</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">ownerType</Property>
+                  <Property name="property">ownerType</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">makeRoomDate</Property>
+                  <Property name="property">makeRoomDate</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">decorateDate</Property>
+                  <Property name="property">decorateDate</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement layoutConstraint="colSpan:2">
+                  <Property name="name">remark</Property>
+                  <Property name="property">remark</Property>
+                  <Editor/>
+                </AutoFormElement>
+              </AutoForm>
+            </Container>
+          </ControlTab>
+          <ControlTab>
+            <Property name="caption">应收款</Property>
+          </ControlTab>
+          <ControlTab>
+            <Property name="caption">已收款</Property>
+          </ControlTab>
+          <ControlTab>
+            <Property name="caption">押金</Property>
+          </ControlTab>
+          <ControlTab>
+            <Property name="caption">预收款</Property>
+          </ControlTab>
+          <ControlTab>
+            <Property name="caption">收费项目</Property>
+          </ControlTab>
+          <ControlTab>
+            <Property name="caption">车位</Property>
+          </ControlTab>
+          <ControlTab>
+            <Property name="caption">合同</Property>
+          </ControlTab>
+          <ControlTab>
+            <Property name="caption">入住历史</Property>
+          </ControlTab>
+        </TabControl>
+      </MainControl>
+      <SideControl>
+        <Container>
+          <ToolBar>
+            <ToolBarLabel>
+              <Property name="text">房间导航</Property>
+            </ToolBarLabel>
+          </ToolBar>
+          <TabControl>
+            <ControlTab>
+              <Property name="caption">房间树</Property>
+              <DataTree>
+                <ClientEvent name="onDataRowClick">var obj = self.get(&quot;currentEntity&quot;);&#xD;
+var level = self.get(&quot;currentNode&quot;).get(&quot;level&quot;);&#xD;
+&#xD;
+if(level == 4){&#xD;
+	var data = {&#xD;
+		roomId:obj.get(&quot;roomId&quot;)&#xD;
+	};&#xD;
+	view.get(&quot;#noSelectTip&quot;).set(&quot;visible&quot;,false);&#xD;
+	view.get(&quot;#roomDetail&quot;).refreshData();&#xD;
+	view.get(&quot;#ownerInfo&quot;).refreshData();&#xD;
+	$('#d_roomDetail').css(&quot;visibility&quot;,&quot;visible&quot;);&#xD;
+	$('#d_ownerInfo').css(&quot;visibility&quot;,&quot;visible&quot;);&#xD;
+	$('#d_fjzl').css(&quot;visibility&quot;,&quot;visible&quot;);&#xD;
+	$('#d_yzzl').css(&quot;visibility&quot;,&quot;visible&quot;);&#xD;
+	view.get(&quot;#dsHouse&quot;).set(&quot;parameter&quot;,data).flushAsync();&#xD;
+	view.get(&quot;#dsOwner&quot;).set(&quot;parameter&quot;,data).flushAsync();&#xD;
+	&#xD;
+}&#xD;
+&#xD;
+</ClientEvent>
+                <Property name="dataSet">dsAllArea</Property>
+                <BindingConfigs>
+                  <BindingConfig>
+                    <Property name="name">allArea</Property>
+                    <Property name="childrenProperty">allArea</Property>
+                    <Property name="labelProperty">buildName</Property>
+                    <Property name="icon">url(>skin>common/icons.gif) -240px -40px</Property>
+                    <BindingConfig>
+                      <Property name="name">areaProperty</Property>
+                      <Property name="childrenProperty">areaProperty</Property>
+                      <Property name="labelProperty">communityName</Property>
+                      <Property name="icon">url(>skin>common/icons.gif) -60px -40px</Property>
+                      <BindingConfig>
+                        <Property name="name">buildingProperty</Property>
+                        <Property name="childrenProperty">buildingProperty</Property>
+                        <Property name="labelProperty">storiedBuildName</Property>
+                        <Property name="icon">url(>skin>common/icons.gif) -40px -40px</Property>
+                        <BindingConfig>
+                          <Property name="name">houseProperty</Property>
+                          <Property name="childrenProperty">houseProperty</Property>
+                          <Property name="labelProperty">roomNo</Property>
+                          <Property name="icon">url(>skin>common/icons.gif) -0px -20px</Property>
+                        </BindingConfig>
+                      </BindingConfig>
+                    </BindingConfig>
+                  </BindingConfig>
+                </BindingConfigs>
+              </DataTree>
+            </ControlTab>
+            <ControlTab>
+              <Property name="caption">列表选择</Property>
+              <Container>
+                <FieldSet layout="padding:0">
+                  <Property name="caption">查询条件</Property>
+                  <Property name="height">140</Property>
+                  <Property name="contentOverflowY">hidden</Property>
+                  <Buttons>
+                    <Button>
+                      <ClientEvent name="onClick">var data = view.get(&quot;#listSearch.entity&quot;);&#xD;
+with (view.get(&quot;#dsRoomAndOwner&quot;)) {&#xD;
+	set(&quot;parameter&quot;, data);&#xD;
+	flush();&#xD;
+}&#xD;
+</ClientEvent>
+                      <Property name="caption">查询</Property>
+                      <Property name="width">150</Property>
+                    </Button>
+                  </Buttons>
+                  <Children>
+                    <AutoForm id="listSearch">
+                      <Property name="cols">*,1</Property>
+                      <Property name="labelWidth">50</Property>
+                      <Property name="editorWidth">100px</Property>
+                      <Property name="showHint">false</Property>
+                      <AutoFormElement>
+                        <Property name="name">buildName</Property>
+                        <Property name="property">buildName</Property>
+                        <Property name="label">楼盘</Property>
+                        <Property name="editable">false</Property>
+                        <Editor>
+                          <TextEditor>
+                            <Property name="trigger">allAreaDrop</Property>
+                          </TextEditor>
+                        </Editor>
+                      </AutoFormElement>
+                      <AutoFormElement id="buildId">
+                        <Property name="name">buildId</Property>
+                        <Property name="property">buildId</Property>
+                        <Editor/>
+                      </AutoFormElement>
+                      <AutoFormElement>
+                        <Property name="name">keyWord</Property>
+                        <Property name="property">keyWord</Property>
+                        <Property name="label">关键字</Property>
+                        <Editor/>
+                      </AutoFormElement>
+                    </AutoForm>
+                  </Children>
+                </FieldSet>
+                <ToolBar>
+                  <ToolBarLabel>
+                    <Property name="text">客户列表</Property>
+                  </ToolBarLabel>
+                </ToolBar>
+                <DataGrid>
+                  <ClientEvent name="onDataRowClick">var roomId = view.get(&quot;#dsRoomAndOwner&quot;).getData(&quot;#&quot;).get(&quot;roomId&quot;);&#xD;
+var data = {&#xD;
+	roomId:roomId&#xD;
+};&#xD;
+view.get(&quot;#noSelectTip&quot;).set(&quot;visible&quot;,false);&#xD;
+view.get(&quot;#roomDetail&quot;).refreshData();&#xD;
+view.get(&quot;#ownerInfo&quot;).refreshData();&#xD;
+$('#d_roomDetail').css(&quot;visibility&quot;,&quot;visible&quot;);&#xD;
+$('#d_ownerInfo').css(&quot;visibility&quot;,&quot;visible&quot;);&#xD;
+$('#d_fjzl').css(&quot;visibility&quot;,&quot;visible&quot;);&#xD;
+$('#d_yzzl').css(&quot;visibility&quot;,&quot;visible&quot;);&#xD;
+view.get(&quot;#dsHouse&quot;).set(&quot;parameter&quot;,data).flushAsync();&#xD;
+view.get(&quot;#dsOwner&quot;).set(&quot;parameter&quot;,data).flushAsync();&#xD;
+&#xD;
+&#xD;
+</ClientEvent>
+                  <Property name="dataSet">dsRoomAndOwner</Property>
+                  <Property name="readOnly">true</Property>
+                  <RowNumColumn/>
+                  <DataColumn name="ownerId">
+                    <Property name="property">ownerId</Property>
+                    <Property name="visible">false</Property>
+                  </DataColumn>
+                  <DataColumn name="roomId">
+                    <Property name="property">roomId</Property>
+                    <Property name="visible">false</Property>
+                  </DataColumn>
+                  <DataColumn name="roomNo">
+                    <Property name="property">roomNo</Property>
+                    <Property name="visible">true</Property>
+                  </DataColumn>
+                  <DataColumn name="ownerName">
+                    <Property name="property">ownerName</Property>
+                  </DataColumn>
+                  <DataColumn name="phone">
+                    <Property name="property">phone</Property>
+                    <Property name="visible">false</Property>
+                  </DataColumn>
+                  <DataColumn name="cardId">
+                    <Property name="property">cardId</Property>
+                    <Property name="visible">false</Property>
+                  </DataColumn>
+                  <DataColumn name="carId">
+                    <Property name="property">carId</Property>
+                    <Property name="visible">false</Property>
+                  </DataColumn>
+                  <DataColumn name="ownerType">
+                    <Property name="property">ownerType</Property>
+                    <Property name="visible">false</Property>
+                  </DataColumn>
+                  <DataColumn name="makeRoomDate">
+                    <Property name="property">makeRoomDate</Property>
+                    <Property name="visible">false</Property>
+                  </DataColumn>
+                  <DataColumn name="decorateDate">
+                    <Property name="property">decorateDate</Property>
+                    <Property name="visible">false</Property>
+                  </DataColumn>
+                </DataGrid>
+              </Container>
+            </ControlTab>
+          </TabControl>
+        </Container>
+      </SideControl>
+    </SplitPanel>
+    <DataSetDropDown id="allAreaDrop">
+      <Property name="dataSet">dsAllArea</Property>
+      <Property name="displayProperty">buildName</Property>
+      <Property name="property">buildName</Property>
+      <Property name="assignmentMap">buildId=buildId,buildName=buildName</Property>
+    </DataSetDropDown>
+  </View>
+</ViewConfig>

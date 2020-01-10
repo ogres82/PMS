@@ -1,0 +1,614 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="temp">
+      <Property name="creationType">com.jdry.pms.basicInfo.pojo.Emp</Property>
+      <PropertyDef name="empId">
+        <Property></Property>
+        <Property name="label">员工ID</Property>
+      </PropertyDef>
+      <PropertyDef name="empNo">
+        <Property></Property>
+        <Property name="label">工号</Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="empName">
+        <Property></Property>
+        <Property name="label">姓名</Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="empSex">
+        <Property></Property>
+        <Property name="label">性别</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Collection>
+              <Entity>
+                <Property name="key">0</Property>
+                <Property name="value">女</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">1</Property>
+                <Property name="value">男</Property>
+              </Entity>
+            </Collection>
+          </Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="empBirth">
+        <Property name="dataType">Date</Property>
+        <Property name="label">出生日期</Property>
+      </PropertyDef>
+      <PropertyDef name="empIdNo">
+        <Property></Property>
+        <Property name="label">身份证号</Property>
+      </PropertyDef>
+      <PropertyDef name="empNation">
+        <Property></Property>
+        <Property name="label">民族</Property>
+      </PropertyDef>
+      <PropertyDef name="empNp">
+        <Property></Property>
+        <Property name="label">籍贯</Property>
+      </PropertyDef>
+      <PropertyDef name="empDeptId">
+        <Property></Property>
+        <Property name="label">部门</Property>
+        <Property name="required">true</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;propertyManagerView#getDeptId&quot;).getResult()}</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="empPostId">
+        <Property></Property>
+        <Property name="label">岗位</Property>
+        <Property name="required">true</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;propertyManagerView#getPostId&quot;).getResult()}</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="empPostLev">
+        <Property></Property>
+        <Property name="label">岗位级别</Property>
+      </PropertyDef>
+      <PropertyDef name="empTitle">
+        <Property></Property>
+        <Property name="label">技术职称</Property>
+      </PropertyDef>
+      <PropertyDef name="empPhone">
+        <Property></Property>
+        <Property name="label">联系电话</Property>
+      </PropertyDef>
+      <PropertyDef name="empEmail">
+        <Property></Property>
+        <Property name="label">邮箱</Property>
+      </PropertyDef>
+      <PropertyDef name="empContact">
+        <Property></Property>
+        <Property name="label">紧急联系人</Property>
+      </PropertyDef>
+      <PropertyDef name="empContactPhone">
+        <Property></Property>
+        <Property name="label">紧急联系人电话</Property>
+      </PropertyDef>
+      <PropertyDef name="empEntryTime">
+        <Property name="dataType">Date</Property>
+        <Property name="label">入职时间</Property>
+      </PropertyDef>
+      <PropertyDef name="empQuitTime">
+        <Property name="dataType">Date</Property>
+        <Property name="label">离职时间</Property>
+      </PropertyDef>
+      <PropertyDef name="empStatus">
+        <Property></Property>
+        <Property name="label">员工状态</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Collection>
+              <Entity>
+                <Property name="key">0</Property>
+                <Property name="value">试用期</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">1</Property>
+                <Property name="value">在职</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">2</Property>
+                <Property name="value">离职</Property>
+              </Entity>
+            </Collection>
+          </Property>
+        </Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="DefaultDept">
+      <Property name="creationType">com.bstek.bdf2.core.model.DefaultDept</Property>
+      <PropertyDef name="id">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="name">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="desc">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="companyId">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="createDate">
+        <Property name="dataType">Date</Property>
+      </PropertyDef>
+      <PropertyDef name="parentId">
+        <Property></Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="DefaultPosition">
+      <Property name="creationType">com.bstek.bdf2.core.model.DefaultPosition</Property>
+      <PropertyDef name="id">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="name">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="desc">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="companyId">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="createDate">
+        <Property name="dataType">Date</Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View layout="padding:2">
+    <Property name="packages">fontawesome</Property>
+    <DataSet id="dsTemp">
+      <Property name="dataType">[temp]</Property>
+      <Property name="dataProvider">propertyManagerView#queryPropertyManager</Property>
+      <Property name="pageSize">10</Property>
+      <Property name="parameter"></Property>
+    </DataSet>
+    <DataSet id="dsDept">
+      <Property name="dataType">[DefaultDept]</Property>
+    </DataSet>
+    <DataSet id="dsPosition">
+      <Property name="dataType">[DefaultPosition]</Property>
+    </DataSet>
+    <UpdateAction id="updateTemp">
+      <Property name="dataResolver">propertyManagerView#savePropertyManager</Property>
+      <UpdateItem>
+        <Property name="dataSet">dsTemp</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <FieldSet>
+      <Property name="caption">查询</Property>
+      <Property name="buttonAlign">right</Property>
+      <Property name="style">
+        <Property name="border">0</Property>
+      </Property>
+      <Buttons>
+        <Button>
+          <ClientEvent name="onClick">view.set(&quot;#searchTemp.entity&quot;,{});</ClientEvent>
+          <Property name="caption">清空</Property>
+        </Button>
+        <Button>
+          <ClientEvent name="onClick">var data = view.get(&quot;#searchTemp.entity&quot;);&#xD;
+with (view.get(&quot;#dsTemp&quot;)) {&#xD;
+	set(&quot;parameter&quot;, data);&#xD;
+	flush();&#xD;
+}&#xD;
+&#xD;
+</ClientEvent>
+          <Property name="caption">查询</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm id="searchTemp">
+          <Property name="dataType">temp</Property>
+          <Property name="cols">*,*,*</Property>
+          <Property name="labelSeparator">：</Property>
+          <AutoFormElement>
+            <Property name="name">empNo</Property>
+            <Property name="property">empNo</Property>
+            <Property name="label">工号</Property>
+            <Property name="className">testClass</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">empIdNo</Property>
+            <Property name="property">empIdNo</Property>
+            <Property name="label">身份证号</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">empName</Property>
+            <Property name="property">empName</Property>
+            <Property name="label">姓名</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">empSex</Property>
+            <Property name="property">empSex</Property>
+            <Property name="label">性别</Property>
+            <Editor>
+              <TextEditor>
+                <Property name="mapping">
+                  <Property name="mapValues">
+                    <Collection>
+                      <Entity>
+                        <Property name="key">0</Property>
+                        <Property name="value">女</Property>
+                      </Entity>
+                      <Entity>
+                        <Property name="key">1</Property>
+                        <Property name="value">男</Property>
+                      </Entity>
+                    </Collection>
+                  </Property>
+                </Property>
+                <Property name="trigger">autoMappingDropDown1</Property>
+              </TextEditor>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">empDeptId</Property>
+            <Property name="property">empDeptId</Property>
+            <Property name="label">部门</Property>
+            <Editor>
+              <TextEditor>
+                <Property name="mapping">
+                  <Property name="mapValues">${dorado.getDataProvider(&quot;propertyManagerView#getDeptId&quot;).getResult()}</Property>
+                </Property>
+                <Property name="trigger">autoMappingDropDown1</Property>
+              </TextEditor>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">empPostId</Property>
+            <Property name="property">empPostId</Property>
+            <Property name="label">岗位</Property>
+            <Editor>
+              <TextEditor>
+                <Property name="mapping">
+                  <Property name="mapValues">${dorado.getDataProvider(&quot;propertyManagerView#getPostId&quot;).getResult()}</Property>
+                </Property>
+                <Property name="trigger">autoMappingDropDown1</Property>
+              </TextEditor>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">empEntryTime</Property>
+            <Property name="property">empEntryTime</Property>
+            <Property name="label">入职时间</Property>
+            <Editor>
+              <TextEditor>
+                <Property name="displayFormat">Y-m-d</Property>
+                <Property name="typeFormat">Y-m-d</Property>
+                <Property name="trigger">defaultDateDropDown</Property>
+                <Property name="dataType">Date</Property>
+              </TextEditor>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">empQuitTime</Property>
+            <Property name="property">empQuitTime</Property>
+            <Property name="label">离职时间</Property>
+            <Editor>
+              <TextEditor>
+                <Property name="trigger">defaultDateDropDown</Property>
+                <Property name="dataType">Date</Property>
+                <Property name="displayFormat">Y-m-d</Property>
+              </TextEditor>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">empStatus</Property>
+            <Property name="property">empStatus</Property>
+            <Property name="label">员工状态</Property>
+            <Editor>
+              <TextEditor>
+                <Property name="mapping">
+                  <Property name="mapValues">
+                    <Collection>
+                      <Entity>
+                        <Property name="key">0</Property>
+                        <Property name="value">试用期</Property>
+                      </Entity>
+                      <Entity>
+                        <Property name="key">1</Property>
+                        <Property name="value">在职</Property>
+                      </Entity>
+                      <Entity>
+                        <Property name="key">2</Property>
+                        <Property name="value">离职</Property>
+                      </Entity>
+                    </Collection>
+                  </Property>
+                </Property>
+                <Property name="trigger">autoMappingDropDown1</Property>
+              </TextEditor>
+            </Editor>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+    </FieldSet>
+    <ToolBar>
+      <ToolBarLabel>
+        <Property name="text">物管人员信息</Property>
+      </ToolBarLabel>
+      <Fill/>
+      <ToolBarButton>
+        <ClientEvent name="onClick">view.get(&quot;#addTemp&quot;).set(&quot;caption&quot;,&quot;增加&quot;);&#xD;
+view.get(&quot;#addTemp&quot;).show();&#xD;
+var data=view.get(&quot;#dsTemp.data&quot;);&#xD;
+data.insert();</ClientEvent>
+        <Property name="caption">增加</Property>
+        <Property name="iconClass">fa fa-plus</Property>
+      </ToolBarButton>
+      <ToolBarButton>
+        <ClientEvent name="onClick">view.get(&quot;#addTemp&quot;).set(&quot;caption&quot;,&quot;编辑&quot;);&#xD;
+view.get(&quot;#addTemp&quot;).show();</ClientEvent>
+        <Property name="caption">编辑</Property>
+        <Property name="iconClass">fa fa-edit</Property>
+      </ToolBarButton>
+      <ToolBarButton>
+        <ClientEvent name="onClick">dorado.MessageBox.confirm(&quot;真的要删除选中的记录吗？&quot;,function(){&#xD;
+	var entity=view.get(&quot;#dsTemp.data:#&quot;);&#xD;
+	var updateTempAction=view.get(&quot;#updateTemp&quot;);&#xD;
+	if(entity){&#xD;
+	    entity.remove();&#xD;
+		updateTempAction.execute();&#xD;
+	}else{&#xD;
+	    dorado.MessageBox.alert(&quot;必须选中一行记录！&quot;);&#xD;
+	}&#xD;
+});&#xD;
+&#xD;
+</ClientEvent>
+        <Property name="caption">删除</Property>
+        <Property name="iconClass">fa fa-minus</Property>
+      </ToolBarButton>
+    </ToolBar>
+    <DataGrid>
+      <Property name="dataSet">dsTemp</Property>
+      <Property name="readOnly">true</Property>
+      <Property name="selectionMode">multiRows</Property>
+      <Property name="height">285px</Property>
+      <DataColumn name="empId">
+        <Property name="property">empId</Property>
+        <Property name="caption">员工ID</Property>
+        <Property name="visible">false</Property>
+        <Property name="align">center</Property>
+      </DataColumn>
+      <DataColumn name="empNo">
+        <Property name="property">empNo</Property>
+        <Property name="caption">工号</Property>
+        <Property name="align">center</Property>
+      </DataColumn>
+      <DataColumn name="empName">
+        <Property name="property">empName</Property>
+        <Property name="caption">姓名</Property>
+        <Property name="align">center</Property>
+      </DataColumn>
+      <DataColumn name="empSex">
+        <Property name="property">empSex</Property>
+        <Property name="caption">性别</Property>
+        <Property name="align">center</Property>
+      </DataColumn>
+      <DataColumn name="empBirth">
+        <Property name="property">empBirth</Property>
+        <Property name="caption">出生日期</Property>
+        <Property name="align">center</Property>
+      </DataColumn>
+      <DataColumn name="empIdNo">
+        <Property name="property">empIdNo</Property>
+        <Property name="caption">身份证号</Property>
+        <Property name="align">center</Property>
+      </DataColumn>
+      <DataColumn name="empNation">
+        <Property name="property">empNation</Property>
+        <Property name="caption">民族</Property>
+        <Property name="align">center</Property>
+      </DataColumn>
+      <DataColumn name="empNp">
+        <Property name="property">empNp</Property>
+        <Property name="caption">籍贯</Property>
+        <Property name="align">center</Property>
+      </DataColumn>
+      <DataColumn name="empDeptId">
+        <Property name="property">empDeptId</Property>
+        <Property name="caption">部门</Property>
+        <Property name="align">center</Property>
+      </DataColumn>
+      <DataColumn name="empPostId">
+        <Property name="property">empPostId</Property>
+        <Property name="caption">岗位</Property>
+        <Property name="align">center</Property>
+      </DataColumn>
+      <DataColumn name="empPostLev">
+        <Property name="property">empPostLev</Property>
+        <Property name="caption">岗位级别</Property>
+        <Property name="align">center</Property>
+      </DataColumn>
+      <DataColumn name="empTitle">
+        <Property name="property">empTitle</Property>
+        <Property name="caption">技术职称</Property>
+        <Property name="align">center</Property>
+      </DataColumn>
+      <DataColumn name="empPhone">
+        <Property name="property">empPhone</Property>
+        <Property name="caption">联系电话</Property>
+        <Property name="align">center</Property>
+      </DataColumn>
+      <DataColumn name="empEmail">
+        <Property name="property">empEmail</Property>
+        <Property name="caption">邮箱</Property>
+        <Property name="align">center</Property>
+      </DataColumn>
+      <DataColumn name="empContact">
+        <Property name="property">empContact</Property>
+        <Property name="caption">紧急联系人</Property>
+        <Property name="align">center</Property>
+      </DataColumn>
+      <DataColumn name="empContactPhone">
+        <Property name="property">empContactPhone</Property>
+        <Property name="caption">紧急联系人电话</Property>
+        <Property name="align">center</Property>
+      </DataColumn>
+      <DataColumn name="empEntryTime">
+        <Property name="property">empEntryTime</Property>
+        <Property name="caption">入职时间</Property>
+        <Property name="align">center</Property>
+      </DataColumn>
+      <DataColumn name="empQuitTime">
+        <Property name="property">empQuitTime</Property>
+        <Property name="caption">离职时间</Property>
+        <Property name="align">center</Property>
+      </DataColumn>
+      <DataColumn name="empStatus">
+        <Property name="property">empStatus</Property>
+        <Property name="caption">员工状态</Property>
+        <Property name="align">center</Property>
+      </DataColumn>
+    </DataGrid>
+    <ToolBar>
+      <DataPilot>
+        <Property name="itemCodes">pages</Property>
+        <Property name="dataSet">dsTemp</Property>
+      </DataPilot>
+    </ToolBar>
+    <Dialog id="addTemp">
+      <ClientEvent name="onClose">view.get(&quot;#dsTemp.data:#&quot;).cancel();</ClientEvent>
+      <Property name="height">500px</Property>
+      <Property name="width">800px</Property>
+      <Property name="icon">url(>skin>common/icons.gif) -280px -100px</Property>
+      <Buttons>
+        <Button>
+          <ClientEvent name="onClick">dorado.MessageBox.confirm(&quot;确定保存？&quot;,function(){&#xD;
+	var updateTemp=view.get(&quot;#updateTemp&quot;);&#xD;
+	updateTemp.execute(function(result){&#xD;
+	&#xD;
+	dorado.MessageBox.alert(&quot;保存成功！&quot;);&#xD;
+	view.get(&quot;#addTemp&quot;).hide();&#xD;
+	view.get(&quot;#dsTemp&quot;).flush();&#xD;
+	});&#xD;
+});</ClientEvent>
+          <Property name="caption">保存</Property>
+          <Property name="iconClass">fa fa-check</Property>
+        </Button>
+        <Button>
+          <ClientEvent name="onClick">view.get(&quot;#addTemp&quot;).hide();&#xD;
+view.get(&quot;#dsTemp.data:#&quot;).cancel();&#xD;
+</ClientEvent>
+          <Property name="caption">取消</Property>
+          <Property name="iconClass">fa fa-times</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm>
+          <Property name="dataSet">dsTemp</Property>
+          <AutoFormElement>
+            <Property name="name">empNo</Property>
+            <Property name="property">empNo</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">empName</Property>
+            <Property name="property">empName</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">empSex</Property>
+            <Property name="property">empSex</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">empBirth</Property>
+            <Property name="property">empBirth</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">empIdNo</Property>
+            <Property name="property">empIdNo</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">empNation</Property>
+            <Property name="property">empNation</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">empNp</Property>
+            <Property name="property">empNp</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">empDeptId</Property>
+            <Property name="property">empDeptId</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">empPostId</Property>
+            <Property name="property">empPostId</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">empPostLev</Property>
+            <Property name="property">empPostLev</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">empTitle</Property>
+            <Property name="property">empTitle</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">empPhone</Property>
+            <Property name="property">empPhone</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">empEmail</Property>
+            <Property name="property">empEmail</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">empContact</Property>
+            <Property name="property">empContact</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">empContactPhone</Property>
+            <Property name="property">empContactPhone</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">empEntryTime</Property>
+            <Property name="property">empEntryTime</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">empQuitTime</Property>
+            <Property name="property">empQuitTime</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">empStatus</Property>
+            <Property name="property">empStatus</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">empId</Property>
+            <Property name="property">empId</Property>
+            <Property name="visible">false</Property>
+            <Editor/>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Dialog>
+  </View>
+</ViewConfig>

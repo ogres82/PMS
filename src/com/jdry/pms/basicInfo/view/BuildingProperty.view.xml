@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="BuildingProperty">
+      <Property name="creationType">com.jdry.pms.basicInfo.pojo.BuildingProperty</Property>
+      <PropertyDef name="storiedBuildId">
+        <Property></Property>
+        <Property name="label">楼栋ID</Property>
+      </PropertyDef>
+      <PropertyDef name="storiedBuildName">
+        <Property></Property>
+        <Property name="label">楼栋名称</Property>
+        <Validator type="ajax">
+          <Property name="name">checkName</Property>
+          <Property name="service">buildingPropertyView#checkBuidName</Property>
+          <Property name="executingMessage">正在验证...</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="belongCommId">
+        <Property></Property>
+        <Property name="label">所属小区</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;buildingPropertyView#getCommId&quot;).getResult()}</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="remark">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View>
+    <Property name="packages">fontawesome</Property>
+    <DataSet id="dsBuilding">
+      <Property name="dataType">[BuildingProperty]</Property>
+      <Property name="pageSize">10</Property>
+      <Property name="parameter"></Property>
+      <Property name="dataProvider">buildingPropertyView#queryBuildingProperty</Property>
+    </DataSet>
+    <UpdateAction id="updateBuilding">
+      <Property name="dataResolver">buildingPropertyView#saveBuildingProperty</Property>
+      <UpdateItem>
+        <Property name="dataSet">dsBuilding</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <FieldSet>
+      <Property name="caption">查询</Property>
+      <Property name="buttonAlign">right</Property>
+      <Buttons>
+        <Button>
+          <ClientEvent name="onClick">view.set(&quot;#searchBuilding.entity&quot;,{});</ClientEvent>
+          <Property name="caption">清空</Property>
+        </Button>
+        <Button>
+          <ClientEvent name="onClick">var data = view.get(&quot;#searchBuilding.entity&quot;);&#xD;
+with (view.get(&quot;#dsBuilding&quot;)) {&#xD;
+	set(&quot;parameter&quot;, data);&#xD;
+	flush();&#xD;
+}&#xD;
+</ClientEvent>
+          <Property name="caption">查询</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm id="searchBuilding">
+          <Property name="dataType">BuildingProperty</Property>
+          <Property name="cols">*,*,*</Property>
+          <Property name="labelSeparator">：</Property>
+          <Property name="labelWidth">85</Property>
+          <Property name="labelAlign">right</Property>
+          <AutoFormElement>
+            <Property name="name">storiedBuildName</Property>
+            <Property name="property">storiedBuildName</Property>
+            <Property name="label">楼宇名称</Property>
+            <Property name="labelSeparator">：</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">belongCommId</Property>
+            <Property name="property">belongCommId</Property>
+            <Property name="label">所属小区</Property>
+            <Editor>
+              <TextEditor>
+                <Property name="mapping">
+                  <Property name="mapValues">${dorado.getDataProvider(&quot;buildingPropertyView#getCommId&quot;).getResult()}</Property>
+                </Property>
+                <Property name="trigger">autoMappingDropDown1</Property>
+              </TextEditor>
+            </Editor>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+    </FieldSet>
+    <ToolBar>
+      <Property name="fixRight">true</Property>
+      <ToolBarLabel>
+        <Property name="text">楼栋信息</Property>
+      </ToolBarLabel>
+      <Fill/>
+      <ToolBarButton>
+        <ClientEvent name="onClick">view.get(&quot;#addBuilding&quot;).set(&quot;caption&quot;,&quot;增加&quot;);&#xD;
+view.get(&quot;#addBuilding&quot;).show();&#xD;
+var data=view.get(&quot;#dsBuilding.data&quot;);&#xD;
+data.insert();</ClientEvent>
+        <Property name="caption">增加</Property>
+        <Property name="iconClass">fa fa-plus</Property>
+      </ToolBarButton>
+      <ToolBarButton>
+        <ClientEvent name="onClick">view.get(&quot;#addBuilding&quot;).set(&quot;caption&quot;,&quot;编辑&quot;);&#xD;
+view.get(&quot;#addBuilding&quot;).show();</ClientEvent>
+        <Property name="caption">编辑</Property>
+        <Property name="iconClass">fa fa-edit</Property>
+      </ToolBarButton>
+      <ToolBarButton>
+        <ClientEvent name="onClick">dorado.MessageBox.confirm(&quot;真的要删除选中的记录吗？&quot;,function(){&#xD;
+	var entity=view.get(&quot;#dsBuilding.data:#&quot;);&#xD;
+	var updateBuildingAction=view.get(&quot;#updateBuilding&quot;);&#xD;
+	if(entity){&#xD;
+	    entity.remove();&#xD;
+		updateBuildingAction.execute();&#xD;
+	}else{&#xD;
+	    dorado.MessageBox.alert(&quot;必须选中一行记录！&quot;);&#xD;
+	}&#xD;
+});&#xD;
+&#xD;
+</ClientEvent>
+        <Property name="caption">删除</Property>
+        <Property name="iconClass">fa fa-minus</Property>
+      </ToolBarButton>
+    </ToolBar>
+    <DataGrid>
+      <Property name="dataSet">dsBuilding</Property>
+      <Property name="readOnly">true</Property>
+      <Property name="selectionMode">multiRows</Property>
+      <Property name="height">350px</Property>
+      <DataColumn name="storiedBuildId">
+        <Property name="property">storiedBuildId</Property>
+        <Property name="visible">false</Property>
+      </DataColumn>
+      <DataColumn name="storiedBuildName">
+        <Property name="property">storiedBuildName</Property>
+      </DataColumn>
+      <DataColumn name="belongCommId">
+        <Property name="property">belongCommId</Property>
+      </DataColumn>
+      <DataColumn name="remark">
+        <Property name="property">remark</Property>
+      </DataColumn>
+    </DataGrid>
+    <ToolBar>
+      <Property name="style">
+        <Property name="bottom">0px</Property>
+      </Property>
+      <DataPilot>
+        <Property name="itemCodes">pages</Property>
+        <Property name="dataSet">dsBuilding</Property>
+      </DataPilot>
+    </ToolBar>
+    <Dialog id="addBuilding">
+      <ClientEvent name="onClose">view.get(&quot;#dsBuilding.data:#&quot;).cancel();</ClientEvent>
+      <Property name="height">500px</Property>
+      <Property name="width">800px</Property>
+      <Property name="icon">url(>skin>common/icons.gif) -280px -100px</Property>
+      <Buttons>
+        <Button>
+          <ClientEvent name="onClick">dorado.MessageBox.confirm(&quot;确定保存？&quot;,function(){&#xD;
+	var updateBuilding=view.get(&quot;#updateBuilding&quot;);&#xD;
+	updateBuilding.execute(function(result){&#xD;
+	&#xD;
+	dorado.MessageBox.alert(&quot;保存成功！&quot;);&#xD;
+	view.get(&quot;#addBuilding&quot;).hide();&#xD;
+	view.get(&quot;#dsBuilding&quot;).flush();&#xD;
+	});&#xD;
+});</ClientEvent>
+          <Property name="caption">保存</Property>
+          <Property name="iconClass">fa fa-check</Property>
+        </Button>
+        <Button>
+          <ClientEvent name="onClick">view.get(&quot;#addBuilding&quot;).hide();&#xD;
+view.get(&quot;#dsBuilding.data:#&quot;).cancel();&#xD;
+</ClientEvent>
+          <Property name="caption">取消</Property>
+          <Property name="iconClass">fa fa-times</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm>
+          <Property name="dataSet">dsBuilding</Property>
+          <AutoFormElement>
+            <Property name="name">storiedBuildName</Property>
+            <Property name="property">storiedBuildName</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">belongCommId</Property>
+            <Property name="property">belongCommId</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:2">
+            <Property name="name">remark</Property>
+            <Property name="property">remark</Property>
+            <Editor>
+              <TextArea/>
+            </Editor>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Dialog>
+  </View>
+</ViewConfig>

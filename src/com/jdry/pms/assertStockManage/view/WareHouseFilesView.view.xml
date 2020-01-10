@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dataTypeWarehouse">
+      <Property name="creationType">com.jdry.pms.assertStockManage.pojo.WareHouseFiles</Property>
+      <PropertyDef name="warehouse_id">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="warehouse_code">
+        <Property></Property>
+        <Property name="label">仓库编码</Property>
+      </PropertyDef>
+      <PropertyDef name="warehouse_name">
+        <Property></Property>
+        <Property name="label">仓库名称</Property>
+      </PropertyDef>
+      <PropertyDef name="warehouse_address">
+        <Property></Property>
+        <Property name="label">仓库地址</Property>
+      </PropertyDef>
+      <PropertyDef name="link_man">
+        <Property></Property>
+        <Property name="label">联系人</Property>
+      </PropertyDef>
+      <PropertyDef name="link_phone">
+        <Property></Property>
+        <Property name="label">联系电话</Property>
+      </PropertyDef>
+      <PropertyDef name="other">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View id="tableView">
+    <ClientEvent name="onReady">tcCore.loadCss($url(&quot;>/Hplus/css/bootstrap.min.css?v=3.3.6&quot;));&#xD;
+tcCore.loadCss($url(&quot;>/Hplus/css/font-awesome.min.css?v=4.4.0&quot;));&#xD;
+tcCore.loadCss($url(&quot;>/Hplus/css/animate.min.css&quot;));&#xD;
+tcCore.loadCss($url(&quot;>/Hplus/css/style.min.css?v=4.1.0&quot;));&#xD;
+tcCore.loadCss($url(&quot;>/Hplus/css/plugins/dataTables/dataTables.bootstrap.css?v=4.1.0&quot;));&#xD;
+&#xD;
+tcCore.loadJs($url(&quot;>/Hplus/js/jquery.min.js?v=2.1.4&quot;));&#xD;
+tcCore.loadJs($url(&quot;>/Hplus/js/bootstrap.min.js?v=3.3.6&quot;));&#xD;
+tcCore.loadJs($url(&quot;>/Hplus/js/content.min.js?v=1.0.0&quot;));&#xD;
+tcCore.loadJs($url(&quot;>/Hplus/js/plugins/dataTables/jquery.dataTables.js&quot;));&#xD;
+tcCore.loadJs($url(&quot;>/Hplus/js/plugins/dataTables/dataTables.bootstrap.js&quot;));&#xD;
+</ClientEvent>
+    <Property name="packages">hplus-css,dataTables-css,hplus-js,jquery-menu-js,jquery-slimscroll-js,layer-js,laydate-js</Property>
+    <DataSet id="dsWarehouse">
+      <Property name="pageSize">10</Property>
+      <Property name="dataType">[dataTypeWarehouse]</Property>
+      <Property name="dataProvider">wareHouseFilesView#quaryWareHouseFilesInfo</Property>
+    </DataSet>
+    <Button id="addTemp">
+      <Property name="caption">新增</Property>
+      <Property name="visible">true</Property>
+      <Property name="iconClass">fa fa-plus</Property>
+      <Property name="exClassName">btn btn-primary</Property>
+      <Property name="renderOn">#btn1</Property>
+    </Button>
+    <Button id="editTemp">
+      <Property name="visible">true</Property>
+      <Property name="caption">编辑</Property>
+      <Property name="iconClass">fa fa-edit</Property>
+      <Property name="exClassName">btn btn-primary</Property>
+      <Property name="renderOn">#btn2</Property>
+      <Property name="style">
+        <Property name="height">34px</Property>
+      </Property>
+    </Button>
+    <Button id="delTemp">
+      <Property name="caption">删除</Property>
+      <Property name="iconClass">fa fa-trash-o</Property>
+      <Property name="renderOn">#btn3</Property>
+      <Property name="style">
+        <Property name="height">34px</Property>
+      </Property>
+      <Property name="exClassName">btn btn-primary</Property>
+    </Button>
+  </View>
+</ViewConfig>

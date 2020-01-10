@@ -1,0 +1,65 @@
+GET http://localhost:8080/PMS/access.app?clsname=com.jdry.pms.basicInfo.view.OwnerInfoView&methodname=ownerLogin&data={'username':'13985003206','password':'1'}
+Accept: */*
+Cache-Control: no-cache
+
+<> 2020-01-06T045341.200.txt
+
+###
+
+GET http://localhost:8080/PMS/access.app?clsname=com.jdry.pms.basicInfo.view.OwnerInfoView&methodname=ownerLogin&data={'username':'13985003206','password':'1'}
+Accept: */*
+Cache-Control: no-cache
+
+<> 2020-01-06T043306.200.txt
+
+###
+
+GET http://localhost:8080/PMS/access.app?clsname=com.jdry.pms.basicInfo.view.OwnerInfoView&methodname=ownerLogin&data={'username':'13985003206','password':'1'}
+Accept: */*
+Cache-Control: no-cache
+
+<> 2020-01-06T042856.200.txt
+
+###
+
+GET http://localhost:8080/PMS/access.app?clsname=com.jdry.pms.basicInfo.view.OwnerInfoView&methodname=ownerLogin&data={'username':'huanglin','password':'1'}
+Accept: */*
+Cache-Control: no-cache
+
+<> 2020-01-06T042830.200.txt
+
+###
+
+GET http://localhost:8080/PMS/access.app
+Accept: */*
+Cache-Control: no-cache
+clsname: com.jdry.pms.basicInfo.view.OwnerInfoView
+methodname: ownerLogin
+data: {'username':'huanglin','password':'1'}
+
+<> 2020-01-06T042647.200.txt
+
+###
+
+GET http://localhost:8080/PMS/access.app
+Accept: */*
+Cache-Control: no-cache
+clsname: com.jdry.pms.basicInfo.view.OwnerInfoView
+methodname: ownerLogin
+data: {‘username’:’huanglin’,’password’:’1’}
+
+<> 2020-01-06T042608.200.txt
+
+###
+
+GET http://localhost:8080/PMS/access.app
+Accept: */*
+Cache-Control: no-cache
+clsname: com.jdry.pms.basicInfo.view.OwnerInfoView
+methodname: ownerLogin
+data: {‘username’:’huanglin’,’password’:’1’}
+
+<> 2020-01-06T042554.200.txt
+
+###
+

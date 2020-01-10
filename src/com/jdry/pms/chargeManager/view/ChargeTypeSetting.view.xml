@@ -1,0 +1,1210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="chargeTypeSetting">
+      <Property name="creationType">com.jdry.pms.chargeManager.pojo.ChargeTypeSettingEntity</Property>
+      <PropertyDef name="charge_type_id">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="charge_type_no">
+        <Property></Property>
+        <Property name="label">项目编号</Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="charge_type_name">
+        <Property></Property>
+        <Property name="label">项目名称</Property>
+      </PropertyDef>
+      <PropertyDef name="charge_mode">
+        <Property></Property>
+        <Property name="label">计费方式</Property>
+        <Property name="required">true</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Collection>
+              <Entity>
+                <Property name="key">01</Property>
+                <Property name="value">建面</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">02</Property>
+                <Property name="value">定额</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">03</Property>
+                <Property name="value">公式</Property>
+              </Entity>
+            </Collection>
+          </Property>
+        </Property>
+        <Property name="readOnly">false</Property>
+      </PropertyDef>
+      <PropertyDef name="charge_price">
+        <Property name="dataType">float</Property>
+        <Property name="label">单价</Property>
+        <Property name="required">true</Property>
+        <Property name="displayFormat">#.00</Property>
+      </PropertyDef>
+      <PropertyDef name="update_emp_id">
+        <Property></Property>
+        <Property name="label">更新人员</Property>
+      </PropertyDef>
+      <PropertyDef name="update_date">
+        <Property name="dataType">DateTime</Property>
+      </PropertyDef>
+      <PropertyDef name="charge_way">
+        <Property></Property>
+        <Property name="label">收费方式</Property>
+        <Property name="required">true</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Collection>
+              <Entity>
+                <Property name="key">01</Property>
+                <Property name="value">周期性</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">02</Property>
+                <Property name="value">临时性</Property>
+              </Entity>
+            </Collection>
+          </Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="charge_type">
+        <Property></Property>
+        <Property name="label">收费类型</Property>
+        <Property name="required">true</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Collection>
+              <Entity>
+                <Property name="key">01</Property>
+                <Property name="value">正常</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">02</Property>
+                <Property name="value">押金</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">03</Property>
+                <Property name="value">预收款</Property>
+              </Entity>
+            </Collection>
+          </Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="charge_cycle_count">
+        <Property name="dataType">int</Property>
+        <Property name="label">计费周期数</Property>
+      </PropertyDef>
+      <PropertyDef name="charge_cycle_unit">
+        <Property></Property>
+        <Property name="label">周期单位</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Collection>
+              <Entity>
+                <Property name="key">01</Property>
+                <Property name="value">日</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">02</Property>
+                <Property name="value">周</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">03</Property>
+                <Property name="value">月</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">04</Property>
+                <Property name="value">年</Property>
+              </Entity>
+            </Collection>
+          </Property>
+        </Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="chargeTypeRoomRela">
+      <Property name="creationType">com.jdry.pms.chargeManager.pojo.ChargeTypeRoomRelaEntity</Property>
+      <PropertyDef name="charge_type_id">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="charge_type_no">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="room_id">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="room_no">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="owner_id">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="update_emp_id">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="update_date">
+        <Property name="dataType">Date</Property>
+      </PropertyDef>
+      <PropertyDef name="owner_name">
+        <Property name="label">业主姓名</Property>
+      </PropertyDef>
+      <PropertyDef name="charge_type_name"/>
+    </DataType>
+    <DataType name="chargeTypeRelaView">
+      <Property name="creationType">com.jdry.pms.chargeManager.pojo.ChargeTypeRelaViewEntity</Property>
+      <PropertyDef name="belong_unit">
+        <Property></Property>
+        <Property name="label">管理处</Property>
+      </PropertyDef>
+      <PropertyDef name="room_no">
+        <Property></Property>
+        <Property name="label">房间编号</Property>
+      </PropertyDef>
+      <PropertyDef name="charge_type_no">
+        <Property></Property>
+        <Property name="label">项目编号</Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="charge_type_name">
+        <Property></Property>
+        <Property name="label">项目名称</Property>
+      </PropertyDef>
+      <PropertyDef name="charge_mode">
+        <Property></Property>
+        <Property name="label">计费方式</Property>
+        <Property name="required">true</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Collection>
+              <Entity>
+                <Property name="key">01</Property>
+                <Property name="value">建面</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">02</Property>
+                <Property name="value">定额</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">03</Property>
+                <Property name="value">公式</Property>
+              </Entity>
+            </Collection>
+          </Property>
+        </Property>
+        <Property name="readOnly">false</Property>
+      </PropertyDef>
+      <PropertyDef name="charge_price">
+        <Property name="dataType">float</Property>
+        <Property name="label">单价</Property>
+        <Property name="required">true</Property>
+        <Property name="displayFormat">#.00</Property>
+      </PropertyDef>
+      <PropertyDef name="charge_way">
+        <Property></Property>
+        <Property name="label">收费方式</Property>
+        <Property name="required">true</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Collection>
+              <Entity>
+                <Property name="key">01</Property>
+                <Property name="value">周期性</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">02</Property>
+                <Property name="value">临时性</Property>
+              </Entity>
+            </Collection>
+          </Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="charge_type">
+        <Property></Property>
+        <Property name="label">收费类型</Property>
+        <Property name="required">true</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Collection>
+              <Entity>
+                <Property name="key">01</Property>
+                <Property name="value">正常</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">02</Property>
+                <Property name="value">押金</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">03</Property>
+                <Property name="value">预收款</Property>
+              </Entity>
+            </Collection>
+          </Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="charge_cycle_count">
+        <Property name="dataType">int</Property>
+        <Property name="label">计费周期数</Property>
+      </PropertyDef>
+      <PropertyDef name="charge_cycle_unit">
+        <Property></Property>
+        <Property name="label">周期单位</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Collection>
+              <Entity>
+                <Property name="key">01</Property>
+                <Property name="value">日</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">02</Property>
+                <Property name="value">周</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">03</Property>
+                <Property name="value">月</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">04</Property>
+                <Property name="value">年</Property>
+              </Entity>
+            </Collection>
+          </Property>
+        </Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="AllArea">
+      <Property name="creationType">com.jdry.pms.basicInfo.pojo.AllArea</Property>
+      <PropertyDef name="buildId">
+        <Property></Property>
+        <Property name="label">楼盘ID</Property>
+      </PropertyDef>
+      <PropertyDef name="buildName">
+        <Property></Property>
+        <Property name="label">楼盘名称</Property>
+        <Property name="required">true</Property>
+        <Validator type="ajax">
+          <Property name="name">checkName</Property>
+          <Property name="executingMessage">正在校验...</Property>
+          <Property name="service">allAreaView#checkAllArea</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="remark">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <Reference name="areaProperty">
+        <Property name="dataType">[AreaProperty]</Property>
+        <Property name="dataProvider">areaPropertyView#queryAreaPropertyByParent</Property>
+        <Property name="parameter">$${this.buildId}</Property>
+      </Reference>
+    </DataType>
+    <DataType name="AreaProperty">
+      <Property name="creationType">com.jdry.pms.basicInfo.pojo.AreaProperty</Property>
+      <PropertyDef name="communityId">
+        <Property></Property>
+        <Property name="label">小区ID</Property>
+      </PropertyDef>
+      <PropertyDef name="communityName">
+        <Property></Property>
+        <Property name="label">小区名称</Property>
+      </PropertyDef>
+      <PropertyDef name="belongBuildId">
+        <Property></Property>
+        <Property name="label">所属楼盘</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;areaPropertyView#getAllAreaId&quot;).getResult()}</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="remark">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <PropertyDef name="belongBuildName">
+        <Property name="label">所属楼盘</Property>
+      </PropertyDef>
+      <Reference name="buildingProperty">
+        <Property name="parameter">$${this.communityId}</Property>
+        <Property name="dataType">[BuildingProperty]</Property>
+        <Property name="dataProvider">buildingPropertyView#queryBuildingPropertyByParent</Property>
+      </Reference>
+    </DataType>
+    <DataType name="BuildingProperty">
+      <Property name="creationType">com.jdry.pms.basicInfo.pojo.BuildingProperty</Property>
+      <PropertyDef name="storiedBuildId">
+        <Property></Property>
+        <Property name="label">楼栋ID</Property>
+      </PropertyDef>
+      <PropertyDef name="storiedBuildName">
+        <Property></Property>
+        <Property name="label">楼栋名称</Property>
+        <Validator type="ajax">
+          <Property name="name">checkName</Property>
+          <Property name="service">buildingPropertyView#checkBuidName</Property>
+          <Property name="executingMessage">正在验证...</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="belongCommId">
+        <Property></Property>
+        <Property name="label">所属小区</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;buildingPropertyView#getCommId&quot;).getResult()}</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="remark">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <Reference name="houseProperty">
+        <Property name="dataType">[HouseProperty]</Property>
+        <Property name="parameter">$${this.storiedBuildId}</Property>
+        <Property name="dataProvider">housePropertyView#queryHousePropertyByParent</Property>
+      </Reference>
+    </DataType>
+    <DataType name="HouseProperty">
+      <Property name="creationType">com.jdry.pms.basicInfo.pojo.HouseProperty</Property>
+      <PropertyDef name="roomId">
+        <Property></Property>
+        <Property name="label">房间ID</Property>
+      </PropertyDef>
+      <PropertyDef name="roomNo">
+        <Property></Property>
+        <Property name="label">房间号</Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="belongSbId">
+        <Property></Property>
+        <Property name="label">所属楼栋</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;housePropertyView#getBuilding&quot;).getResult()}</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="houseType">
+        <Property></Property>
+        <Property name="label">户型</Property>
+      </PropertyDef>
+      <PropertyDef name="buildArea">
+        <Property name="dataType">Float</Property>
+        <Property name="label">建筑面积</Property>
+        <Property name="displayFormat">#.00</Property>
+      </PropertyDef>
+      <PropertyDef name="withinArea">
+        <Property name="dataType">Float</Property>
+        <Property name="label">套内面积</Property>
+        <Property name="displayFormat">#.00</Property>
+      </PropertyDef>
+      <PropertyDef name="roomType">
+        <Property></Property>
+        <Property name="label">房间类型</Property>
+        <Property name="required">true</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;housePropertyView#getRoomType&quot;).getResult()}</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="roomState">
+        <Property></Property>
+        <Property name="label">房间状态</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;housePropertyView#getRoomState&quot;).getResult()}</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="chargeObject">
+        <Property></Property>
+        <Property name="label">收费对象</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;housePropertyView#getChargeObject&quot;).getResult()}</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="remark">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <PropertyDef name="buildName">
+        <Property name="label">所属楼盘</Property>
+      </PropertyDef>
+      <PropertyDef name="buildId"/>
+      <PropertyDef name="areaName">
+        <Property name="label">所属小区</Property>
+      </PropertyDef>
+      <PropertyDef name="areaId"/>
+      <PropertyDef name="buildingName">
+        <Property name="label">所属楼宇</Property>
+      </PropertyDef>
+      <PropertyDef name="buildingId"/>
+    </DataType>
+    <DataType name="TpropertyOwner">
+      <Property name="creationType">com.jdry.pms.basicInfo.pojo.PropertyOwner</Property>
+      <PropertyDef name="ownerId">
+        <Property></Property>
+        <Property name="label">业主ID</Property>
+      </PropertyDef>
+      <PropertyDef name="roomId">
+        <Property></Property>
+        <Property name="label">房间ID</Property>
+      </PropertyDef>
+      <PropertyDef name="roomNo">
+        <Property></Property>
+        <Property name="label">房间号</Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="ownerName">
+        <Property></Property>
+        <Property name="label">业主姓名</Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="phone">
+        <Property></Property>
+        <Property name="label">联系电话</Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="cardId">
+        <Property></Property>
+        <Property name="label">身份证号</Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="carId">
+        <Property></Property>
+        <Property name="label">车牌号</Property>
+      </PropertyDef>
+      <PropertyDef name="ownerType">
+        <Property></Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Collection>
+              <Entity>
+                <Property name="key">0</Property>
+                <Property name="value">一般</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">1</Property>
+                <Property name="value">重要</Property>
+              </Entity>
+            </Collection>
+          </Property>
+        </Property>
+        <Property name="label">业主类型</Property>
+      </PropertyDef>
+      <PropertyDef name="makeRoomDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">交房日期</Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="decorateDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">装修日期</Property>
+      </PropertyDef>
+      <PropertyDef name="remark">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="chargeTypeRelaBatch">
+      <PropertyDef name="belong_unit">
+        <Property></Property>
+        <Property name="label">管理处</Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="belong_unit_id">
+        <Property></Property>
+        <Property name="label">管理处ID</Property>
+      </PropertyDef>
+      <PropertyDef name="storied_build_id">
+        <Property></Property>
+        <Property name="label">楼宇ID</Property>
+      </PropertyDef>
+      <PropertyDef name="storied_build_name">
+        <Property></Property>
+        <Property name="label">楼宇名称</Property>
+      </PropertyDef>
+      <PropertyDef name="charge_type_name">
+        <Property></Property>
+        <Property name="label">项目名称</Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="charge_type_no">
+        <Property></Property>
+        <Property name="label">项目编号</Property>
+        <Property name="required">true</Property>
+        <Property name="mapping">
+          <Property name="mapValues"></Property>
+        </Property>
+        <Property name="readOnly">false</Property>
+      </PropertyDef>
+      <PropertyDef name="charge_type_id">
+        <Property name="label">项目ID</Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View>
+    <Property name="packages">fontawesome</Property>
+    <DataSet id="dsChargeTypeSet">
+      <Property name="dataType">[chargeTypeSetting]</Property>
+      <Property name="dataProvider">chargeTypeSetting#queryAll</Property>
+      <Property name="parameter"></Property>
+      <Property name="pageSize">10</Property>
+      <Property name="loadMode">lazy</Property>
+    </DataSet>
+    <DataSet id="dsChargeTypeRoomRela">
+      <Property name="dataType">[chargeTypeRoomRela]</Property>
+      <Property name="dataProvider">chargeTypeSetting#queryRelaAll</Property>
+      <Property name="parameter"></Property>
+      <Property name="pageSize">10</Property>
+      <Property name="loadMode">lazy</Property>
+    </DataSet>
+    <DataSet id="dsChargeTypeRelaView">
+      <Property name="dataType">[chargeTypeRelaView]</Property>
+      <Property name="dataProvider">chargeTypeSetting#queryAllFromView</Property>
+      <Property name="parameter"></Property>
+      <Property name="pageSize">10</Property>
+      <Property name="loadMode">lazy</Property>
+    </DataSet>
+    <DataSet id="dsChargeTypeRelaBatch">
+      <Property name="dataType">[chargeTypeRelaBatch]</Property>
+      <Property name="parameter"></Property>
+      <Property name="loadMode">lazy</Property>
+    </DataSet>
+    <DataSet id="dsAllArea">
+      <Property name="dataType">[AllArea]</Property>
+      <Property name="dataProvider">allAreaView#queryAllAreaByParam</Property>
+      <Property name="parameter"></Property>
+    </DataSet>
+    <DataSet id="dsHouse">
+      <Property name="dataType">[HouseProperty]</Property>
+      <Property name="dataProvider">housePropertyView#queryHouseProperty</Property>
+      <Property name="parameter"></Property>
+      <Property name="pageSize">1</Property>
+      <Property name="loadMode">manual</Property>
+    </DataSet>
+    <DataSet id="dsOwner">
+      <Property name="dataType">[TpropertyOwner]</Property>
+      <Property name="dataProvider">ownerInfoView#queryPropertyOwnerByParent</Property>
+      <Property name="parameter"></Property>
+    </DataSet>
+    <DataSet id="dsAreaProperty">
+      <Property name="dataType">[AreaProperty]</Property>
+      <Property name="parameter"></Property>
+      <Property name="dataProvider">areaPropertyView#queryAreaPropertyByParam</Property>
+    </DataSet>
+    <DataSet id="dsBuilding">
+      <Property name="dataType">[BuildingProperty]</Property>
+      <Property name="parameter"></Property>
+      <Property name="dataProvider">buildingPropertyView#queryBuildingPropertyByParam</Property>
+    </DataSet>
+    <Dialog id="diaChargeTypeSet">
+      <ClientEvent name="onClose">this.id(&quot;dsChargeTypeSet&quot;).flush();&#xD;
+</ClientEvent>
+      <Property name="visible">false</Property>
+      <Property name="width">60%</Property>
+      <Property name="height">50%</Property>
+      <Property name="caption">收费项目设定</Property>
+      <Buttons>
+        <Button>
+          <ClientEvent name="onClick">this.id(&quot;diaChargeTypeSet&quot;).hide();&#xD;
+this.id(&quot;updateAction1&quot;).execute();&#xD;
+this.id(&quot;dsChargeTypeSet&quot;).flushAsync();&#xD;
+</ClientEvent>
+          <Property name="caption">保存</Property>
+          <Property name="icon">url(>skin>common/icons.gif) -160px -20px</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm id="formChargeTypeSet">
+          <Property name="dataSet">dsChargeTypeSet</Property>
+          <Property name="labelWidth">100</Property>
+          <AutoFormElement>
+            <Property name="name">charge_type_no</Property>
+            <Property name="property">charge_type_no</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">charge_type_name</Property>
+            <Property name="property">charge_type_name</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">charge_mode</Property>
+            <Property name="property">charge_mode</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">charge_way</Property>
+            <Property name="property">charge_way</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">charge_type</Property>
+            <Property name="property">charge_type</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">charge_price</Property>
+            <Property name="property">charge_price</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">charge_cycle_count</Property>
+            <Property name="property">charge_cycle_count</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">charge_cycle_unit</Property>
+            <Property name="property">charge_cycle_unit</Property>
+            <Editor/>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <Dialog id="diaChargeTypeRela">
+      <ClientEvent name="onClose">this.id(&quot;dsChargeTypeRoomRela&quot;).flush();&#xD;
+</ClientEvent>
+      <Property name="visible">false</Property>
+      <Property name="width">60%</Property>
+      <Property name="height">40%</Property>
+      <Property name="caption">收费项目设定</Property>
+      <Buttons>
+        <Button>
+          <ClientEvent name="onClick">this.id(&quot;diaChargeTypeRela&quot;).hide();&#xD;
+this.id(&quot;updateRelaAction1&quot;).execute();&#xD;
+this.id(&quot;dsChargeTypeRelaView&quot;).flushAsync();&#xD;
+</ClientEvent>
+          <Property name="caption">保存</Property>
+          <Property name="icon">url(>skin>common/icons.gif) -160px -20px</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm id="formChargeTypeRela">
+          <Property name="dataSet">dsChargeTypeRoomRela</Property>
+          <Property name="labelWidth">100</Property>
+          <AutoFormElement>
+            <Property name="name">charge_type_id</Property>
+            <Property name="property">charge_type_id</Property>
+            <Property name="hideMode">display</Property>
+            <Property name="visible">false</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">charge_type_name</Property>
+            <Property name="property">charge_type_name</Property>
+            <Property name="label">收费项目</Property>
+            <Property name="trigger">chargeTypeDropDown</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">charge_type_no</Property>
+            <Property name="property">charge_type_no</Property>
+            <Property name="label">收费项目编号</Property>
+            <Property name="editable">false</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">room_id</Property>
+            <Property name="property">room_id</Property>
+            <Property name="visible">false</Property>
+            <Property name="hideMode">display</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">room_no</Property>
+            <Property name="property">room_no</Property>
+            <Property name="label">房间编号</Property>
+            <Property name="trigger">houseTreeDropDown</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">owner_id</Property>
+            <Property name="property">owner_id</Property>
+            <Property name="hideMode">display</Property>
+            <Property name="visible">false</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">owner_name</Property>
+            <Property name="property">owner_name</Property>
+            <Property name="editable">false</Property>
+            <Editor/>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <Dialog id="diaChargeRelaBatch">
+      <ClientEvent name="onClose">this.id(&quot;dsChargeTypeRelaBatch&quot;).flush();&#xD;
+</ClientEvent>
+      <Property name="visible">false</Property>
+      <Property name="width">60%</Property>
+      <Property name="height">40%</Property>
+      <Property name="caption">收费项目设定</Property>
+      <Buttons>
+        <Button>
+          <ClientEvent name="onClick">this.id(&quot;diaChargeRelaBatch&quot;).hide();&#xD;
+//var data = this.id(&quot;dsChargeTypeRelaBatch.data.current&quot;)&#xD;
+&#xD;
+var data = view.get(&quot;#formChargeTypeRelaBatch.entity&quot;);&#xD;
+&#xD;
+this.id(&quot;addBatchTypeRela&quot;).set(&quot;parameter&quot;, data).execute();&#xD;
+this.id(&quot;dsChargeTypeRelaView&quot;).flushAsync();&#xD;
+</ClientEvent>
+          <Property name="caption">保存</Property>
+          <Property name="icon">url(>skin>common/icons.gif) -160px -20px</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm id="formChargeTypeRelaBatch">
+          <Property name="dataSet">dsChargeTypeRelaBatch</Property>
+          <Property name="labelWidth">100</Property>
+          <AutoFormElement>
+            <Property name="name">belong_unit</Property>
+            <Property name="property">belong_unit</Property>
+            <Property name="trigger">AreaProperty</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">belong_unit_id</Property>
+            <Property name="property">belong_unit_id</Property>
+            <Property name="hideMode">display</Property>
+            <Property name="visible">false</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">storied_build_id</Property>
+            <Property name="property">storied_build_id</Property>
+            <Property name="hideMode">display</Property>
+            <Property name="visible">false</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">storied_build_name</Property>
+            <Property name="property">storied_build_name</Property>
+            <Property name="trigger">BuildingProperty</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">charge_type_name</Property>
+            <Property name="property">charge_type_name</Property>
+            <Property name="trigger">chargeTypeDropDown</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">charge_type_no</Property>
+            <Property name="property">charge_type_no</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">charge_type_id</Property>
+            <Property name="property">charge_type_id</Property>
+            <Property name="hideMode">display</Property>
+            <Property name="visible">false</Property>
+            <Editor/>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <UpdateAction id="updateAction1">
+      <Property name="dataResolver">chargeTypeSetting#saveAll</Property>
+      <UpdateItem>
+        <Property name="dataSet">dsChargeTypeSet</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <UpdateAction id="deleteAction">
+      <Property name="dataResolver">chargeTypeSetting#delete</Property>
+      <UpdateItem>
+        <Property name="dataSet">dsChargeTypeSet</Property>
+        <Property name="dataPath">[#current]</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <UpdateAction id="updateRelaAction1">
+      <Property name="dataResolver">chargeTypeSetting#saveRelaAll</Property>
+      <UpdateItem>
+        <Property name="dataSet">dsChargeTypeRoomRela</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <UpdateAction id="deleteRelaAction">
+      <Property name="dataResolver">chargeTypeSetting#deleteRela</Property>
+      <UpdateItem>
+        <Property name="dataSet">dsChargeTypeRoomRela</Property>
+        <Property name="dataPath">[#current]</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <UpdateAction id="addBatchTypeRela">
+      <Property name="dataResolver">chargeTypeSetting#addBatch</Property>
+      <Property name="successMessage">批量添加成功！</Property>
+      <UpdateItem>
+        <Property name="dataSet">dsChargeTypeRelaBatch</Property>
+        <Property name="dataPath">[#visible]</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <TabControl>
+      <ControlTab id="controlTab1">
+        <Property name="caption">收费项目设置</Property>
+        <Panel>
+          <Property name="width">98%</Property>
+          <Buttons/>
+          <Children>
+            <FieldSet>
+              <Property name="caption">查询条件</Property>
+              <Buttons>
+                <Button>
+                  <ClientEvent name="onClick">var charge_type_no = view.get(&quot;#charge_type_no&quot;).get(&quot;value&quot;);&#xD;
+var charge_type_name = view.get(&quot;#charge_type_name&quot;).get(&quot;value&quot;);&#xD;
+var charge_mode = view.get(&quot;#charge_mode&quot;).get(&quot;value&quot;);&#xD;
+&#xD;
+var parameter = {&#xD;
+	charge_type_no:charge_type_no,&#xD;
+	charge_type_name:charge_type_name,&#xD;
+	charge_mode:charge_mode&#xD;
+};&#xD;
+&#xD;
+view.get(&quot;#dsChargeTypeSet&quot;).set(&quot;parameter&quot;,parameter).flushAsync();</ClientEvent>
+                  <Property name="caption">查询</Property>
+                  <Property name="style">
+                    <Property name="float">right</Property>
+                  </Property>
+                </Button>
+                <Button>
+                  <ClientEvent name="onClick">view.set(&quot;#formSearchCondition.entity&quot;,{});</ClientEvent>
+                  <Property name="caption">清空</Property>
+                  <Property name="style">
+                    <Property name="float">right</Property>
+                  </Property>
+                </Button>
+              </Buttons>
+              <Children>
+                <AutoForm id="formSearchCondition">
+                  <Property name="dataType">chargeTypeSetting</Property>
+                  <Property name="cols">300,300,300</Property>
+                  <AutoFormElement id="charge_type_no">
+                    <Property name="name">charge_type_no</Property>
+                    <Property name="property">charge_type_no</Property>
+                    <Property name="label">项目编号</Property>
+                    <Editor/>
+                  </AutoFormElement>
+                  <AutoFormElement id="charge_type_name">
+                    <Property name="name">charge_type_name</Property>
+                    <Property name="property">charge_type_name</Property>
+                    <Property name="label">收费项目</Property>
+                    <Editor/>
+                  </AutoFormElement>
+                  <AutoFormElement id="charge_mode">
+                    <Property name="name">charge_mode</Property>
+                    <Property name="property">charge_mode</Property>
+                    <Property name="label">计费方式</Property>
+                    <Editor/>
+                  </AutoFormElement>
+                </AutoForm>
+              </Children>
+            </FieldSet>
+            <ToolBar>
+              <Fill/>
+              <ToolBarButton>
+                <ClientEvent name="onClick">this.id(&quot;diaChargeTypeSet&quot;).show();&#xD;
+this.id(&quot;dsChargeTypeSet&quot;).insert();</ClientEvent>
+                <Property name="caption">新增</Property>
+                <Property name="iconClass">fa fa-plus</Property>
+              </ToolBarButton>
+              <Separator/>
+              <ToolBarButton>
+                <ClientEvent name="onClick">this.id(&quot;diaChargeTypeSet&quot;).show();&#xD;
+</ClientEvent>
+                <Property name="caption">修改</Property>
+                <Property name="iconClass">fa fa-edit</Property>
+              </ToolBarButton>
+              <Separator/>
+              <ToolBarButton>
+                <ClientEvent name="onClick">var action = this.id(&quot;deleteAction&quot;);&#xD;
+dorado.MessageBox.confirm(&quot;真的要完成选中的任务吗？&quot;,function(){&#xD;
+	action.execute(function(){&#xD;
+		this.id(&quot;dsChargeTypeSet&quot;).flushAsync();&#xD;
+		//ds.getData(&quot;#&quot;).reset(&quot;processInstances&quot;);&#xD;
+	});&#xD;
+});&#xD;
+</ClientEvent>
+                <Property name="caption">删除</Property>
+                <Property name="iconClass">fa fa-minus</Property>
+              </ToolBarButton>
+            </ToolBar>
+            <DataGrid>
+              <Property name="dataSet">dsChargeTypeSet</Property>
+              <Property name="readOnly">true</Property>
+              <Property name="height">286px</Property>
+              <DataColumn name="charge_type_no">
+                <Property name="property">charge_type_no</Property>
+              </DataColumn>
+              <DataColumn name="charge_type_name">
+                <Property name="property">charge_type_name</Property>
+              </DataColumn>
+              <DataColumn name="charge_mode">
+                <Property name="property">charge_mode</Property>
+              </DataColumn>
+              <DataColumn name="charge_way">
+                <Property name="property">charge_way</Property>
+              </DataColumn>
+              <DataColumn name="charge_type">
+                <Property name="property">charge_type</Property>
+              </DataColumn>
+              <DataColumn name="charge_cycle_count">
+                <Property name="property">charge_cycle_count</Property>
+              </DataColumn>
+              <DataColumn name="charge_cycle_unit">
+                <Property name="property">charge_cycle_unit</Property>
+              </DataColumn>
+              <DataColumn name="charge_price">
+                <Property name="property">charge_price</Property>
+              </DataColumn>
+              <DataColumn name="update_emp_id">
+                <Property name="property">update_emp_id</Property>
+              </DataColumn>
+              <DataColumn name="update_date">
+                <Property name="property">update_date</Property>
+                <Property name="caption">更新时间</Property>
+              </DataColumn>
+            </DataGrid>
+            <ToolBar>
+              <Fill/>
+              <DataPilot>
+                <Property name="dataSet">dsChargeTypeSet</Property>
+              </DataPilot>
+            </ToolBar>
+          </Children>
+          <Tools/>
+        </Panel>
+      </ControlTab>
+      <ControlTab id="controlTab2">
+        <Property name="caption">业主收费项目关联</Property>
+        <Container>
+          <FieldSet>
+            <Property name="caption">查询条件</Property>
+            <Buttons>
+              <Button>
+                <ClientEvent name="onClick">var charge_type_no_rela = view.get(&quot;#charge_type_no_rela&quot;).get(&quot;value&quot;);&#xD;
+var room_no = view.get(&quot;#room_no&quot;).get(&quot;value&quot;);&#xD;
+var owner_id = view.get(&quot;#owner_id&quot;).get(&quot;value&quot;);&#xD;
+&#xD;
+var parameter = {&#xD;
+	charge_type_no_rela:charge_type_no_rela,&#xD;
+	room_no:room_no,&#xD;
+	owner_id:owner_id&#xD;
+};&#xD;
+&#xD;
+view.get(&quot;#dsChargeTypeRelaView&quot;).set(&quot;parameter&quot;,parameter).flushAsync();</ClientEvent>
+                <Property name="caption">查询</Property>
+                <Property name="style">
+                  <Property name="float">right</Property>
+                </Property>
+              </Button>
+              <Button>
+                <ClientEvent name="onClick">view.set(&quot;#formRelaSearchCondition.entity&quot;,{});</ClientEvent>
+                <Property name="caption">清空</Property>
+                <Property name="style">
+                  <Property name="float">right</Property>
+                </Property>
+              </Button>
+            </Buttons>
+            <Children>
+              <AutoForm id="formRelaSearchCondition">
+                <Property name="dataType">chargeTypeRoomRela</Property>
+                <Property name="cols">250,250,250</Property>
+                <AutoFormElement id="charge_type_no_rela">
+                  <Property name="name">charge_type_no</Property>
+                  <Property name="property">charge_type_no</Property>
+                  <Property name="label">收费项编号</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement id="room_no">
+                  <Property name="name">room_no</Property>
+                  <Property name="property">room_no</Property>
+                  <Property name="label">房间编号</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement id="owner_id">
+                  <Property name="name">owner_id</Property>
+                  <Property name="property">owner_id</Property>
+                  <Property name="label">业主</Property>
+                  <Property name="hideMode">display</Property>
+                  <Property name="visible">false</Property>
+                  <Editor/>
+                </AutoFormElement>
+              </AutoForm>
+            </Children>
+          </FieldSet>
+          <ToolBar>
+            <Fill/>
+            <ToolBarButton>
+              <ClientEvent name="onClick">this.id(&quot;dsChargeTypeRoomRela&quot;).insert();&#xD;
+this.id(&quot;diaChargeTypeRela&quot;).show();</ClientEvent>
+              <Property name="caption">新增</Property>
+              <Property name="iconClass">fa fa-plus</Property>
+            </ToolBarButton>
+            <Separator/>
+            <ToolBarButton>
+              <ClientEvent name="onClick">this.id(&quot;diaChargeTypeRela&quot;).show();&#xD;
+</ClientEvent>
+              <Property name="caption">修改</Property>
+              <Property name="iconClass">fa fa-edit</Property>
+            </ToolBarButton>
+            <Separator/>
+            <ToolBarButton>
+              <ClientEvent name="onClick">var action = this.id(&quot;deleteRelaAction&quot;);&#xD;
+dorado.MessageBox.confirm(&quot;真的要完成选中的任务吗？&quot;,function(){&#xD;
+	action.execute(function(){&#xD;
+		this.id(&quot;dsChargeTypeRoomRela&quot;).flushAsync();&#xD;
+		//ds.getData(&quot;#&quot;).reset(&quot;processInstances&quot;);&#xD;
+	});&#xD;
+});&#xD;
+</ClientEvent>
+              <Property name="caption">删除</Property>
+              <Property name="iconClass">fa fa-minus</Property>
+            </ToolBarButton>
+            <Separator/>
+            <ToolBarButton>
+              <ClientEvent name="onClick">this.id(&quot;dsChargeTypeRelaBatch&quot;).insert();&#xD;
+this.id(&quot;diaChargeRelaBatch&quot;).show();&#xD;
+</ClientEvent>
+              <Property name="caption">批量新增</Property>
+              <Property name="iconClass">fa fa-plus-circle</Property>
+            </ToolBarButton>
+          </ToolBar>
+          <DataGrid>
+            <Property name="dataSet">dsChargeTypeRelaView</Property>
+            <Property name="readOnly">true</Property>
+            <Property name="height">316px</Property>
+            <RowNumColumn/>
+            <DataColumn name="belong_unit">
+              <Property name="property">belong_unit</Property>
+            </DataColumn>
+            <DataColumn name="room_no">
+              <Property name="property">room_no</Property>
+            </DataColumn>
+            <DataColumn name="charge_type_no">
+              <Property name="property">charge_type_no</Property>
+            </DataColumn>
+            <DataColumn name="charge_type_name">
+              <Property name="property">charge_type_name</Property>
+            </DataColumn>
+            <DataColumn name="charge_mode">
+              <Property name="property">charge_mode</Property>
+            </DataColumn>
+            <DataColumn name="charge_price">
+              <Property name="property">charge_price</Property>
+            </DataColumn>
+            <DataColumn name="charge_way">
+              <Property name="property">charge_way</Property>
+            </DataColumn>
+            <DataColumn name="charge_type">
+              <Property name="property">charge_type</Property>
+            </DataColumn>
+            <DataColumn name="charge_cycle_count">
+              <Property name="property">charge_cycle_count</Property>
+            </DataColumn>
+            <DataColumn name="charge_cycle_unit">
+              <Property name="property">charge_cycle_unit</Property>
+            </DataColumn>
+          </DataGrid>
+          <ToolBar>
+            <Fill/>
+            <DataPilot>
+              <Property name="dataSet">dsChargeTypeRelaView</Property>
+            </DataPilot>
+          </ToolBar>
+        </Container>
+      </ControlTab>
+    </TabControl>
+    <CustomDropDown id="houseTreeDropDown">
+      <Property name="userData"></Property>
+      <Property name="autoOpen">true</Property>
+      <Property name="height">300</Property>
+      <Property name="width">400</Property>
+      <Property name="editable">false</Property>
+      <DataTree>
+        <ClientEvent name="onDataRowClick">var obj = self.get(&quot;currentEntity&quot;);&#xD;
+var level = self.get(&quot;currentNode&quot;).get(&quot;level&quot;);&#xD;
+if(level == 4){&#xD;
+	var data = {&#xD;
+		roomId:obj.get(&quot;roomId&quot;)&#xD;
+	};&#xD;
+	/*&#xD;
+	view.get(&quot;#noSelectTip&quot;).set(&quot;visible&quot;,false);&#xD;
+	view.get(&quot;#roomDetail&quot;).refreshData();&#xD;
+	$('#d_roomDetail').css(&quot;visibility&quot;,&quot;visible&quot;);&#xD;
+	$('#d_fjzl').css(&quot;visibility&quot;,&quot;visible&quot;);&#xD;
+	*/&#xD;
+	view.get(&quot;#dsOwner&quot;).set(&quot;parameter&quot;,data).flushAsync(function(res){	&#xD;
+		var ser = view.get(&quot;#dsChargeTypeRoomRela.data.current&quot;)&#xD;
+		ser.set(&quot;owner_name&quot;,res.current.get(&quot;ownerName&quot;));	&#xD;
+		ser.set(&quot;owner_id&quot;,res.current.get(&quot;ownerId&quot;));&#xD;
+		ser.set(&quot;room_no&quot;,res.current.get(&quot;roomNo&quot;));&#xD;
+		ser.set(&quot;room_id&quot;,res.current.get(&quot;roomId&quot;));&#xD;
+	});&#xD;
+	&#xD;
+	var dropDown = dorado.widget.DropDown.findDropDown(self);&#xD;
+	dropDown.close();&#xD;
+}&#xD;
+&#xD;
+</ClientEvent>
+        <Property name="dataSet">dsAllArea</Property>
+        <BindingConfigs>
+          <BindingConfig>
+            <Property name="name">allArea</Property>
+            <Property name="childrenProperty">allArea</Property>
+            <Property name="labelProperty">buildName</Property>
+            <Property name="icon">url(>skin>common/icons.gif) -240px -40px</Property>
+            <BindingConfig>
+              <Property name="name">areaProperty</Property>
+              <Property name="childrenProperty">areaProperty</Property>
+              <Property name="labelProperty">communityName</Property>
+              <Property name="icon">url(>skin>common/icons.gif) -60px -40px</Property>
+              <BindingConfig>
+                <Property name="name">buildingProperty</Property>
+                <Property name="childrenProperty">buildingProperty</Property>
+                <Property name="labelProperty">storiedBuildName</Property>
+                <Property name="icon">url(>skin>common/icons.gif) -40px -40px</Property>
+                <BindingConfig>
+                  <Property name="name">houseProperty</Property>
+                  <Property name="childrenProperty">houseProperty</Property>
+                  <Property name="labelProperty">roomNo</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -0px -20px</Property>
+                </BindingConfig>
+              </BindingConfig>
+            </BindingConfig>
+          </BindingConfig>
+        </BindingConfigs>
+      </DataTree>
+    </CustomDropDown>
+    <DataSetDropDown id="chargeTypeDropDown">
+      <Property name="dataSet">dsChargeTypeSet</Property>
+      <Property name="displayProperty">charge_type_name</Property>
+      <Property name="property">charge_type_name</Property>
+      <Property name="assignmentMap">charge_type_no=charge_type_no,charge_type_id=charge_type_id</Property>
+    </DataSetDropDown>
+    <DataSetDropDown id="AreaProperty">
+      <ClientEvent name="beforeExecute">/*&#xD;
+var buildId = view.get(&quot;#searchHouse.entity&quot;).buildId;&#xD;
+view.get(&quot;#dsAreaProperty&quot;).set(&quot;parameter&quot;,{buildId:buildId}).flush();&#xD;
+*/</ClientEvent>
+      <ClientEvent name="onValueSelect">view.get(&quot;#formChargeTypeRelaBatch.entity&quot;).set(&quot;storied_build_id&quot;,null);&#xD;
+view.get(&quot;#formChargeTypeRelaBatch.entity&quot;).set(&quot;storied_build_name&quot;,null);&#xD;
+</ClientEvent>
+      <Property name="dataSet">dsAreaProperty</Property>
+      <Property name="assignmentMap">belong_unit_id=communityId</Property>
+      <Property name="displayProperty">communityName</Property>
+      <Property name="property">communityName</Property>
+      <Property name="useEmptyItem">true</Property>
+    </DataSetDropDown>
+    <DataSetDropDown id="BuildingProperty">
+      <ClientEvent name="beforeExecute">var areaId = view.get(&quot;#formChargeTypeRelaBatch.entity.belong_unit_id&quot;);&#xD;
+view.get(&quot;#dsBuilding&quot;).set(&quot;parameter&quot;,{areaId:areaId}).flush();&#xD;
+</ClientEvent>
+      <Property name="dataSet">dsBuilding</Property>
+      <Property name="assignmentMap">storied_build_id=storiedBuildId</Property>
+      <Property name="displayProperty">storiedBuildName</Property>
+      <Property name="property">storiedBuildName</Property>
+      <Property name="useEmptyItem">true</Property>
+    </DataSetDropDown>
+  </View>
+</ViewConfig>

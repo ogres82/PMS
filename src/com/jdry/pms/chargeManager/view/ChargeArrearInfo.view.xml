@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="chargeArrearInfo">
+      <Property name="creationType">com.jdry.pms.chargeManager.pojo.ChargeArrearViewEntity</Property>
+      <PropertyDef name="owner_id">
+        <Property/>
+        <Property name="label">业主ID</Property>
+      </PropertyDef>
+      <PropertyDef name="owner_name">
+        <Property/>
+        <Property name="label">业主姓名</Property>
+      </PropertyDef>
+      <PropertyDef name="room_id">
+        <Property/>
+        <Property name="label">房间ID</Property>
+      </PropertyDef>
+      <PropertyDef name="room_no">
+        <Property/>
+        <Property name="label">房间编号</Property>
+      </PropertyDef>
+      <PropertyDef name="begin_time">
+        <Property name="dataType">Date</Property>
+        <Property name="label">开始时间</Property>
+        <Property name="displayFormat">Y-m-d</Property>
+      </PropertyDef>
+      <PropertyDef name="end_time">
+        <Property name="dataType">Date</Property>
+        <Property name="label">结束时间</Property>
+      </PropertyDef>
+      <PropertyDef name="phone">
+        <Property/>
+        <Property name="label">电话</Property>
+      </PropertyDef>
+      <PropertyDef name="delay_pay">
+        <Property name="dataType">float</Property>
+        <Property name="label">滞纳金</Property>
+      </PropertyDef>
+      <PropertyDef name="reduce_pay">
+        <Property name="dataType">float</Property>
+        <Property name="label">减免金额</Property>
+      </PropertyDef>
+      <PropertyDef name="arrearage_amount">
+        <Property name="dataType">float</Property>
+        <Property name="label">欠费金额</Property>
+      </PropertyDef>
+      <PropertyDef name="total_pay">
+        <Property name="dataType">float</Property>
+        <Property name="label">汇总金额</Property>
+      </PropertyDef>
+      <PropertyDef name="area_name">
+        <Property/>
+        <Property name="label">管理处</Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View>
+    <Property name="packages">fontawesome</Property>
+    <DataSet id="dsChargeArrearInfo">
+      <Property name="dataType">[chargeArrearInfo]</Property>
+      <Property name="dataProvider">chargeArrearInfo#queryAll</Property>
+      <Property name="parameter"></Property>
+      <Property name="loadMode">lazy</Property>
+    </DataSet>
+    <DataSet id="dsChargeSerch">
+      <ClientEvent name="onReady">self.insert();</ClientEvent>
+      <Property name="dataType">[chargeArrearInfo]</Property>
+      <Property name="parameter"></Property>
+      <Property name="loadMode">lazy</Property>
+    </DataSet>
+    <Panel>
+      <Property name="width">98%</Property>
+      <Buttons/>
+      <Children>
+        <FieldSet>
+          <Property name="caption">查询条件</Property>
+          <Buttons>
+            <Button>
+              <ClientEvent name="onClick">&#xD;
+var owner_name = view.get(&quot;#owner_name&quot;).get(&quot;value&quot;);&#xD;
+var room_no = view.get(&quot;#room_no&quot;).get(&quot;value&quot;);&#xD;
+var begin_time = view.get(&quot;#begin_time&quot;).get(&quot;value&quot;);&#xD;
+var end_time = view.get(&quot;#end_time&quot;).get(&quot;value&quot;);&#xD;
+&#xD;
+var parameter = {&#xD;
+	owner_name:owner_name,&#xD;
+	room_no:room_no,&#xD;
+	begin_time:begin_time,&#xD;
+	end_time:end_time&#xD;
+};&#xD;
+&#xD;
+//view.get(&quot;#dsChargeInfo&quot;).set(&quot;parameter&quot;,parameter).flushAsync();&#xD;
+&#xD;
+&#xD;
+//var data = view.get(&quot;#formSearchCondition.entity&quot;);&#xD;
+with (view.get(&quot;#dsChargeArrearInfo&quot;)) {&#xD;
+	set(&quot;parameter&quot;, parameter);&#xD;
+	flushAsync();&#xD;
+}</ClientEvent>
+              <Property name="caption">查询</Property>
+              <Property name="style">
+                <Property name="float">right</Property>
+              </Property>
+            </Button>
+            <Button>
+              <ClientEvent name="onClick">//view.set(&quot;#formSearchCondition.entity&quot;,{});&#xD;
+view.get(&quot;#dsChargeSerch.data.current&quot;).clearData();</ClientEvent>
+              <Property name="caption">清空</Property>
+              <Property name="style">
+                <Property name="float">right</Property>
+              </Property>
+            </Button>
+          </Buttons>
+          <Children>
+            <AutoForm id="formSearchCondition">
+              <Property name="cols">300,300,300</Property>
+              <Property name="dataSet">dsChargeSerch</Property>
+              <AutoFormElement id="owner_name">
+                <Property name="name">owner_name</Property>
+                <Property name="property">owner_name</Property>
+                <Property name="label">业主姓名</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement id="room_no">
+                <Property name="name">room_no</Property>
+                <Property name="property">room_no</Property>
+                <Property name="label">房间编号</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement id="begin_time">
+                <Property name="name">begin_time</Property>
+                <Property name="property">begin_time</Property>
+                <Property name="label">开始日期</Property>
+                <Property name="editable">false</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement id="end_time">
+                <Property name="property">end_time</Property>
+                <Property name="name">end_time</Property>
+                <Property name="label">结束日期</Property>
+                <Property name="editable">false</Property>
+                <Editor/>
+              </AutoFormElement>
+            </AutoForm>
+          </Children>
+        </FieldSet>
+        <ToolBar>
+          <Fill/>
+          <ToolBarButton>
+            <ClientEvent name="onClick">dorado.widget.NotifyTipManager.notify(&quot;该功能请耐心等待哟，亲！&quot;,{&#xD;
+    caption: &quot;短息通知功能&quot;,&#xD;
+    showDuration: 5,&#xD;
+    icon:&quot;INFO&quot;&#xD;
+});&#xD;
+&#xD;
+</ClientEvent>
+            <Property name="caption">短信通知</Property>
+            <Property name="iconClass">fa fa-envelope-o</Property>
+          </ToolBarButton>
+        </ToolBar>
+        <DataGrid>
+          <Property name="dataSet">dsChargeArrearInfo</Property>
+          <Property name="scrollMode">lazyRender</Property>
+          <Property name="height">316px</Property>
+          <Property name="selectionMode">multiRows</Property>
+          <Property name="showGroupFooter">false</Property>
+          <Property name="showFooter">true</Property>
+          <RowSelectorColumn/>
+          <RowNumColumn/>
+          <DataColumn name="area_name">
+            <Property name="property">area_name</Property>
+          </DataColumn>
+          <DataColumn name="room_no">
+            <Property name="property">room_no</Property>
+          </DataColumn>
+          <DataColumn name="owner_name">
+            <Property name="property">owner_name</Property>
+          </DataColumn>
+          <DataColumn name="phone">
+            <Property name="property">phone</Property>
+          </DataColumn>
+          <DataColumn name="begin_time">
+            <Property name="property">begin_time</Property>
+          </DataColumn>
+          <DataColumn name="end_time">
+            <Property name="property">end_time</Property>
+          </DataColumn>
+          <DataColumn name="arrearage_amount">
+            <Property name="property">arrearage_amount</Property>
+            <Property name="summaryType">sum</Property>
+          </DataColumn>
+          <DataColumn name="delay_pay">
+            <Property name="property">delay_pay</Property>
+            <Property name="summaryType">sum</Property>
+          </DataColumn>
+          <DataColumn name="reduce_pay">
+            <Property name="property">reduce_pay</Property>
+            <Property name="summaryType">sum</Property>
+          </DataColumn>
+          <DataColumn name="total_pay">
+            <Property name="property">total_pay</Property>
+            <Property name="summaryType">sum</Property>
+          </DataColumn>
+        </DataGrid>
+      </Children>
+      <Tools/>
+    </Panel>
+    <Dialog id="diaChargeInfo">
+      <ClientEvent name="onClose">this.id(&quot;dsChargeInfo&quot;).flush();&#xD;
+</ClientEvent>
+      <Property name="visible">false</Property>
+      <Property name="width">60%</Property>
+      <Property name="height">40%</Property>
+      <Property name="caption">账单信息</Property>
+      <Buttons>
+        <Button>
+          <ClientEvent name="onClick">this.id(&quot;diaChargeInfo&quot;).hide();&#xD;
+this.id(&quot;updateAction1&quot;).execute();&#xD;
+this.id(&quot;dsChargeInfo&quot;).flushAsync();&#xD;
+</ClientEvent>
+          <Property name="caption">保存</Property>
+          <Property name="icon">url(>skin>common/icons.gif) -160px -20px</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm id="formChargeInfo">
+          <Property name="dataSet">dsChargeArrearInfo</Property>
+          <Property name="labelWidth">100</Property>
+          <AutoFormElement>
+            <Property name="name">owner_name</Property>
+            <Property name="property">owner_name</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">charge_type_name</Property>
+            <Property name="property">charge_type_name</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">room_no</Property>
+            <Property name="property">room_no</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">data_date</Property>
+            <Property name="property">data_date</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">paid_date</Property>
+            <Property name="property">paid_date</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">paid_mode</Property>
+            <Property name="property">paid_mode</Property>
+            <Editor/>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Dialog>
+  </View>
+</ViewConfig>

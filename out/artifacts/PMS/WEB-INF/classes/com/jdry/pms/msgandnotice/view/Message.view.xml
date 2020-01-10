@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="message">
+      <Property name="creationType">com.jdry.pms.msgandnotice.pojo.MessageEntity</Property>
+      <PropertyDef name="msgId">
+        <Property name="dataType">String</Property>
+        <Property name="label">ID</Property>
+        <Property name="required">false</Property>
+      </PropertyDef>
+      <PropertyDef name="msgSubject">
+        <Property name="dataType">String</Property>
+        <Property name="label">标题</Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="msgStatus">
+        <Property name="dataType">String</Property>
+        <Property name="label">状态</Property>
+        <Property name="required">false</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Collection>
+              <Entity>
+                <Property name="key">10</Property>
+                <Property name="value">起草</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">20</Property>
+                <Property name="value">待审核</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">21</Property>
+                <Property name="value">待发布</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">30</Property>
+                <Property name="value">已发布</Property>
+              </Entity>
+            </Collection>
+          </Property>
+        </Property>
+        <Property name="userData"></Property>
+      </PropertyDef>
+      <PropertyDef name="msgCreateTime">
+        <Property name="dataType">DateTime</Property>
+        <Property name="label">创建时间</Property>
+      </PropertyDef>
+      <PropertyDef name="msgContent">
+        <Property name="dataType">String</Property>
+        <Property name="label">内容</Property>
+      </PropertyDef>
+      <PropertyDef name="msgCreater">
+        <Property name="dataType">String</Property>
+        <Property name="label">创建人</Property>
+      </PropertyDef>
+      <PropertyDef name="msgBusinessId">
+        <Property name="dataType">String</Property>
+        <Property name="label">编号</Property>
+      </PropertyDef>
+      <PropertyDef name="masCreateTimeEnd">
+        <Property name="dataType">Date</Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View>
+    <FieldSet>
+      <Property name="caption">查询</Property>
+      <Property name="buttonAlign">right</Property>
+      <Buttons>
+        <Button>
+          <ClientEvent name="onClick">view.set(&quot;#searchMessage.entity&quot;,{});</ClientEvent>
+          <Property name="caption">清空</Property>
+        </Button>
+        <Button>
+          <ClientEvent name="onClick">var data = view.get(&quot;#searchMessage.entity&quot;);&#xD;
+with (view.get(&quot;#dsMessage&quot;)) {&#xD;
+	set(&quot;parameter&quot;, data);&#xD;
+	flush();&#xD;
+}</ClientEvent>
+          <Property name="caption">查询</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm id="searchMessage">
+          <Property name="dataType">message</Property>
+          <Property name="cols">*,*,*</Property>
+          <Property name="labelAlign">right</Property>
+          <AutoFormElement>
+            <Property name="name">msgBusinessId</Property>
+            <Property name="property">msgBusinessId</Property>
+            <Property name="label">编号</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">msgSubject</Property>
+            <Property name="property">msgSubject</Property>
+            <Property name="label">标题</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">msgCreateTime</Property>
+            <Property name="property">msgCreateTime</Property>
+            <Property name="label">创建时间起</Property>
+            <Editor>
+              <TextEditor>
+                <Property name="dataType">Date</Property>
+                <Property name="displayFormat">y-m-d</Property>
+                <Property name="trigger">defaultDateDropDown</Property>
+              </TextEditor>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">msgCreateTimeEnd</Property>
+            <Property name="property">msgCreateTimeEnd</Property>
+            <Property name="label">创建时间止</Property>
+            <Editor>
+              <TextEditor>
+                <Property name="trigger">defaultDateDropDown</Property>
+                <Property name="dataType">Date</Property>
+                <Property name="displayFormat">y-m-d</Property>
+              </TextEditor>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">msgCreater</Property>
+            <Property name="property">msgCreater</Property>
+            <Property name="label">创建人</Property>
+            <Editor/>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+    </FieldSet>
+    <ToolBar>
+      <ToolBarLabel>
+        <Property name="text">消息</Property>
+      </ToolBarLabel>
+      <Fill/>
+      <DataPilot>
+        <Property name="dataSet">dsMessage</Property>
+      </DataPilot>
+      <ToolBarButton>
+        <ClientEvent name="onClick">var busIdAction=view.get(&quot;#getBusIdAction&quot;);&#xD;
+view.get(&quot;#addTemp&quot;).set(&quot;caption&quot;,&quot;增加&quot;);&#xD;
+view.get(&quot;#addTemp&quot;).show();&#xD;
+var businessid=&quot;&quot;;&#xD;
+var data=view.get(&quot;#dsMessage.data&quot;);&#xD;
+busIdAction.execute(function(result){&#xD;
+   businessid=result;&#xD;
+	});&#xD;
+var loginUsername=&quot;${loginUsername}&quot;;&#xD;
+var date = new Date();&#xD;
+&#xD;
+data.insert({&quot;msgCreater&quot;:loginUsername,&quot;msgCreateTime&quot;:date,&quot;msgStatus&quot;:&quot;20&quot;});</ClientEvent>
+        <Property name="caption">增加</Property>
+        <Property name="icon">url(>skin>common/icons.gif) -120px -0px</Property>
+      </ToolBarButton>
+      <ToolBarButton>
+        <ClientEvent name="onClick">view.get(&quot;#addTemp&quot;).set(&quot;caption&quot;,&quot;编辑&quot;);&#xD;
+view.get(&quot;#addTemp&quot;).show();</ClientEvent>
+        <Property name="caption">编辑</Property>
+        <Property name="icon">url(>skin>common/icons.gif) -200px -0px</Property>
+      </ToolBarButton>
+      <ToolBarButton>
+        <ClientEvent name="onClick">dorado.MessageBox.confirm(&quot;真的要删除选中的记录吗？&quot;,function(){&#xD;
+	var entity=view.get(&quot;#dsMessage.data:#&quot;);&#xD;
+	var updateTempAction=view.get(&quot;#updateTemp&quot;);&#xD;
+	if(entity){&#xD;
+	    entity.remove();&#xD;
+		updateTempAction.execute();&#xD;
+	}else{&#xD;
+	    dorado.MessageBox.alert(&quot;必须选中一行记录！&quot;);&#xD;
+	}&#xD;
+});</ClientEvent>
+        <Property name="caption">删除</Property>
+        <Property name="icon">url(>skin>common/icons.gif) -140px -0px</Property>
+      </ToolBarButton>
+    </ToolBar>
+    <GroupStart id="dataControlObject"/>
+    <DataSet id="dsMessage">
+      <Property name="dataType">[message]</Property>
+      <Property name="dataProvider">messageView#getMessage</Property>
+      <Property name="pageSize">10</Property>
+    </DataSet>
+    <GroupEnd/>
+    <GroupStart id="dataGridObject"/>
+    <DataGrid id="tableMessages">
+      <Property name="dataSet">dsMessage</Property>
+      <Property name="readOnly">true</Property>
+      <Property name="filterMode">serverSide</Property>
+      <Property name="showFilterBar">true</Property>
+      <DataColumn name="msgId">
+        <Property name="property">msgId</Property>
+        <Property name="visible">false</Property>
+      </DataColumn>
+      <DataColumn name="msgSubject">
+        <Property name="property">msgSubject</Property>
+      </DataColumn>
+      <DataColumn name="msgStatus">
+        <Property name="property">msgStatus</Property>
+        <Property name="visible">false</Property>
+      </DataColumn>
+      <DataColumn name="msgCreateTime">
+        <Property name="property">msgCreateTime</Property>
+      </DataColumn>
+      <DataColumn name="msgContent">
+        <Property name="property">msgContent</Property>
+      </DataColumn>
+      <DataColumn name="msgCreater">
+        <Property name="property">msgCreater</Property>
+      </DataColumn>
+    </DataGrid>
+    <GroupEnd/>
+    <Dialog id="addTemp">
+      <ClientEvent name="onClose">view.get(&quot;#dsMessage&quot;).flush();</ClientEvent>
+      <ClientEvent name="onHide">view.get(&quot;#dsMessage&quot;).flush();</ClientEvent>
+      <Property name="height">500px</Property>
+      <Property name="width">800px</Property>
+      <Property name="icon">url(>skin>common/icons.gif) -280px -100px</Property>
+      <Buttons>
+        <Button>
+          <ClientEvent name="onClick">dorado.MessageBox.confirm(&quot;确定保存？&quot;,function(){&#xD;
+	var updateTemp=view.get(&quot;#updateTemp&quot;);&#xD;
+	updateTemp.execute(function(result){&#xD;
+	&#xD;
+	dorado.MessageBox.alert(&quot;保存成功！&quot;);&#xD;
+	view.get(&quot;#addTemp&quot;).hide();&#xD;
+	});&#xD;
+});</ClientEvent>
+          <Property name="caption">保存</Property>
+          <Property name="icon">url(>skin>common/icons.gif) -20px -0px</Property>
+        </Button>
+        <Button>
+          <ClientEvent name="onClick">view.get(&quot;#addTemp&quot;).hide();&#xD;
+&#xD;
+</ClientEvent>
+          <Property name="caption">取消</Property>
+          <Property name="icon">url(>skin>common/icons.gif) -40px -0px</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm id="addMessageForm">
+          <Property name="dataSet">dsMessage</Property>
+          <Property name="cols">*,*</Property>
+          <Property name="labelAlign">right</Property>
+          <AutoFormElement>
+            <Property name="name">msgBusinessId</Property>
+            <Property name="property">msgBusinessId</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">msgSubject</Property>
+            <Property name="property">msgSubject</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:2">
+            <Property name="name">msgContent</Property>
+            <Property name="property">msgContent</Property>
+            <Editor>
+              <TextArea>
+                <Property name="height">100</Property>
+              </TextArea>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">msgCreateTime</Property>
+            <Property name="property">msgCreateTime</Property>
+            <Property name="visible">true</Property>
+            <Property name="editable">false</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">msgCreater</Property>
+            <Property name="property">msgCreater</Property>
+            <Property name="editable">false</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <UpdateAction id="updateTemp">
+      <Property name="dataResolver">messageView#saveMessage</Property>
+      <UpdateItem>
+        <Property name="dataSet">dsMessage</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <AjaxAction id="getBusIdAction">
+      <Property name="service">messageView#getBusinessId</Property>
+      <Property name="async">false</Property>
+    </AjaxAction>
+    <AutoMappingDropDown id="msgStatusDropdown"/>
+  </View>
+</ViewConfig>

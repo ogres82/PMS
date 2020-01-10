@@ -1,0 +1,750 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="notice">
+      <Property name="creationType">com.jdry.pms.msgandnotice.pojo.MsgandnotNoticeMain</Property>
+      <PropertyDef name="ntcId">
+        <Property name="dataType">String</Property>
+        <Property name="label">ID</Property>
+        <Property name="userData"></Property>
+      </PropertyDef>
+      <PropertyDef name="ntcSubject">
+        <Property name="dataType">String</Property>
+        <Property name="label">标题</Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="ntcStatus">
+        <Property name="dataType">String</Property>
+        <Property name="label">状态</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Collection>
+              <Entity>
+                <Property name="key">10</Property>
+                <Property name="value">起草</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">20</Property>
+                <Property name="value">待审核</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">21</Property>
+                <Property name="value">待发布</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">30</Property>
+                <Property name="value">已发布</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">11</Property>
+                <Property name="value">驳回</Property>
+              </Entity>
+            </Collection>
+          </Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="ntcCreateTime">
+        <Property name="dataType">DateTime</Property>
+        <Property name="label">创建时间</Property>
+      </PropertyDef>
+      <PropertyDef name="ntcCreator">
+        <Property name="dataType">String</Property>
+        <Property name="label">创建人</Property>
+      </PropertyDef>
+      <PropertyDef name="ntcAuditor">
+        <Property name="dataType">String</Property>
+        <Property name="label">审核人</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;positionView#findMapPosition&quot;).getResult()}</Property>
+        </Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="ntcPublishor">
+        <Property name="dataType">String</Property>
+        <Property name="label">发布人</Property>
+      </PropertyDef>
+      <PropertyDef name="ntcContent">
+        <Property name="dataType">String</Property>
+        <Property name="label">公告内容</Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="ntcPublishTime">
+        <Property name="dataType">DateTime</Property>
+        <Property name="label">发布时间</Property>
+      </PropertyDef>
+      <PropertyDef name="ntcCreateTimeEnd">
+        <Property name="label">创建时间止</Property>
+        <Property name="dataType">DateTime</Property>
+      </PropertyDef>
+      <PropertyDef name="ntrPublishTimeEnd">
+        <Property name="label">发布时间止</Property>
+        <Property name="dataType">DateTime</Property>
+      </PropertyDef>
+      <PropertyDef name="ntcCreatorId">
+        <Property name="dataType">String</Property>
+      </PropertyDef>
+      <PropertyDef name="msgandnoticeNoticeAuditinfos">
+        <Property name="dataType">[ntcAuditInfo]</Property>
+      </PropertyDef>
+      <PropertyDef name="ntcPublishorId">
+        <Property name="dataType">String</Property>
+      </PropertyDef>
+      <PropertyDef name="processInstanceId">
+        <Property name="dataType">Long</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="ntcAuditInfo">
+      <Property name="creationType">com.jdry.pms.msgandnotice.pojo.MsgandnoticeNoticeAuditinfo</Property>
+      <PropertyDef name="ntcAuditId">
+        <Property name="dataType">String</Property>
+        <Property name="label">审核ID</Property>
+      </PropertyDef>
+      <PropertyDef name="ntcAuditContnt">
+        <Property name="dataType">String</Property>
+        <Property name="label">审核意见</Property>
+      </PropertyDef>
+      <PropertyDef name="ntcAuditor">
+        <Property name="dataType">String</Property>
+        <Property name="label">审核人</Property>
+      </PropertyDef>
+      <PropertyDef name="ntcCreateTime">
+        <Property name="dataType">DateTime</Property>
+        <Property name="label">审核时间</Property>
+      </PropertyDef>
+      <PropertyDef name="ntcPassFlag">
+        <Property name="dataType">String</Property>
+        <Property name="label">是否通过</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Collection>
+              <Entity>
+                <Property name="key">0</Property>
+                <Property name="value">驳回</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">1</Property>
+                <Property name="value">通过</Property>
+              </Entity>
+            </Collection>
+          </Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="notice"/>
+      <PropertyDef name="ntcAuditorId">
+        <Property name="dataType">String</Property>
+      </PropertyDef>
+      <PropertyDef name="ntcNoticeId">
+        <Property name="dataType">String</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="position">
+      <Property name="creationType">com.bstek.bdf2.core.model.DefaultPosition</Property>
+      <PropertyDef name="id">
+        <Property name="dataType">String</Property>
+      </PropertyDef>
+      <PropertyDef name="name">
+        <Property name="dataType">String</Property>
+      </PropertyDef>
+      <PropertyDef name="desc">
+        <Property name="dataType">String</Property>
+      </PropertyDef>
+      <PropertyDef name="companyId">
+        <Property name="dataType">String</Property>
+      </PropertyDef>
+      <PropertyDef name="createDate">
+        <Property name="dataType">Date</Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View>
+    <DataSet id="dsWaitPubNotice">
+      <Property name="dataType">[notice]</Property>
+      <Property name="dataProvider">noticeView#getAllNotice</Property>
+      <Property name="pageSize">10</Property>
+    </DataSet>
+    <FieldSet>
+      <Property name="caption">查询</Property>
+      <Property name="buttonAlign">right</Property>
+      <Buttons>
+        <Button>
+          <ClientEvent name="onClick">view.set(&quot;#searchNotice.entity&quot;,{});</ClientEvent>
+          <Property name="caption">清空</Property>
+        </Button>
+        <Button>
+          <ClientEvent name="onClick">var data = view.get(&quot;#searchNotice.entity&quot;);&#xD;
+with (view.get(&quot;#dsNotice&quot;)) {&#xD;
+	set(&quot;parameter&quot;, data);&#xD;
+	flush();&#xD;
+}</ClientEvent>
+          <Property name="caption">查询</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm id="searchNotice">
+          <Property name="cols">*,*,*</Property>
+          <Property name="labelAlign">right</Property>
+          <Property name="dataType">notice</Property>
+          <AutoFormElement>
+            <Property name="name">ntcSubject</Property>
+            <Property name="property">ntcSubject</Property>
+            <Property name="label">标题</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">ntcStatus</Property>
+            <Property name="property">ntcStatus</Property>
+            <Property name="label">状态</Property>
+            <Editor>
+              <TextEditor>
+                <Property name="mapping">
+                  <Property name="mapValues">
+                    <Collection>
+                      <Entity>
+                        <Property name="key">10</Property>
+                        <Property name="value">起草</Property>
+                      </Entity>
+                      <Entity>
+                        <Property name="key">20</Property>
+                        <Property name="value">待审核</Property>
+                      </Entity>
+                      <Entity>
+                        <Property name="key">21</Property>
+                        <Property name="value">待发布</Property>
+                      </Entity>
+                      <Entity>
+                        <Property name="key">30</Property>
+                        <Property name="value">已发布</Property>
+                      </Entity>
+                    </Collection>
+                  </Property>
+                </Property>
+                <Property name="trigger">autoMappingDropDown1</Property>
+              </TextEditor>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">ntcCreateTime</Property>
+            <Property name="property">ntcCreateTime</Property>
+            <Property name="label">创建时间起</Property>
+            <Editor>
+              <TextEditor>
+                <Property name="dataType">Date</Property>
+                <Property name="trigger">defaultDateDropDown</Property>
+              </TextEditor>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">ntcCreateTimeEnd</Property>
+            <Property name="property">ntcCreateTimeEnd</Property>
+            <Property name="label">创建时间止</Property>
+            <Editor>
+              <TextEditor>
+                <Property name="dataType">Date</Property>
+                <Property name="trigger">defaultDateDropDown</Property>
+              </TextEditor>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">ntcCreator</Property>
+            <Property name="property">ntcCreator</Property>
+            <Property name="label">创建人</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">ntcAuditor</Property>
+            <Property name="property">ntcAuditor</Property>
+            <Property name="label">审核人</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">ntcPublishor</Property>
+            <Property name="property">ntcPublishor</Property>
+            <Property name="label">发布人</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">ntcPublishTime</Property>
+            <Property name="property">ntcPublishTime</Property>
+            <Property name="label">发布时间起</Property>
+            <Editor>
+              <TextEditor>
+                <Property name="dataType">Date</Property>
+                <Property name="trigger">defaultDateDropDown</Property>
+              </TextEditor>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">ntrPublishTimeEnd</Property>
+            <Property name="property">ntrPublishTimeEnd</Property>
+            <Property name="label">发布时间止</Property>
+            <Editor>
+              <TextEditor>
+                <Property name="dataType">Date</Property>
+                <Property name="trigger">defaultDateDropDown</Property>
+              </TextEditor>
+            </Editor>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+    </FieldSet>
+    <ToolBar>
+      <Property name="fixRight">true</Property>
+      <ToolBarLabel>
+        <Property name="text">公告</Property>
+      </ToolBarLabel>
+      <Fill/>
+      <ToolBarButton>
+        <ClientEvent name="onClick">view.get(&quot;#addTemp&quot;).set(&quot;caption&quot;,&quot;增加&quot;);&#xD;
+view.get(&quot;#addTemp&quot;).show();&#xD;
+var data=view.get(&quot;#dsWaitPubNotice.data&quot;);&#xD;
+var loginUsername=&quot;${loginUsername}&quot;;&#xD;
+var loginUserCname=&quot;${loginUser.getCname()}&quot;;&#xD;
+var date = new Date(); &#xD;
+&#xD;
+data.insert({&quot;ntcPublishorId&quot;:loginUsername,&quot;ntcPublishor&quot;:loginUserCname,&quot;ntcCreatorId&quot;:loginUsername,&quot;ntcCreator&quot;:loginUserCname,&quot;ntcCreateTime&quot;:date,&quot;ntcStatus&quot;:&quot;10&quot;});</ClientEvent>
+        <Property name="caption">增加</Property>
+        <Property name="icon">url(>skin>common/icons.gif) -120px -0px</Property>
+      </ToolBarButton>
+      <ToolBarButton>
+        <ClientEvent name="onClick">var entity=view.get(&quot;#dsWaitPubNotice.data:#&quot;);&#xD;
+if(entity){&#xD;
+	view.get(&quot;#pubBtn&quot;).set(&quot;visible&quot;,true);&#xD;
+    var status=entity.get(&quot;ntcStatus&quot;);&#xD;
+    var creatorId=entity.get(&quot;ntcCreatorId&quot;);&#xD;
+    var currentUserId=&quot;${loginUsername}&quot;;&#xD;
+    if(status!=&quot;21&quot;){&#xD;
+	       dorado.MessageBox.alert(&quot;该公告暂时不可发布&quot;);&#xD;
+        }else if(creatorId!=currentUserId){&#xD;
+	       dorado.MessageBox.alert(&quot;对不起您不是起草人，不可发布该公告&quot;);&#xD;
+     }else{&#xD;
+	    view.get(&quot;#pubAuditInfo&quot;).set(&quot;caption&quot;,&quot;发布&quot;);&#xD;
+        view.get(&quot;#pubAuditInfo&quot;).show();&#xD;
+     }&#xD;
+  }else{&#xD;
+	    dorado.MessageBox.alert(&quot;必须选中一行记录！&quot;);&#xD;
+ }&#xD;
+</ClientEvent>
+        <Property name="caption">发布</Property>
+      </ToolBarButton>
+      <ToolBarButton>
+        <ClientEvent name="onClick">var entity=view.get(&quot;#dsWaitPubNotice.data:#&quot;);&#xD;
+view.get(&quot;#mainTab&quot;).set(&quot;currentTab&quot;,0)&#xD;
+view.get(&quot;#pubBtn&quot;).set(&quot;visible&quot;,false);&#xD;
+if(entity){&#xD;
+	    view.get(&quot;#pubAuditInfo&quot;).set(&quot;caption&quot;,&quot;查看&quot;);&#xD;
+        view.get(&quot;#pubAuditInfo&quot;).show();&#xD;
+}else{&#xD;
+	    dorado.MessageBox.alert(&quot;必须选中一行记录！&quot;);&#xD;
+}</ClientEvent>
+        <Property name="caption">查看</Property>
+        <Property name="icon">url(>skin>common/icons.gif) -200px -0px</Property>
+      </ToolBarButton>
+      <ToolBarButton>
+        <ClientEvent name="onClick">var entity=view.get(&quot;#dsWaitPubNotice.data:#&quot;);&#xD;
+if(entity){&#xD;
+	var status=entity.get(&quot;ntcStatus&quot;);&#xD;
+    var creatorId=entity.get(&quot;ntcCreatorId&quot;);&#xD;
+    var currentUserId=&quot;${loginUsername}&quot;;&#xD;
+    if(status!=&quot;10&quot;&amp;&amp;status!=&quot;11&quot;){&#xD;
+	     dorado.MessageBox.alert(&quot;该公告不可编辑&quot;);&#xD;
+       }else if(creatorId!=currentUserId){&#xD;
+	     dorado.MessageBox.alert(&quot;对不起您不是起草人，不可编辑该公告&quot;);&#xD;
+     }else{&#xD;
+	     view.get(&quot;#addTemp&quot;).set(&quot;caption&quot;,&quot;编辑&quot;);&#xD;
+         view.get(&quot;#addTemp&quot;).show();&#xD;
+	 }&#xD;
+ }else{&#xD;
+	    dorado.MessageBox.alert(&quot;必须选中一行记录！&quot;);&#xD;
+}&#xD;
+</ClientEvent>
+        <Property name="caption">编辑</Property>
+        <Property name="icon">url(>skin>common/icons.gif) -200px -0px</Property>
+      </ToolBarButton>
+      <ToolBarButton>
+        <ClientEvent name="onClick">var data = view.get(&quot;#searchNotice.entity&quot;);&#xD;
+dorado.MessageBox.confirm(&quot;真的要删除选中的记录吗？&quot;,function(){&#xD;
+	var entity=view.get(&quot;#dsWaitPubNotice.data:#&quot;);&#xD;
+	var updateAction=view.get(&quot;#updateTemp&quot;);&#xD;
+	if(entity){&#xD;
+	    entity.remove();&#xD;
+		updateAction.execute();&#xD;
+	  &#xD;
+	}else{&#xD;
+	    dorado.MessageBox.alert(&quot;必须选中一行记录！&quot;);&#xD;
+	}&#xD;
+});</ClientEvent>
+        <Property name="caption">删除</Property>
+        <Property name="icon">url(>skin>common/icons.gif) -140px -0px</Property>
+      </ToolBarButton>
+    </ToolBar>
+    <DataGrid id="tableMessagesRet">
+      <ClientEvent name="onDoubleClick">view.get(&quot;#pubBtn&quot;).set(&quot;visible&quot;,false);&#xD;
+view.get(&quot;#mainTab&quot;).set(&quot;currentTab&quot;,0)&#xD;
+view.get(&quot;#pubAuditInfo&quot;).set(&quot;caption&quot;,&quot;查看&quot;);&#xD;
+view.get(&quot;#pubAuditInfo&quot;).show();</ClientEvent>
+      <Property name="dataSet">dsWaitPubNotice</Property>
+      <Property name="readOnly">true</Property>
+      <Property name="filterMode">serverSide</Property>
+      <Property name="height">286px</Property>
+      <DataColumn name="ntcId">
+        <Property name="property">ntcId</Property>
+        <Property name="visible">false</Property>
+      </DataColumn>
+      <DataColumn name="ntcSubject">
+        <Property name="property">ntcSubject</Property>
+      </DataColumn>
+      <DataColumn name="ntcStatus">
+        <Property name="property">ntcStatus</Property>
+      </DataColumn>
+      <DataColumn name="ntcCreateTime">
+        <Property name="property">ntcCreateTime</Property>
+      </DataColumn>
+      <DataColumn name="ntcCreator">
+        <Property name="property">ntcCreator</Property>
+      </DataColumn>
+      <DataColumn name="ntcAuditor">
+        <Property name="property">ntcAuditor</Property>
+      </DataColumn>
+      <DataColumn name="ntcPublishor">
+        <Property name="property">ntcPublishor</Property>
+      </DataColumn>
+      <DataColumn name="ntcContent">
+        <Property name="property">ntcContent</Property>
+      </DataColumn>
+      <DataColumn name="ntcPublishTime">
+        <Property name="property">ntcPublishTime</Property>
+      </DataColumn>
+    </DataGrid>
+    <ToolBar>
+      <Fill/>
+      <DataPilot>
+        <Property name="dataSet">dsWaitPubNotice</Property>
+      </DataPilot>
+    </ToolBar>
+    <Dialog id="pubAuditInfo">
+      <ClientEvent name="onClose">//view.get(&quot;#dsWaitPubNotice&quot;).flush();&#xD;
+//view.get(&quot;#dsWaitPubNotice.data:#&quot;).cancel();</ClientEvent>
+      <ClientEvent name="onHide">//view.get(&quot;#dsWaitPubNotice&quot;).flush();&#xD;
+//view.get(&quot;#dsWaitPubNotice.data:#&quot;).cancel();</ClientEvent>
+      <Property name="height">450px</Property>
+      <Property name="width">800px</Property>
+      <Property name="icon">url(>skin>common/icons.gif) -280px -100px</Property>
+      <Buttons/>
+      <Children>
+        <TabControl id="mainTab">
+          <ClientEvent name="onTabChange">var data=view.get(&quot;#dsWaitPubNotice.data:#&quot;);&#xD;
+var num = Math.floor(Math.random()*1000);//加在url中，好流程图自动刷新&#xD;
+var processId=data.get(&quot;processInstanceId&quot;);&#xD;
+var url = &quot;com.jdry.pms.ufloDemo.view.UfloDemo.d?taskId=&quot;+processId+&quot;&amp;num=&quot;+num;&#xD;
+view.id(&quot;processTab&quot;).set(&quot;path&quot;,url);&#xD;
+</ClientEvent>
+          <ControlTab>
+            <Property name="caption">公告信息</Property>
+            <Panel>
+              <Buttons>
+                <Button id="pubBtn">
+                  <ClientEvent name="onClick">dorado.MessageBox.confirm(&quot;确定发布？&quot;,function(){&#xD;
+	var updateTemp=view.get(&quot;#updateTemp&quot;);&#xD;
+	var data=view.get(&quot;#dsWaitPubNotice.data:#&quot;);&#xD;
+	var nowDate= new Date();&#xD;
+	data.set(&quot;ntcStatus&quot;,&quot;30&quot;);&#xD;
+	data.set(&quot;ntcPublishTime&quot;,nowDate);&#xD;
+	updateTemp.execute(function(result){&#xD;
+	dorado.MessageBox.alert(&quot;发布成功！&quot;);&#xD;
+	view.get(&quot;#dsWaitPubNotice&quot;).flush();&#xD;
+	view.get(&quot;#pubAuditInfo&quot;).hide();&#xD;
+	});&#xD;
+});</ClientEvent>
+                  <Property name="caption">发布</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -20px -0px</Property>
+                </Button>
+              </Buttons>
+              <Children>
+                <AutoForm id="pubAuditForm">
+                  <Property name="cols">*,*</Property>
+                  <Property name="labelAlign">right</Property>
+                  <Property name="dataSet">dsWaitPubNotice</Property>
+                  <Property name="readOnly">true</Property>
+                  <AutoFormElement>
+                    <Property name="name">ntcSubject</Property>
+                    <Property name="property">ntcSubject</Property>
+                    <Editor/>
+                  </AutoFormElement>
+                  <AutoFormElement>
+                    <Property name="name">ntcAuditor</Property>
+                    <Property name="property">ntcAuditor</Property>
+                    <Editor/>
+                  </AutoFormElement>
+                  <AutoFormElement layoutConstraint="colSpan:2">
+                    <Property name="name">ntcContent</Property>
+                    <Property name="property">ntcContent</Property>
+                    <Editor>
+                      <TextArea layoutConstraint="colSpan:2">
+                        <Property name="height">100</Property>
+                      </TextArea>
+                    </Editor>
+                  </AutoFormElement>
+                  <AutoFormElement layoutConstraint="colSpan:2">
+                    <Property name="name">ntcCreator</Property>
+                    <Property name="property">ntcCreator</Property>
+                    <Property name="readOnly">true</Property>
+                    <Editor/>
+                  </AutoFormElement>
+                  <AutoFormElement>
+                    <Property name="name">ntcCreateTime</Property>
+                    <Property name="property">ntcCreateTime</Property>
+                    <Property name="readOnly">true</Property>
+                    <Editor/>
+                  </AutoFormElement>
+                  <AutoFormElement>
+                    <Property name="name">ntcStatus</Property>
+                    <Property name="property">ntcStatus</Property>
+                    <Property name="readOnly">true</Property>
+                    <Editor/>
+                  </AutoFormElement>
+                  <AutoFormElement>
+                    <Property name="name">ntcCreatorId</Property>
+                    <Property name="property">ntcCreatorId</Property>
+                    <Property name="visible">false</Property>
+                    <Editor/>
+                  </AutoFormElement>
+                  <AutoFormElement>
+                    <Property name="name">ntcPublishor</Property>
+                    <Property name="property">ntcPublishor</Property>
+                    <Property name="visible">false</Property>
+                    <Editor/>
+                  </AutoFormElement>
+                </AutoForm>
+                <DataGrid id="pubAuditInfoGrid">
+                  <Property name="dataSet">dsWaitPubNotice</Property>
+                  <Property name="dataPath">#.msgandnoticeNoticeAuditinfos</Property>
+                  <Property name="readOnly">true</Property>
+                  <DataColumn name="ntcPassFlag">
+                    <Property name="property">ntcPassFlag</Property>
+                  </DataColumn>
+                  <DataColumn name="ntcAuditContnt">
+                    <Property name="property">ntcAuditContnt</Property>
+                  </DataColumn>
+                  <DataColumn name="ntcAuditor">
+                    <Property name="property">ntcAuditor</Property>
+                  </DataColumn>
+                  <DataColumn name="ntcCreateTime">
+                    <Property name="property">ntcCreateTime</Property>
+                  </DataColumn>
+                </DataGrid>
+              </Children>
+              <Tools/>
+            </Panel>
+          </ControlTab>
+          <IFrameTab id="processTab">
+            <Property name="caption">查看流程</Property>
+          </IFrameTab>
+        </TabControl>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <Dialog id="viewAuditInfo">
+      <ClientEvent name="onClose">//view.get(&quot;#dsWaitPubNotice&quot;).flush();&#xD;
+//view.get(&quot;#dsWaitPubNotice.data:#&quot;).cancel();</ClientEvent>
+      <ClientEvent name="onHide">//view.get(&quot;#dsWaitPubNotice&quot;).flush();&#xD;
+//view.get(&quot;#dsWaitPubNotice.data:#&quot;).cancel();</ClientEvent>
+      <Property name="height">500px</Property>
+      <Property name="width">800px</Property>
+      <Property name="icon">url(>skin>common/icons.gif) -280px -100px</Property>
+      <Buttons/>
+      <Children>
+        <AutoForm id="viewAuditForm">
+          <Property name="cols">*,*</Property>
+          <Property name="labelAlign">right</Property>
+          <Property name="dataSet">dsWaitPubNotice</Property>
+          <Property name="readOnly">true</Property>
+          <AutoFormElement>
+            <Property name="name">ntcSubject</Property>
+            <Property name="property">ntcSubject</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">ntcAuditor</Property>
+            <Property name="property">ntcAuditor</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:2">
+            <Property name="name">ntcContent</Property>
+            <Property name="property">ntcContent</Property>
+            <Editor>
+              <TextArea layoutConstraint="colSpan:2">
+                <Property name="height">100</Property>
+              </TextArea>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:2">
+            <Property name="name">ntcCreator</Property>
+            <Property name="property">ntcCreator</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">ntcCreateTime</Property>
+            <Property name="property">ntcCreateTime</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">ntcStatus</Property>
+            <Property name="property">ntcStatus</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">ntcCreatorId</Property>
+            <Property name="property">ntcCreatorId</Property>
+            <Property name="visible">false</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">ntcPublishor</Property>
+            <Property name="property">ntcPublishor</Property>
+            <Property name="visible">false</Property>
+            <Editor/>
+          </AutoFormElement>
+        </AutoForm>
+        <DataGrid id="viewAuditInfoGrid">
+          <Property name="dataSet">dsWaitPubNotice</Property>
+          <Property name="dataPath">#.msgandnoticeNoticeAuditinfos</Property>
+          <Property name="readOnly">true</Property>
+          <DataColumn name="ntcPassFlag">
+            <Property name="property">ntcPassFlag</Property>
+          </DataColumn>
+          <DataColumn name="ntcAuditContnt">
+            <Property name="property">ntcAuditContnt</Property>
+          </DataColumn>
+          <DataColumn name="ntcAuditor">
+            <Property name="property">ntcAuditor</Property>
+          </DataColumn>
+          <DataColumn name="ntcCreateTime">
+            <Property name="property">ntcCreateTime</Property>
+          </DataColumn>
+        </DataGrid>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <Dialog id="addTemp">
+      <ClientEvent name="onClose">//view.get(&quot;#dsNotice&quot;).flush();&#xD;
+//view.get(&quot;#dsWaitPubNotice&quot;).flush();&#xD;
+view.get(&quot;#dsWaitPubNotice.data:#&quot;).cancel();&#xD;
+</ClientEvent>
+      <ClientEvent name="onHide">//view.get(&quot;#dsNotice&quot;).flush();&#xD;
+view.get(&quot;#dsWaitPubNotice.data:#&quot;).cancel();&#xD;
+//view.get(&quot;#dsWaitPubNotice&quot;).flush();&#xD;
+</ClientEvent>
+      <Property name="height">400px</Property>
+      <Property name="width">800px</Property>
+      <Property name="icon">url(>skin>common/icons.gif) -280px -100px</Property>
+      <Property name="closeAction">hide</Property>
+      <Property name="closeable">false</Property>
+      <Buttons>
+        <Button>
+          <ClientEvent name="onClick">dorado.MessageBox.confirm(&quot;确定保存？&quot;,function(){&#xD;
+	var updateTemp=view.get(&quot;#updateTemp&quot;);&#xD;
+	var data=view.get(&quot;#dsWaitPubNotice.data:#&quot;);&#xD;
+	data.set(&quot;ntcStatus&quot;,&quot;10&quot;);&#xD;
+	updateTemp.execute(function(result){&#xD;
+	dorado.MessageBox.alert(&quot;保存成功！&quot;);&#xD;
+	view.get(&quot;#addTemp&quot;).hide();&#xD;
+	});&#xD;
+});</ClientEvent>
+          <Property name="caption">暂存</Property>
+        </Button>
+        <Button>
+          <ClientEvent name="onClick">dorado.MessageBox.confirm(&quot;确定保存？&quot;,function(){&#xD;
+	var updateTemp=view.get(&quot;#updateTemp&quot;);&#xD;
+	var data=view.get(&quot;#dsWaitPubNotice.data:#&quot;);&#xD;
+	data.set(&quot;ntcStatus&quot;,&quot;20&quot;);&#xD;
+	updateTemp.execute(function(result){&#xD;
+	dorado.MessageBox.alert(&quot;保存成功！&quot;);&#xD;
+	view.get(&quot;#addTemp&quot;).hide();&#xD;
+	});&#xD;
+});</ClientEvent>
+          <Property name="caption">提交</Property>
+          <Property name="icon">url(>skin>common/icons.gif) -20px -0px</Property>
+        </Button>
+        <Button>
+          <ClientEvent name="onClick">view.get(&quot;#addTemp&quot;).hide();&#xD;
+&#xD;
+</ClientEvent>
+          <Property name="caption">关闭</Property>
+          <Property name="icon">url(>skin>common/icons.gif) -40px -0px</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm id="addNoticeForm">
+          <Property name="cols">*,*</Property>
+          <Property name="labelAlign">right</Property>
+          <Property name="dataSet">dsWaitPubNotice</Property>
+          <AutoFormElement>
+            <Property name="name">ntcSubject</Property>
+            <Property name="property">ntcSubject</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">ntcAuditor</Property>
+            <Property name="property">ntcAuditor</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:2">
+            <Property name="name">ntcContent</Property>
+            <Property name="property">ntcContent</Property>
+            <Editor>
+              <TextArea layoutConstraint="colSpan:2">
+                <Property name="height">100</Property>
+              </TextArea>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:2">
+            <Property name="name">ntcCreator</Property>
+            <Property name="property">ntcCreator</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">ntcCreateTime</Property>
+            <Property name="property">ntcCreateTime</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">ntcStatus</Property>
+            <Property name="property">ntcStatus</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">ntcCreatorId</Property>
+            <Property name="property">ntcCreatorId</Property>
+            <Property name="visible">false</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">ntcPublishor</Property>
+            <Property name="property">ntcPublishor</Property>
+            <Property name="visible">false</Property>
+            <Editor/>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <UpdateAction id="updateTemp">
+      <Property name="dataResolver">noticeView#saveNotice</Property>
+      <UpdateItem>
+        <Property name="dataSet">dsWaitPubNotice</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <AjaxAction id="getBusIdAction">
+      <Property name="service">messageView#getBusinessId</Property>
+      <Property name="async">false</Property>
+    </AjaxAction>
+  </View>
+</ViewConfig>

@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="TpropertyOwner">
+      <Property name="creationType">com.jdry.pms.basicInfo.pojo.PropertyOwner</Property>
+      <PropertyDef name="ownerId">
+        <Property></Property>
+        <Property name="label">业主ID</Property>
+      </PropertyDef>
+      <PropertyDef name="roomId">
+        <Property></Property>
+        <Property name="label">房间ID</Property>
+      </PropertyDef>
+      <PropertyDef name="roomNo">
+        <Property></Property>
+        <Property name="label">房间号</Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="ownerName">
+        <Property></Property>
+        <Property name="label">业主姓名</Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="phone">
+        <Property></Property>
+        <Property name="label">手机号</Property>
+        <Property name="required">true</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">11</Property>
+          <Property name="resultMessage">手机号长度不超过11位</Property>
+        </Validator>
+        <Validator name="validator2" type="regExp">
+          <Property name="whiteRegExp">/^([0-9]{11})$/</Property>
+          <Property name="resultMessage">手机号格式不正确</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="cardId">
+        <Property></Property>
+        <Property name="label">身份证号</Property>
+        <Property name="required">true</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">18</Property>
+          <Property name="resultMessage">身份证号长度不超过18位</Property>
+        </Validator>
+        <Validator name="validator2" type="regExp">
+          <Property name="whiteRegExp">/^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$|^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$/</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="carId">
+        <Property></Property>
+        <Property name="label">车牌号</Property>
+      </PropertyDef>
+      <PropertyDef name="ownerType">
+        <Property></Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Collection>
+              <Entity>
+                <Property name="key">0</Property>
+                <Property name="value">一般</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">1</Property>
+                <Property name="value">重要</Property>
+              </Entity>
+            </Collection>
+          </Property>
+        </Property>
+        <Property name="label">业主类型</Property>
+      </PropertyDef>
+      <PropertyDef name="makeRoomDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">交房日期</Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="decorateDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">装修日期</Property>
+      </PropertyDef>
+      <PropertyDef name="remark">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <PropertyDef name="telPhone">
+        <Property></Property>
+        <Property name="label">联系电话</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">13</Property>
+          <Property name="resultMessage">联系电话不超过13位</Property>
+        </Validator>
+        <Validator name="validator2" type="regExp">
+          <Property name="whiteRegExp">(\(\d{3,4}\)|\d{3,4}-|\s)?\d{8}</Property>
+          <Property name="resultMessage">联系电话格式不正确</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="password">
+        <Property></Property>
+        <Property name="label">密码</Property>
+      </PropertyDef>
+      <PropertyDef name="birthDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">出生日期</Property>
+      </PropertyDef>
+      <PropertyDef name="ownerIdentity">
+        <Property></Property>
+        <Property name="label">身份</Property>
+      </PropertyDef>
+      <PropertyDef name="parentId">
+        <Property></Property>
+        <Property name="label">父ID</Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View>
+    <Property name="packages">fontawesome</Property>
+    <DataSet id="dsOwner">
+      <Property name="dataType">[TpropertyOwner]</Property>
+      <Property name="dataProvider">ownerInfoView#queryOwnerInfo</Property>
+      <Property name="pageSize">10</Property>
+      <Property name="parameter"></Property>
+    </DataSet>
+    <UpdateAction id="updateOwner">
+      <Property name="dataResolver">ownerInfoView#saveOwnerInfo</Property>
+      <UpdateItem>
+        <Property name="dataSet">dsOwner</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <FieldSet>
+      <Property name="caption">查询</Property>
+      <Property name="buttonAlign">right</Property>
+      <Buttons>
+        <Button>
+          <ClientEvent name="onClick">view.set(&quot;#searchOwner.entity&quot;,{});</ClientEvent>
+          <Property name="caption">清空</Property>
+        </Button>
+        <Button>
+          <ClientEvent name="onClick">var data = view.get(&quot;#searchOwner.entity&quot;);&#xD;
+with (view.get(&quot;#dsOwner&quot;)) {&#xD;
+	set(&quot;parameter&quot;, data);&#xD;
+	flush();&#xD;
+}&#xD;
+&#xD;
+</ClientEvent>
+          <Property name="caption">查询</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm id="searchOwner">
+          <Property name="dataType">TpropertyOwner</Property>
+          <Property name="cols">*,*,*</Property>
+          <Property name="labelSeparator">：</Property>
+          <AutoFormElement>
+            <Property name="name">roomNo</Property>
+            <Property name="property">roomNo</Property>
+            <Property name="label">房间号</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">ownerName</Property>
+            <Property name="property">ownerName</Property>
+            <Property name="label">业主姓名</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">ownerType</Property>
+            <Property name="property">ownerType</Property>
+            <Property name="label">业主类型</Property>
+            <Property name="editable">false</Property>
+            <Editor>
+              <TextEditor>
+                <Property name="mapping">
+                  <Property name="mapValues">
+                    <Collection>
+                      <Entity>
+                        <Property name="key">0</Property>
+                        <Property name="value">一般</Property>
+                      </Entity>
+                      <Entity>
+                        <Property name="key">1</Property>
+                        <Property name="value">重要</Property>
+                      </Entity>
+                    </Collection>
+                  </Property>
+                </Property>
+                <Property name="trigger">autoMappingDropDown1</Property>
+              </TextEditor>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">makeRoomDate</Property>
+            <Property name="property">makeRoomDate</Property>
+            <Property name="label">交房日期</Property>
+            <Property name="editable">false</Property>
+            <Editor>
+              <TextEditor>
+                <Property name="trigger">defaultDateDropDown</Property>
+                <Property name="dataType">Date</Property>
+                <Property name="displayFormat">Y-m-d</Property>
+              </TextEditor>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">decorateDate</Property>
+            <Property name="property">decorateDate</Property>
+            <Property name="label">装修日期</Property>
+            <Property name="editable">false</Property>
+            <Editor>
+              <TextEditor>
+                <Property name="dataType">Date</Property>
+                <Property name="displayFormat">Y-m-d</Property>
+                <Property name="trigger">defaultDateDropDown</Property>
+              </TextEditor>
+            </Editor>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+    </FieldSet>
+    <ToolBar>
+      <Property name="fixRight">true</Property>
+      <ToolBarLabel>
+        <Property name="text">业主信息</Property>
+      </ToolBarLabel>
+      <Fill/>
+      <ToolBarButton>
+        <ClientEvent name="onClick">view.get(&quot;#addOwner&quot;).set(&quot;caption&quot;,&quot;增加&quot;);&#xD;
+view.get(&quot;#addOwner&quot;).show();&#xD;
+var data=view.get(&quot;#dsOwner.data&quot;);&#xD;
+data.insert();</ClientEvent>
+        <Property name="caption">新增</Property>
+        <Property name="iconClass">fa fa-plus fa-inverse</Property>
+        <Property name="style">
+          <Property name="color">red</Property>
+        </Property>
+        <Property name="ignored">true</Property>
+      </ToolBarButton>
+      <ToolBarButton>
+        <ClientEvent name="onClick">view.get(&quot;#addOwner&quot;).set(&quot;caption&quot;,&quot;编辑&quot;);&#xD;
+view.get(&quot;#addOwner&quot;).show();</ClientEvent>
+        <Property name="caption">编辑</Property>
+        <Property name="iconClass">fa fa-edit</Property>
+        <Property name="style">
+          <Property name="key"></Property>
+          <Property name="key1"></Property>
+          <Property name="key2"></Property>
+        </Property>
+      </ToolBarButton>
+      <ToolBarButton>
+        <ClientEvent name="onClick">dorado.MessageBox.confirm(&quot;真的要删除选中的记录吗？&quot;,function(){&#xD;
+	var entity=view.get(&quot;#dsOwner.data:#&quot;);&#xD;
+	var updateOwnerAction=view.get(&quot;#updateOwner&quot;);&#xD;
+	if(entity){&#xD;
+	    entity.remove();&#xD;
+		updateOwnerAction.execute();&#xD;
+	}else{&#xD;
+	    dorado.MessageBox.alert(&quot;必须选中一行记录！&quot;);&#xD;
+	}&#xD;
+});&#xD;
+&#xD;
+</ClientEvent>
+        <Property name="caption">删除</Property>
+        <Property name="iconClass">fa fa-minus</Property>
+      </ToolBarButton>
+    </ToolBar>
+    <DataGrid>
+      <Property name="dataSet">dsOwner</Property>
+      <Property name="height">317px</Property>
+      <Property name="readOnly">true</Property>
+      <Property name="className">table table-striped</Property>
+      <DataColumn name="ownerId">
+        <Property name="property">ownerId</Property>
+        <Property name="visible">false</Property>
+      </DataColumn>
+      <DataColumn name="roomId">
+        <Property name="property">roomId</Property>
+        <Property name="visible">false</Property>
+      </DataColumn>
+      <DataColumn name="roomNo">
+        <Property name="property">roomNo</Property>
+      </DataColumn>
+      <DataColumn name="ownerName">
+        <Property name="property">ownerName</Property>
+      </DataColumn>
+      <DataColumn name="phone">
+        <Property name="property">phone</Property>
+      </DataColumn>
+      <DataColumn name="telPhone">
+        <Property name="property">telPhone</Property>
+      </DataColumn>
+      <DataColumn name="cardId">
+        <Property name="property">cardId</Property>
+      </DataColumn>
+      <DataColumn name="birthDate">
+        <Property name="property">birthDate</Property>
+      </DataColumn>
+      <DataColumn name="carId">
+        <Property name="property">carId</Property>
+      </DataColumn>
+      <DataColumn name="ownerType">
+        <Property name="property">ownerType</Property>
+      </DataColumn>
+      <DataColumn name="makeRoomDate">
+        <Property name="property">makeRoomDate</Property>
+      </DataColumn>
+      <DataColumn name="decorateDate">
+        <Property name="property">decorateDate</Property>
+      </DataColumn>
+      <DataColumn name="remark">
+        <Property name="property">remark</Property>
+      </DataColumn>
+    </DataGrid>
+    <ToolBar>
+      <DataPilot>
+        <Property name="itemCodes">pages</Property>
+        <Property name="dataSet">dsOwner</Property>
+      </DataPilot>
+    </ToolBar>
+    <Dialog id="addOwner">
+      <ClientEvent name="onClose">view.get(&quot;#dsOwner.data:#&quot;).cancel();</ClientEvent>
+      <Property name="height">500px</Property>
+      <Property name="width">800px</Property>
+      <Property name="icon">url(>skin>common/icons.gif) -280px -100px</Property>
+      <Buttons>
+        <Button>
+          <ClientEvent name="onClick">dorado.MessageBox.confirm(&quot;确定保存？&quot;,function(){&#xD;
+	var updateOwner=view.get(&quot;#updateOwner&quot;);&#xD;
+	updateOwner.execute(function(result){&#xD;
+	&#xD;
+	dorado.MessageBox.alert(&quot;保存成功！&quot;);&#xD;
+	view.get(&quot;#addOwner&quot;).hide();&#xD;
+	view.get(&quot;#dsOwner&quot;).flush();&#xD;
+	});&#xD;
+});</ClientEvent>
+          <Property name="caption">保存</Property>
+          <Property name="iconClass">fa fa-check</Property>
+        </Button>
+        <Button>
+          <ClientEvent name="onClick">view.get(&quot;#addOwner&quot;).hide();&#xD;
+view.get(&quot;#dsOwner.data:#&quot;).cancel();&#xD;
+&#xD;
+</ClientEvent>
+          <Property name="caption">取消</Property>
+          <Property name="iconClass">fa fa-times</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm>
+          <Property name="dataSet">dsOwner</Property>
+          <AutoFormElement>
+            <Property name="name">roomNo</Property>
+            <Property name="property">roomNo</Property>
+            <Property name="editable">false</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">ownerName</Property>
+            <Property name="property">ownerName</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">phone</Property>
+            <Property name="property">phone</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">telPhone</Property>
+            <Property name="property">telPhone</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">cardId</Property>
+            <Property name="property">cardId</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">birthDate</Property>
+            <Property name="property">birthDate</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">carId</Property>
+            <Property name="property">carId</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">ownerType</Property>
+            <Property name="property">ownerType</Property>
+            <Property name="editable">false</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">makeRoomDate</Property>
+            <Property name="property">makeRoomDate</Property>
+            <Property name="editable">false</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">decorateDate</Property>
+            <Property name="property">decorateDate</Property>
+            <Property name="editable">false</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:2">
+            <Property name="name">remark</Property>
+            <Property name="property">remark</Property>
+            <Editor>
+              <TextArea/>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">roomId</Property>
+            <Property name="property">roomId</Property>
+            <Property name="visible">false</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">ownerId</Property>
+            <Property name="property">ownerId</Property>
+            <Property name="visible">false</Property>
+            <Editor/>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <HtmlContainer/>
+  </View>
+</ViewConfig>

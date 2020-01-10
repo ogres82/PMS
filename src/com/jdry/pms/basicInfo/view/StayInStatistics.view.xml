@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="Statistics">
+      <PropertyDef name="buildName">
+        <Property name="label">楼盘</Property>
+      </PropertyDef>
+      <PropertyDef name="roomNum">
+        <Property name="label">房间数</Property>
+      </PropertyDef>
+      <PropertyDef name="ownerNum">
+        <Property name="label">业主数</Property>
+      </PropertyDef>
+      <PropertyDef name="tenants">
+        <Property name="label">租户数</Property>
+      </PropertyDef>
+      <PropertyDef name="vacancyNum">
+        <Property name="label">空置数</Property>
+      </PropertyDef>
+      <PropertyDef name="moveIn">
+        <Property name="label">迁入数</Property>
+      </PropertyDef>
+      <PropertyDef name="moveOut">
+        <Property name="label">迁出数</Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View>
+    <DataSet id="dsStatistics">
+      <Property name="dataType">[Statistics]</Property>
+    </DataSet>
+    <FieldSet>
+      <Property name="buttonAlign">right</Property>
+      <Buttons>
+        <Button>
+          <Property name="caption">清空</Property>
+        </Button>
+        <Button>
+          <Property name="caption">查询</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm id="searchStatistics">
+          <Property name="cols">*,*,*</Property>
+          <Property name="labelWidth">100</Property>
+          <AutoFormElement>
+            <Property name="label">楼盘</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="label">发生日期(开始)</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="label">发生日期(结束)</Property>
+            <Editor/>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+    </FieldSet>
+    <ToolBar>
+      <ToolBarLabel>
+        <Property name="text">业主入住统计</Property>
+      </ToolBarLabel>
+      <Fill/>
+    </ToolBar>
+    <DataGrid>
+      <Property name="dataSet">dsStatistics</Property>
+      <DataColumn name="buildName">
+        <Property name="property">buildName</Property>
+      </DataColumn>
+      <DataColumn name="roomNum">
+        <Property name="property">roomNum</Property>
+      </DataColumn>
+      <DataColumn name="ownerNum">
+        <Property name="property">ownerNum</Property>
+      </DataColumn>
+      <DataColumn name="tenants">
+        <Property name="property">tenants</Property>
+      </DataColumn>
+      <DataColumn name="vacancyNum">
+        <Property name="property">vacancyNum</Property>
+      </DataColumn>
+      <DataColumn name="moveIn">
+        <Property name="property">moveIn</Property>
+      </DataColumn>
+      <DataColumn name="moveOut">
+        <Property name="property">moveOut</Property>
+      </DataColumn>
+    </DataGrid>
+  </View>
+</ViewConfig>

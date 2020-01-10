@@ -1,0 +1,917 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="msgSend">
+      <Property name="creationType">com.jdry.pms.msgandnotice.pojo.MessageSendMain</Property>
+      <PropertyDef name="msgSendId">
+        <Property name="dataType">String</Property>
+      </PropertyDef>
+      <PropertyDef name="msgContent">
+        <Property name="dataType">String</Property>
+        <Property name="label">消息内容</Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="msgCreateTime">
+        <Property name="dataType">DateTime</Property>
+        <Property name="label">创建时间</Property>
+        <Property name="displayFormat">Y-m-d H:i:s</Property>
+      </PropertyDef>
+      <PropertyDef name="msfSendTime">
+        <Property name="dataType">DateTime</Property>
+        <Property name="label">发送时间</Property>
+        <Property name="displayFormat">Y-m-d H:i:s</Property>
+      </PropertyDef>
+      <PropertyDef name="msgFlag">
+        <Property name="dataType">String</Property>
+        <Property name="label">短信/APP</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Collection>
+              <Entity>
+                <Property name="key">0</Property>
+                <Property name="value">短信</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">1</Property>
+                <Property name="value">app</Property>
+              </Entity>
+            </Collection>
+          </Property>
+        </Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="msgCreatorId">
+        <Property name="dataType">String</Property>
+      </PropertyDef>
+      <PropertyDef name="msgSenderId">
+        <Property name="dataType">String</Property>
+      </PropertyDef>
+      <PropertyDef name="msgTempId">
+        <Property name="dataType">String</Property>
+        <Property name="label">短信模板</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;messageSendView#findMapTemp&quot;).getResult()}</Property>
+        </Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="msgReceiverId">
+        <Property name="dataType">String</Property>
+      </PropertyDef>
+      <PropertyDef name="msgReceiverIds">
+        <Property name="dataType">String</Property>
+      </PropertyDef>
+      <PropertyDef name="msgReceiverNames">
+        <Property name="label">接收人</Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="msgCreatorName">
+        <Property name="label">创建人</Property>
+      </PropertyDef>
+      <PropertyDef name="msgSenderName">
+        <Property name="label">发送人</Property>
+      </PropertyDef>
+      <PropertyDef name="successFlag">
+        <Property name="dataType">String</Property>
+        <Property name="label">是否发送成功</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Collection>
+              <Entity>
+                <Property name="key">0</Property>
+                <Property name="value">否</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">1</Property>
+                <Property name="value">是</Property>
+              </Entity>
+            </Collection>
+          </Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="sendFlag">
+        <Property name="dataType">String</Property>
+        <Property name="label">是否发送</Property>
+        <Property name="defaultValue">0</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Collection>
+              <Entity>
+                <Property name="key">0</Property>
+                <Property name="value">否</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">1</Property>
+                <Property name="value">是</Property>
+              </Entity>
+            </Collection>
+          </Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="msgTempTitle">
+        <Property name="label">短信模板</Property>
+      </PropertyDef>
+      <PropertyDef name="msgCreateTimeEnd">
+        <Property name="label">创建时间止</Property>
+        <Property name="dataType">DateTime</Property>
+        <Property name="displayFormat">Y-m-d H:i:s</Property>
+      </PropertyDef>
+      <PropertyDef name="msfSendTimeEnd">
+        <Property name="label">发送时间止</Property>
+        <Property name="dataType">DateTime</Property>
+        <Property name="displayFormat">Y-m-d H:i:s</Property>
+      </PropertyDef>
+      <PropertyDef name="msgReceiverPhone">
+        <Property name="dataType">String</Property>
+        <Property name="label">接收人电话</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="propertyOwner">
+      <Property name="creationType">com.jdry.pms.basicInfo.pojo.PropertyOwner</Property>
+      <PropertyDef name="ownerId">
+        <Property name="dataType">String</Property>
+      </PropertyDef>
+      <PropertyDef name="roomId">
+        <Property name="dataType">String</Property>
+      </PropertyDef>
+      <PropertyDef name="roomNo">
+        <Property name="dataType">String</Property>
+        <Property name="label">房间号</Property>
+      </PropertyDef>
+      <PropertyDef name="ownerName">
+        <Property name="dataType">String</Property>
+        <Property name="label">业主姓名</Property>
+      </PropertyDef>
+      <PropertyDef name="phone">
+        <Property name="dataType">String</Property>
+        <Property name="label">业主电话</Property>
+      </PropertyDef>
+      <PropertyDef name="cardId">
+        <Property name="dataType">String</Property>
+      </PropertyDef>
+      <PropertyDef name="carId">
+        <Property name="dataType">String</Property>
+      </PropertyDef>
+      <PropertyDef name="ownerType">
+        <Property name="dataType">String</Property>
+      </PropertyDef>
+      <PropertyDef name="makeRoomDate">
+        <Property name="dataType">Date</Property>
+      </PropertyDef>
+      <PropertyDef name="decorateDate">
+        <Property name="dataType">Date</Property>
+      </PropertyDef>
+      <PropertyDef name="remark">
+        <Property name="dataType">String</Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="msgTemp">
+      <Property name="creationType">com.jdry.pms.msgandnotice.pojo.MessageTempMain</Property>
+      <PropertyDef name="msgTempId">
+        <Property name="dataType">String</Property>
+      </PropertyDef>
+      <PropertyDef name="msgTempSubject">
+        <Property name="dataType">String</Property>
+      </PropertyDef>
+      <PropertyDef name="msgTempContent">
+        <Property name="dataType">String</Property>
+      </PropertyDef>
+      <PropertyDef name="msgTempCtime">
+        <Property name="dataType">Date</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="defaultUser">
+      <Property name="creationType">com.bstek.bdf2.core.model.DefaultUser</Property>
+      <PropertyDef name="username">
+        <Property name="dataType">String</Property>
+      </PropertyDef>
+      <PropertyDef name="cname">
+        <Property name="dataType">String</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="AllArea">
+      <Property name="creationType">com.jdry.pms.basicInfo.pojo.AllArea</Property>
+      <PropertyDef name="buildId">
+        <Property></Property>
+        <Property name="label">楼盘ID</Property>
+      </PropertyDef>
+      <PropertyDef name="buildName">
+        <Property></Property>
+        <Property name="label">楼盘名称</Property>
+        <Property name="required">true</Property>
+        <Validator type="ajax">
+          <Property name="name">checkName</Property>
+          <Property name="executingMessage">正在校验...</Property>
+          <Property name="service">allAreaView#checkAllArea</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="remark">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="AreaProperty">
+      <Property name="creationType">com.jdry.pms.basicInfo.pojo.AreaProperty</Property>
+      <PropertyDef name="communityId">
+        <Property></Property>
+        <Property name="label">小区ID</Property>
+      </PropertyDef>
+      <PropertyDef name="communityName">
+        <Property></Property>
+        <Property name="label">小区名称</Property>
+      </PropertyDef>
+      <PropertyDef name="belongBuildId">
+        <Property></Property>
+        <Property name="label">所属楼盘</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;areaPropertyView#getAllAreaId&quot;).getResult()}</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="remark">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <PropertyDef name="belongBuildName">
+        <Property name="label">所属楼盘</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="BuildingProperty">
+      <Property name="creationType">com.jdry.pms.basicInfo.pojo.BuildingProperty</Property>
+      <PropertyDef name="storiedBuildId">
+        <Property></Property>
+        <Property name="label">楼栋ID</Property>
+      </PropertyDef>
+      <PropertyDef name="storiedBuildName">
+        <Property></Property>
+        <Property name="label">楼栋名称</Property>
+        <Validator type="ajax">
+          <Property name="name">checkName</Property>
+          <Property name="service">buildingPropertyView#checkBuidName</Property>
+          <Property name="executingMessage">正在验证...</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="belongCommId">
+        <Property></Property>
+        <Property name="label">所属小区</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;buildingPropertyView#getCommId&quot;).getResult()}</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="remark">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="HouseProperty">
+      <Property name="creationType">com.jdry.pms.basicInfo.pojo.HouseProperty</Property>
+      <PropertyDef name="roomId">
+        <Property></Property>
+        <Property name="label">房间ID</Property>
+      </PropertyDef>
+      <PropertyDef name="roomNo">
+        <Property></Property>
+        <Property name="label">房间号</Property>
+        <Property name="required">true</Property>
+      </PropertyDef>
+      <PropertyDef name="belongSbId">
+        <Property></Property>
+        <Property name="label">所属楼栋</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;housePropertyView#getBuilding&quot;).getResult()}</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="houseType">
+        <Property></Property>
+        <Property name="label">户型</Property>
+      </PropertyDef>
+      <PropertyDef name="buildArea">
+        <Property name="dataType">Float</Property>
+        <Property name="label">建筑面积</Property>
+        <Property name="displayFormat">#.00</Property>
+      </PropertyDef>
+      <PropertyDef name="withinArea">
+        <Property name="dataType">Float</Property>
+        <Property name="label">套内面积</Property>
+        <Property name="displayFormat">#.00</Property>
+      </PropertyDef>
+      <PropertyDef name="roomType">
+        <Property></Property>
+        <Property name="label">房间类型</Property>
+        <Property name="required">true</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;housePropertyView#getRoomType&quot;).getResult()}</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="roomState">
+        <Property></Property>
+        <Property name="label">房间状态</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;housePropertyView#getRoomState&quot;).getResult()}</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="chargeObject">
+        <Property></Property>
+        <Property name="label">收费对象</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;housePropertyView#getChargeObject&quot;).getResult()}</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="remark">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <PropertyDef name="buildName">
+        <Property name="label">所属楼盘</Property>
+      </PropertyDef>
+      <PropertyDef name="buildId"/>
+      <PropertyDef name="areaName">
+        <Property name="label">所属小区</Property>
+      </PropertyDef>
+      <PropertyDef name="areaId"/>
+      <PropertyDef name="buildingName">
+        <Property name="label">所属楼宇</Property>
+      </PropertyDef>
+      <PropertyDef name="buildingId"/>
+    </DataType>
+  </Model>
+  <View>
+    <FieldSet>
+      <Property name="caption">查询</Property>
+      <Property name="buttonAlign">right</Property>
+      <Buttons>
+        <Button>
+          <ClientEvent name="onClick">view.set(&quot;#searchMessage.entity&quot;,{});</ClientEvent>
+          <Property name="caption">清空</Property>
+        </Button>
+        <Button>
+          <ClientEvent name="onClick">var data = view.get(&quot;#searchMessage.entity&quot;);&#xD;
+with (view.get(&quot;#messageSend&quot;)) {&#xD;
+	set(&quot;parameter&quot;, data);&#xD;
+	flush();&#xD;
+}</ClientEvent>
+          <Property name="caption">查询</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm id="searchMessage">
+          <Property name="cols">*,*,*</Property>
+          <Property name="dataType">msgSend</Property>
+          <AutoFormElement>
+            <Property name="name">msgFlag</Property>
+            <Property name="property">msgFlag</Property>
+            <Property name="label">短信/APP</Property>
+            <Property name="labelAlign">right</Property>
+            <Editor>
+              <TextEditor>
+                <Property name="mapping">
+                  <Property name="mapValues">
+                    <Collection>
+                      <Entity>
+                        <Property name="key">0</Property>
+                        <Property name="value">短信</Property>
+                      </Entity>
+                      <Entity>
+                        <Property name="key">1</Property>
+                        <Property name="value">app</Property>
+                      </Entity>
+                    </Collection>
+                  </Property>
+                </Property>
+                <Property name="trigger">autoMappingDropDown1</Property>
+              </TextEditor>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">msgCreateTime</Property>
+            <Property name="property">msgCreateTime</Property>
+            <Property name="trigger">defaultDateTimeDropDown</Property>
+            <Property name="label">创建时间起</Property>
+            <Editor>
+              <TextEditor>
+                <Property name="dataType">DateTime</Property>
+              </TextEditor>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">msgCreateTimeEnd</Property>
+            <Property name="property">msgCreateTimeEnd</Property>
+            <Property name="label">创建时间止</Property>
+            <Property name="labelAlign">right</Property>
+            <Property name="trigger">defaultDateTimeDropDown</Property>
+            <Editor>
+              <TextEditor>
+                <Property name="dataType">DateTime</Property>
+                <Property name="trigger">defaultDateTimeDropDown</Property>
+              </TextEditor>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">msfSendTime</Property>
+            <Property name="property">msfSendTime</Property>
+            <Property name="label">发送时间起</Property>
+            <Property name="labelAlign">right</Property>
+            <Property name="trigger">defaultDateTimeDropDown</Property>
+            <Editor>
+              <TextEditor>
+                <Property name="dataType">DateTime</Property>
+                <Property name="trigger">defaultDateTimeDropDown</Property>
+              </TextEditor>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">msfSendTimeEnd</Property>
+            <Property name="property">msfSendTimeEnd</Property>
+            <Property name="label">发送时间止</Property>
+            <Property name="labelAlign">right</Property>
+            <Property name="trigger">defaultDateTimeDropDown</Property>
+            <Editor>
+              <TextEditor>
+                <Property name="dataType">DateTime</Property>
+                <Property name="trigger">defaultDateTimeDropDown</Property>
+              </TextEditor>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">msgCreatorId</Property>
+            <Property name="property">msgCreatorId</Property>
+            <Property name="label">创建人</Property>
+            <Property name="labelAlign">right</Property>
+            <Editor>
+              <TextEditor>
+                <Property name="trigger">userDropDown</Property>
+                <Property name="mapping">
+                  <Property name="mapValues">${dorado.getDataProvider(&quot;messageSendView#findMapUser&quot;).getResult()}</Property>
+                </Property>
+              </TextEditor>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">msgSenderId</Property>
+            <Property name="property">msgSenderId</Property>
+            <Property name="label">发送人</Property>
+            <Editor>
+              <TextEditor>
+                <Property name="mapping">
+                  <Property name="mapValues">${dorado.getDataProvider(&quot;messageSendView#findMapUser&quot;).getResult()}</Property>
+                </Property>
+                <Property name="trigger">userDropDown</Property>
+              </TextEditor>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">msgTempId</Property>
+            <Property name="property">msgTempId</Property>
+            <Property name="trigger">dataSetDropDown1</Property>
+            <Property name="label">短信模板</Property>
+            <Editor>
+              <TextEditor>
+                <Property name="mapping">
+                  <Property name="mapValues">${dorado.getDataProvider(&quot;messageSendView#findMapTemp&quot;).getResult()}</Property>
+                </Property>
+              </TextEditor>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">successFlag</Property>
+            <Property name="property">successFlag</Property>
+            <Property name="label">是否成功</Property>
+            <Editor>
+              <TextEditor>
+                <Property name="mapping">
+                  <Property name="mapValues">
+                    <Collection>
+                      <Entity>
+                        <Property name="key">0</Property>
+                        <Property name="value">失败</Property>
+                      </Entity>
+                      <Entity>
+                        <Property name="key">1</Property>
+                        <Property name="value">成功</Property>
+                      </Entity>
+                    </Collection>
+                  </Property>
+                </Property>
+                <Property name="trigger">autoMappingDropDown1</Property>
+              </TextEditor>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">sendFlag</Property>
+            <Property name="property">sendFlag</Property>
+            <Property name="label">是否发送</Property>
+            <Editor>
+              <TextEditor>
+                <Property name="trigger">autoMappingDropDown1</Property>
+                <Property name="mapping">
+                  <Property name="mapValues">
+                    <Collection>
+                      <Entity>
+                        <Property name="key">0</Property>
+                        <Property name="value">否</Property>
+                      </Entity>
+                      <Entity>
+                        <Property name="key">1</Property>
+                        <Property name="value">是</Property>
+                      </Entity>
+                    </Collection>
+                  </Property>
+                </Property>
+              </TextEditor>
+            </Editor>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+    </FieldSet>
+    <ToolBar>
+      <ToolBarLabel>
+        <Property name="text">消息</Property>
+      </ToolBarLabel>
+      <Fill/>
+      <ToolBarButton>
+        <ClientEvent name="onClick">view.get(&quot;#addTemp&quot;).set(&quot;caption&quot;,&quot;增加&quot;);&#xD;
+view.get(&quot;#addTemp&quot;).show();&#xD;
+var data=view.get(&quot;#messageSend.data&quot;);&#xD;
+//busIdAction.execute(function(result){&#xD;
+   //businessid=result;&#xD;
+	//});&#xD;
+var loginUsername=&quot;${loginUsername}&quot;;&#xD;
+var loginUserCname=&quot;${loginUser.getCname()}&quot;;&#xD;
+var date = new Date();&#xD;
+&#xD;
+data.insert({&quot;msgCreatorName&quot;:loginUserCname,&quot;msgCreatorId&quot;:loginUsername,&quot;msgCreateTime&quot;:date});</ClientEvent>
+        <Property name="caption">增加</Property>
+        <Property name="icon">url(>skin>common/icons.gif) -120px -0px</Property>
+      </ToolBarButton>
+      <ToolBarButton>
+        <ClientEvent name="onClick">view.get(&quot;#addTemp&quot;).set(&quot;caption&quot;,&quot;编辑&quot;);&#xD;
+view.get(&quot;#addTemp&quot;).show();</ClientEvent>
+        <Property name="caption">编辑</Property>
+        <Property name="icon">url(>skin>common/icons.gif) -200px -0px</Property>
+        <Property name="visible">false</Property>
+      </ToolBarButton>
+      <ToolBarButton>
+        <ClientEvent name="onClick">dorado.MessageBox.confirm(&quot;真的要删除选中的记录吗？&quot;,function(){&#xD;
+	var entity=view.get(&quot;#dsMessage.data:#&quot;);&#xD;
+	var updateTempAction=view.get(&quot;#updateTemp&quot;);&#xD;
+	if(entity){&#xD;
+	    entity.remove();&#xD;
+		updateTempAction.execute();&#xD;
+	}else{&#xD;
+	    dorado.MessageBox.alert(&quot;必须选中一行记录！&quot;);&#xD;
+	}&#xD;
+});</ClientEvent>
+        <Property name="caption">删除</Property>
+        <Property name="icon">url(>skin>common/icons.gif) -140px -0px</Property>
+        <Property name="visible">false</Property>
+      </ToolBarButton>
+    </ToolBar>
+    <DataSet id="dsUser">
+      <Property name="dataType">[defaultUser]</Property>
+      <Property name="dataProvider">messageSendView#getUser</Property>
+    </DataSet>
+    <DataSet id="dsMsgTemp">
+      <Property name="dataType">[msgTemp]</Property>
+      <Property name="dataProvider">messageSendView#getMessagTemp</Property>
+    </DataSet>
+    <DataSet id="messageSend">
+      <Property name="dataType">[msgSend]</Property>
+      <Property name="pageSize">10</Property>
+      <Property name="dataProvider">messageSendView#getMessage</Property>
+    </DataSet>
+    <DataSet id="owner">
+      <Property name="dataType">[propertyOwner]</Property>
+      <Property name="dataProvider">messageSendView#queryOwnerInfo</Property>
+      <Property name="pageSize">5</Property>
+    </DataSet>
+    <DataGrid id="messageSendGrid">
+      <Property name="dataSet">messageSend</Property>
+      <Property name="readOnly">true</Property>
+      <Property name="height">286px</Property>
+      <DataColumn name="msgTempTitle">
+        <Property name="property">msgTempTitle</Property>
+      </DataColumn>
+      <DataColumn name="msgContent">
+        <Property name="property">msgContent</Property>
+      </DataColumn>
+      <DataColumn name="msgCreateTime">
+        <Property name="property">msgCreateTime</Property>
+      </DataColumn>
+      <DataColumn name="msfSendTime">
+        <Property name="property">msfSendTime</Property>
+      </DataColumn>
+      <DataColumn name="msgFlag">
+        <Property name="property">msgFlag</Property>
+      </DataColumn>
+      <DataColumn name="msgCreatorName">
+        <Property name="property">msgCreatorName</Property>
+      </DataColumn>
+      <DataColumn name="msgSenderName">
+        <Property name="property">msgSenderName</Property>
+      </DataColumn>
+      <DataColumn name="successFlag">
+        <Property name="property">successFlag</Property>
+      </DataColumn>
+      <DataColumn name="sendFlag">
+        <Property name="property">sendFlag</Property>
+      </DataColumn>
+      <DataColumn name="msgReceiverPhone">
+        <Property name="property">msgReceiverPhone</Property>
+      </DataColumn>
+      <DataColumn name="msgReceiverNames">
+        <Property name="property">msgReceiverNames</Property>
+      </DataColumn>
+    </DataGrid>
+    <ToolBar>
+      <Fill/>
+      <DataPilot>
+        <Property name="dataSet">messageSend</Property>
+      </DataPilot>
+    </ToolBar>
+    <Dialog id="dialog">
+      <Property name="width">600px</Property>
+      <Buttons>
+        <Button>
+          <ClientEvent name="onClick" signature="self,ownerGrid">var selection = ownerGrid.get(&quot;selection&quot;), receiverNames,receiverIds;&#xD;
+if (selection &amp;&amp; selection.length) {&#xD;
+	var names = [];&#xD;
+	var ids = [];&#xD;
+	selection.each(function(data){&#xD;
+		names.push(data.get(&quot;ownerName&quot;));&#xD;
+		ids.push(data.get(&quot;ownerId&quot;))&#xD;
+	});&#xD;
+	receiverNames = names.join(&quot;;&quot;);&#xD;
+	receiverIds=ids.join(&quot;;&quot;);&#xD;
+	var dialog = self.findParent(dorado.widget.Dialog);&#xD;
+    var editor = dialog.get(&quot;userData&quot;); // 取得对应的编辑框 &#xD;
+    editor.set(&quot;text&quot;, receiverNames);&#xD;
+	this.set(&quot;#messageSend.data:#.msgReceiverIds&quot;,receiverIds);&#xD;
+	dialog.close();&#xD;
+}&#xD;
+else {&#xD;
+	receiverNames = &quot;请求选择一条数据！&quot;;&#xD;
+	dorado.MessageBox.alert(receiverNames);&#xD;
+}&#xD;
+</ClientEvent>
+          <Property name="caption">确定</Property>
+        </Button>
+        <Button>
+          <ClientEvent name="onClick">var dialog = self.findParent(dorado.widget.Dialog);&#xD;
+dialog.hide();</ClientEvent>
+          <Property name="caption">取消</Property>
+        </Button>
+        <Button>
+          <ClientEvent name="onClick" signature="self,ownerGrid">var dialog = self.findParent(dorado.widget.Dialog);&#xD;
+var editor = dialog.get(&quot;userData&quot;); // 取得对应的编辑框 &#xD;
+editor.set(&quot;text&quot;, &quot;&quot;);&#xD;
+this.set(&quot;#messageSend.data:#.msgReceiverIds&quot;,&quot;&quot;);&#xD;
+ownerGrid.unselectAll();&#xD;
+</ClientEvent>
+          <Property name="caption">清除</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <FieldSet id="ownerConditioin">
+          <Buttons>
+            <Button>
+              <ClientEvent name="onClick">var data = view.get(&quot;#searchHouse.entity&quot;);&#xD;
+with (view.get(&quot;#owner&quot;)) {&#xD;
+	set(&quot;parameter&quot;, data);&#xD;
+	flush();&#xD;
+}</ClientEvent>
+              <Property name="caption">查询</Property>
+            </Button>
+            <Button>
+              <ClientEvent name="onClick">view.set(&quot;#searchHouse.entity&quot;,{});</ClientEvent>
+              <Property name="caption">清空</Property>
+            </Button>
+          </Buttons>
+          <Children>
+            <AutoForm id="searchHouse">
+              <Property name="cols">*,*</Property>
+              <Property name="labelAlign">right</Property>
+              <Property name="labelSeparator">：</Property>
+              <Property name="dataType">HouseProperty</Property>
+              <AutoFormElement>
+                <Property name="name">buildName</Property>
+                <Property name="property">buildName</Property>
+                <Property name="trigger">AllArea</Property>
+                <Property name="label">所属楼盘</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement id="areaName">
+                <Property name="name">areaName</Property>
+                <Property name="property">areaName</Property>
+                <Property name="trigger">AreaProperty</Property>
+                <Property name="label">所属小区</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement id="buildingName">
+                <Property name="name">buildingName</Property>
+                <Property name="property">buildingName</Property>
+                <Property name="trigger">BuildingProperty</Property>
+                <Property name="label">所属楼宇</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">buildId</Property>
+                <Property name="property">buildId</Property>
+                <Property name="visible">false</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">areaId</Property>
+                <Property name="property">areaId</Property>
+                <Property name="visible">false</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">belongSbId</Property>
+                <Property name="property">belongSbId</Property>
+                <Property name="visible">false</Property>
+                <Editor/>
+              </AutoFormElement>
+            </AutoForm>
+          </Children>
+        </FieldSet>
+        <DataPilot>
+          <Property name="dataSet">owner</Property>
+        </DataPilot>
+        <DataGrid id="ownerGrid">
+          <Property name="dataSet">owner</Property>
+          <Property name="dynaRowHeight">true</Property>
+          <Property name="height">200</Property>
+          <Property name="selectionMode">multiRows</Property>
+          <IndicatorColumn/>
+          <RowSelectorColumn/>
+          <DataColumn name="roomNo">
+            <Property name="property">roomNo</Property>
+          </DataColumn>
+          <DataColumn name="ownerName">
+            <Property name="property">ownerName</Property>
+          </DataColumn>
+          <DataColumn name="phone">
+            <Property name="property">phone</Property>
+          </DataColumn>
+          <DataColumn name="remark">
+            <Property name="property">remark</Property>
+          </DataColumn>
+        </DataGrid>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <Dialog id="addTemp">
+      <ClientEvent name="onClose">view.get(&quot;#messageSend.data:#&quot;).cancel();</ClientEvent>
+      <Property name="height">500px</Property>
+      <Property name="width">800px</Property>
+      <Property name="icon">url(>skin>common/icons.gif) -280px -100px</Property>
+      <Buttons>
+        <Button>
+          <ClientEvent name="onClick">dorado.MessageBox.confirm(&quot;确定保存？&quot;,function(){&#xD;
+	var updateTemp=view.get(&quot;#updateTemp&quot;);&#xD;
+	updateTemp.execute(function(result){&#xD;
+	&#xD;
+	dorado.MessageBox.alert(&quot;保存成功！&quot;);&#xD;
+	view.get(&quot;#addTemp&quot;).hide();&#xD;
+	});&#xD;
+});</ClientEvent>
+          <Property name="caption">保存</Property>
+          <Property name="icon">url(>skin>common/icons.gif) -20px -0px</Property>
+        </Button>
+        <Button>
+          <ClientEvent name="onClick">view.get(&quot;#addTemp&quot;).close();&#xD;
+&#xD;
+</ClientEvent>
+          <Property name="caption">关闭</Property>
+          <Property name="icon">url(>skin>common/icons.gif) -40px -0px</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm id="msgSendForm">
+          <Property name="dataSet">messageSend</Property>
+          <AutoFormElement>
+            <Property name="name">msgReceiverNames</Property>
+            <Property name="property">msgReceiverNames</Property>
+            <Property name="trigger">trigger1</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:2">
+            <Property name="name">msgContent</Property>
+            <Property name="property">msgContent</Property>
+            <Editor>
+              <TextArea id="msgContent">
+                <Property name="height">100</Property>
+              </TextArea>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">msgTempId</Property>
+            <Property name="property">msgTempId</Property>
+            <Property name="trigger">dataSetDropDown1</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">msgFlag</Property>
+            <Property name="property">msgFlag</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">msgCreatorName</Property>
+            <Property name="property">msgCreatorName</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">msgCreateTime</Property>
+            <Property name="property">msgCreateTime</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <Trigger id="trigger1">
+      <ClientEvent name="onExecute" signature="arg,dialog">dialog.set(&quot;userData&quot;, arg.editor);&#xD;
+dialog.show();</ClientEvent>
+    </Trigger>
+    <DataSetDropDown id="dataSetDropDown1">
+      <ClientEvent name="onValueSelect">//var msgTempId=this.get(&quot;#msgTempId&quot;);&#xD;
+	var data=view.get(&quot;#dsMsgTemp.data:#&quot;);&#xD;
+	var tempContent=data.get(&quot;msgTempContent&quot;);&#xD;
+	var content=this.get(&quot;#msgContent&quot;);&#xD;
+    content.set(&quot;text&quot;,tempContent);&#xD;
+    //msgTempId.set(&quot;text&quot;,receiverIds);</ClientEvent>
+      <Property name="dataSet">dsMsgTemp</Property>
+      <Property name="displayProperty">msgTempSubject</Property>
+      <Property name="property">msgTempId</Property>
+    </DataSetDropDown>
+    <DataSetDropDown id="userDropDown">
+      <Property name="property">username</Property>
+      <Property name="displayProperty">cname</Property>
+      <Property name="dataSet">dsUser</Property>
+    </DataSetDropDown>
+    <UpdateAction id="updateTemp">
+      <Property name="dataResolver">messageSendView#saveSendMsg</Property>
+      <UpdateItem>
+        <Property name="dataSet">messageSend</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <DataSetDropDown id="AllArea">
+      <ClientEvent name="onValueSelect">view.get(&quot;#searchHouse.entity&quot;).areaId=null;&#xD;
+view.get(&quot;#searchHouse.entity&quot;).areaName=null;&#xD;
+view.get(&quot;#areaName&quot;).set(&quot;value&quot;,null);&#xD;
+&#xD;
+view.get(&quot;#searchHouse.entity&quot;).buildingName=null;&#xD;
+view.get(&quot;#searchHouse.entity&quot;).belongSbId=null;&#xD;
+view.get(&quot;#buildingName&quot;).set(&quot;value&quot;,null);&#xD;
+&#xD;
+</ClientEvent>
+      <Property name="dataSet">dsAllArea</Property>
+      <Property name="assignmentMap">buildId=buildId,buildName=buildName</Property>
+      <Property name="property">buildName</Property>
+      <Property name="displayProperty">buildName</Property>
+      <Property name="useEmptyItem">true</Property>
+    </DataSetDropDown>
+    <DataSetDropDown id="AreaProperty">
+      <ClientEvent name="beforeExecute">var buildId = view.get(&quot;#searchHouse.entity&quot;).buildId;&#xD;
+view.get(&quot;#dsAreaProperty&quot;).set(&quot;parameter&quot;,{buildId:buildId}).flush();&#xD;
+</ClientEvent>
+      <ClientEvent name="onValueSelect">view.get(&quot;#searchHouse.entity&quot;).buildingName=null;&#xD;
+view.get(&quot;#searchHouse.entity&quot;).belongSbId=null;&#xD;
+view.get(&quot;#buildingName&quot;).set(&quot;value&quot;,null);&#xD;
+</ClientEvent>
+      <Property name="dataSet">dsAreaProperty</Property>
+      <Property name="assignmentMap">areaId=communityId,areaName=communityName</Property>
+      <Property name="displayProperty">communityName</Property>
+      <Property name="property">communityName</Property>
+      <Property name="useEmptyItem">true</Property>
+    </DataSetDropDown>
+    <DataSetDropDown id="BuildingProperty">
+      <ClientEvent name="beforeExecute">var areaId = view.get(&quot;#searchHouse.entity&quot;).areaId;&#xD;
+view.get(&quot;#dsBuilding&quot;).set(&quot;parameter&quot;,{areaId:areaId}).flush();&#xD;
+</ClientEvent>
+      <Property name="dataSet">dsBuilding</Property>
+      <Property name="assignmentMap">belongSbId=storiedBuildId,buildingName=storiedBuildName</Property>
+      <Property name="displayProperty">storiedBuildName</Property>
+      <Property name="property">storiedBuildName</Property>
+      <Property name="useEmptyItem">true</Property>
+    </DataSetDropDown>
+    <DataSet id="dsAllArea">
+      <Property name="dataType">[AllArea]</Property>
+      <Property name="dataProvider">allAreaView#queryAllAreaByParam</Property>
+      <Property name="parameter"></Property>
+    </DataSet>
+    <DataSet id="dsAreaProperty">
+      <Property name="dataType">[AreaProperty]</Property>
+      <Property name="parameter"></Property>
+      <Property name="dataProvider">areaPropertyView#queryAreaPropertyByParam</Property>
+    </DataSet>
+    <DataSet id="dsBuilding">
+      <Property name="dataType">[BuildingProperty]</Property>
+      <Property name="parameter"></Property>
+      <Property name="dataProvider">buildingPropertyView#queryBuildingPropertyByParam</Property>
+    </DataSet>
+  </View>
+</ViewConfig>
