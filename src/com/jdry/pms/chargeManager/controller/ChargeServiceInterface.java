@@ -88,8 +88,8 @@ public class ChargeServiceInterface {
                     mapRes.put("type_no", roomVsFees.get(i).getChargeTypeNo());
                     mapRes.put("type_name", roomVsFees.get(i).getChargeTypeName());
                     mapRes.put("build_area", roomVsFees.get(i).getBuildArea());
-                    mapRes.put("charge_price", roomVsFees.get(i).getMonthsPrice());
-                    mapRes.put("total_price", roomVsFees.get(i).getReceiveAmount());
+                    mapRes.put("charge_price", roomVsFees.get(i).getChargePrice());
+                    mapRes.put("total_price", roomVsFees.get(i).getMonthsPrice());
                     mapRes.put("amount", roomVsFees.get(i).getAmount());
                     mapRes.put("room_id", roomId);
                 }

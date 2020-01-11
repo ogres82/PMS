@@ -15,6 +15,7 @@
 <title>角色成员维护</title> 
 <%@ include file="/common/taglibs.jsp"%>
 <script type="text/javascript" src="${ContextPath}/system/roleMember.js"></script>
+	<script type="text/javascript" src="${ContextPath}/common/js/util.js"></script>
 
 <script type="text/javascript">
  loginUserName="${loginUser.username}";

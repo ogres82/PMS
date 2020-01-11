@@ -176,7 +176,7 @@ public class ChargeSerialDao extends HibernateDao {
         if (parameter != null) {
             String room_id = parameter.get("room_id") == null ? "" : parameter.get("room_id").toString();
             String hql = " from " + ChargeSerialViewEntity.class.getName()
-                    + " a where a.paid_mode!='01' and a.state='01' ";
+                    + " a where 1=1 ";
 
             if (!room_id.isEmpty()) {
                 hql += " and a.room_id='" + room_id + "' order by a.paid_date desc";
