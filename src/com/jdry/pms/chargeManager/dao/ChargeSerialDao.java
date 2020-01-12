@@ -278,21 +278,48 @@ public class ChargeSerialDao extends HibernateDao {
             session = this.getSessionFactory().openSession();
             tx = session.beginTransaction();
             // 流程、流程详情、预存sql
-            String sqlSerialInsert = "";
-            String uuid = UUID.randomUUID().toString();
+            //String sqlSerialInsert = "";
+            String uuid ="";
 
             for (ChargeRoomInfoViewEntity chargeType : infos) {
-                sqlSerialInsert = "INSERT INTO t_charge_serial_info(serial_id,room_id,room_no,owner_id,owner_name,charge_type_no,charge_type_name,state,charge_type,receive_amount,paid_amount,paid_date,paid_mode,"
-                        + " oper_emp_id,update_date, begin_date, end_date,order_id,room_type,community_name,storied_build_name) "
-                        + " values('" + uuid + "','" + chargeType.getRoomId() + "','" + chargeType.getRoomNo() + "','"
-                        + chargeType.getOwnerId() + "','" + chargeType.getOwnerName() + "','" + chargeType.getChargeTypeNo() + "','"
-                        + chargeType.getChargeTypeName() + "','01','01'," + transaction_fee + "," + transaction_fee
-                        + ",SYSDATE(),'" + charge_paid_mode + "','admin',SYSDATE()," + chargeType.getBeginDate()
-                        + "," + chargeType.getEndDate() + ",'" + order_id + "','"
-                        + chargeType.getRoomType() + "','" + chargeType.getCommunityName() + "','" + chargeType.getStoriedBuildName() + "')";
-                session.createSQLQuery(sqlSerialInsert).executeUpdate();
+                ChargeSerialEntity serial = new ChargeSerialEntity();
+                //serial.setSerial_id(uuid);
+                serial.setRoom_id(chargeType.getRoomId());
+                serial.setRoom_no(chargeType.getRoomNo());
+                serial.setOwner_id(chargeType.getOwnerId());
+                serial.setOwner_name(chargeType.getOwnerName());
+                serial.setCharge_type_no(chargeType.getChargeTypeNo());
+                serial.setCharge_type_name(chargeType.getChargeTypeName());
+                serial.setState("01");
+                serial.setCharge_type("01");
+                serial.setReceive_amount(new BigDecimal(transaction_fee));
+                serial.setPaid_amount(new BigDecimal(transaction_fee));
+                serial.setPaid_date(new Date());
+                serial.setPaid_mode(charge_paid_mode);
+                serial.setOper_emp_id("admin");
+                serial.setUpdate_date(new Date());
+                serial.setReduce_mount(new BigDecimal(0));
+                serial.setBegin_date(chargeType.getBeginDate());
+                serial.setEnd_date(chargeType.getEndDate());
+                serial.setOrder_id(order_id);
+                serial.setRoom_type(chargeType.getRoomType());
+                serial.setCommunity_name(chargeType.getCommunityName());
+                serial.setStoried_build_name(chargeType.getStoriedBuildName());
+//                sqlSerialInsert = "INSERT INTO t_charge_serial_info(serial_id,room_id,room_no,owner_id,owner_name,charge_type_no,charge_type_name,state,charge_type,receive_amount,paid_amount,paid_date,paid_mode,"
+//                        + " oper_emp_id,update_date, begin_date, end_date,order_id,room_type,community_name,storied_build_name) "
+//                        + " values('" + uuid + "','" + chargeType.getRoomId() + "','" + chargeType.getRoomNo() + "','"
+//                        + chargeType.getOwnerId() + "','" + chargeType.getOwnerName() + "','" + chargeType.getChargeTypeNo() + "','"
+//                        + chargeType.getChargeTypeName() + "','01','01'," + transaction_fee + "," + transaction_fee
+//                        + ",SYSDATE(),'" + charge_paid_mode + "','admin',SYSDATE(),str_to_date('" + chargeType.getBeginDate()
+//                        + "', '%Y-%m-%d %H:%i:%s'),str_to_date('" + chargeType.getEndDate() + "', '%Y-%m-%d %H:%i:%s'),'" + order_id + "','"
+//                        + chargeType.getRoomType() + "','" + chargeType.getCommunityName() + "','" + chargeType.getStoriedBuildName() + "')";
+//                System.out.println(sqlSerialInsert);
+//               session.createSQLQuery(sqlSerialInsert).executeUpdate();
+                 session.saveOrUpdate(serial);
+                uuid = serial.getSerial_id();
             }
 
+            //flag = false;
             // 提交
             tx.commit();
             log.info("批量收费成功--流水：" + uuid + ", 账单：" + chargeInfoIds);
@@ -345,7 +372,7 @@ public class ChargeSerialDao extends HibernateDao {
 
             String sqlSerialInsert = "INSERT INTO t_charge_serial_info(serial_id,room_id,room_no,owner_id,owner_name,charge_type_no,charge_type_name,remark,state,charge_type,paid_amount,receive_amount,paid_date,paid_mode,oper_emp_id,begin_date, end_date,update_date,order_id,room_type,community_name,storied_build_name) "
                     + "values(UUID(),'" + room_id + "','" + room_no + "','" + owner_id + "','" + owner_name
-                    + "','"+chargeTypeNo+"','"+chargeTypeName+"','APP端预存','01','03'," + topup_amount + "," + topup_amount + ",SYSDATE(),'" + charge_paid_mode
+                    + "','" + chargeTypeNo + "','" + chargeTypeName + "','APP端预存','01','03'," + topup_amount + "," + topup_amount + ",SYSDATE(),'" + charge_paid_mode
                     + "','系统操作',SYSDATE(),SYSDATE(),SYSDATE(),'" + order_id + "','" + roomType + "','"
                     + communityName + "','" + storiedBuildName + "')";
             session.createSQLQuery(sqlSerialInsert).executeUpdate();

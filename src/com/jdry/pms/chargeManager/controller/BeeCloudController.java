@@ -107,7 +107,7 @@ public class BeeCloudController implements IController {
 
             //第一步验证数字签名
             boolean status = verifySign(sign, timestamp);
-
+            System.out.println(jsonObj);
             System.out.println("第一步验证数字签名:" + status);
 
             if (status) {

@@ -120,55 +120,71 @@ function paid() {
         data.push(newObj)
     }
     console.log(data);
-    initBlockUI();
+
     pay(data);
 }
 
 // 收费
 function pay(obj) {
-    $.ajax({
-        type: "post",
-        data: {chargeInfo: JSON.stringify(obj)},
-        url: getRootPath() + "ChargeManager/ChargeInfoList.app?method=batchPaid",
-        async: true,
-        dataType: 'json',
-        success: function (data) {
-            if (data != null && data.status != 200) {
-                layer.msg('操作失败，“' + data.msg + '”！', {
-                    time: 3000
-                });
-                return;
-            }
-            layer.msg('操作成功！', {
-                time: 1000
-            }, function () {
-                $.unblockUI();
-                $("#roomAddrs").val("");
-                $("#ownerInfo").val("");
-                $("#chargeInfo").val("");
-                $("#totalCharge").val(0.00);
-                $("#totalReduceMount").val(0.00);
-                $("#totalPaidAmount").val(0.00);
-                $("#paidDate").val(new Date().format("yyyy-MM-dd"));
-                $("#remark").val("");
-                $("#receiptId").val("");
-                $("#paidMode").val("");
-                $("#roomId").val("");
-                $("#ownerId").val("");
-                $("#roomNo").val("");
-                $("#phone").val("");
-                $("#ownerName").val("");
-                $("#expDate").val("");
-                $("#communityName").val("");
-                $("#storiedBuildName").val("");
-                $("#unitName").val("");
-                $("#roomType").val("");
-                $("#input-b5").fileinput('clear');
-                $('#chargeCustomer').bootstrapTable('removeAll');
+    // var flag = $('#myForm').validationEngine('validate');
+    // debugger;
+    // if (flag) {
+    var paidmode = $('#paidMode').val();
+    if(paidmode=="")//收款方式
+    {
+        alert("请选择支付方式");
+    }else {
+        initBlockUI();
+        $.ajax({
+            type: "post",
+            data: {chargeInfo: JSON.stringify(obj)},
+            url: getRootPath() + "ChargeManager/ChargeInfoList.app?method=batchPaid",
+            async: true,
+            dataType: 'json',
+            success: function (data) {
+                if (data != null && data.status != 200) {
+                    layer.msg('操作失败，“' + data.msg + '”！', {
+                        time: 3000
+                    });
+                    return;
+                }
+                layer.msg('操作成功！', {
+                    time: 1000
+                }, function () {
+                    $.unblockUI();
+                    $("#roomAddrs").val("");
+                    $("#ownerInfo").val("");
+                    $("#chargeInfo").val("");
+                    $("#totalCharge").val(0.00);
+                    $("#totalReduceMount").val(0.00);
+                    $("#totalPaidAmount").val(0.00);
+                    $("#paidDate").val(new Date().format("yyyy-MM-dd"));
+                    $("#remark").val("");
+                    $("#receiptId").val("");
+                    $("#paidMode").val("");
+                    $("#roomId").val("");
+                    $("#ownerId").val("");
+                    $("#roomNo").val("");
+                    $("#phone").val("");
+                    $("#ownerName").val("");
+                    $("#expDate").val("");
+                    $("#communityName").val("");
+                    $("#storiedBuildName").val("");
+                    $("#unitName").val("");
+                    $("#roomType").val("");
+                    $("#input-b5").fileinput('clear');
+                    $('#chargeCustomer').bootstrapTable('removeAll');
 
-            });
-        }
-    });
+                });
+            }
+        });
+    }
+    // }
+    // else {
+    //     layer.msg('表单验证未通过！', {
+    //         time: 2000
+    //     });
+    // }
 }
 
 // 新增
@@ -196,9 +212,9 @@ function save() {
         var rowData = {
             chargeTypeNo: $("#chargeTypeNo").val(),
             chargeTypeName: $("#chargeTypeName").val(),
-            receiveAmount: $("#arrAmount").val(),
+            receiveAmount: $("#receiveAmount").val(),
             reduceMount: $("#reduceMount").val(),
-            paidAmount: $("#receiveAmount").val(),
+            paidAmount: $("#paidAmount").val(),
             beginDate: new Date($("#beginDate").val()).getTime(),
             endDate: new Date($("#endDate").val()).getTime()
         };
@@ -477,7 +493,7 @@ function countCharge(value) {
     for (var i = 0; i < chargeInfo.length; i++) {
         totalFee = totalFee + Number(chargeInfo[i].receiveAmount);
         totalReduceMount = totalReduceMount + Number(chargeInfo[i].reduceMount);
-        totalPaidAmount = totalFee-totalReduceMount;
+        totalPaidAmount = totalFee - totalReduceMount;
     }
     $("#totalCharge").val(totalFee.toFixed(2));
     $("#totalReduceMount").val(totalReduceMount.toFixed(2));
@@ -538,17 +554,23 @@ function chargeTypeChange() {
             break;
     }
     ;
-    $("#arrAmount").val(arrAmount);
+    $("#paidAmount").val(arrAmount);
     $("#receiveAmount").val(arrAmount);
 };
 
-function AccReduce(value) {
-    var arrAmount = $("#arrAmount").val();
-    var receiveAmount = Number(arrAmount) - Number(value);
-    if (receiveAmount < 0) {
-        alert("减免金额已经大于应收金额，请重新填写");
+function AccReduce(value,type) {
+    //调整减免
+    if(type=='01'){
+        var receiveAmount = $("#receiveAmount").val();
+        var paidAmount = Number(receiveAmount) - Number(value);
+        if (paidAmount < 0) {
+            alert("减免金额已经大于应收金额，请重新填写");
+        }
+    }else{
+        var reduceMount = $("#reduceMount").val();
+        var paidAmount = Number(value) - Number(reduceMount)
     }
-    $("#receiveAmount").val(receiveAmount);
+    $("#paidAmount").val(paidAmount);
 };
 
 function deleteFile(obj) {

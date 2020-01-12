@@ -87,13 +87,13 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">实收合计</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="totalPaidAmount" disabled="disabled">
+                                    <input type="text" class="form-control validate[required]" id="totalPaidAmount" disabled="disabled">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">付款方式</label>
                                 <div class="col-sm-9">
-                                    <select class="form-control" id="paidMode">
+                                    <select class="form-control validate[required]" id="paidMode" >
                                         <option value="">---请选择---</option>
                                     </select>
                                 </div>
@@ -213,7 +213,7 @@
                     <div class="form-group form-group-sm ">
                         <label class="col-sm-2 control-label">实收金额</label>
                         <div class="col-sm-6">
-                            <input class="form-control" id="receiveAmount"
+                            <input class="form-control" id="paidAmount"
                                    type="text" readonly="readonly"/>
                         </div>
                     </div>
@@ -238,15 +238,15 @@
                     <div class="form-group form-group-sm ">
                         <label class="col-sm-2 control-label">应收金额</label>
                         <div class="col-sm-6">
-                            <input class="form-control validate[required,custom[number]]" id="arrAmount"
-                                   type="text" placeholder="必填项 "/>
+                            <input class="form-control validate[required,custom[number]]" id="receiveAmount"
+                                   type="text" placeholder="必填项 " onchange="AccReduce(this.value,'')"/>
                         </div>
                     </div>
                     <div class="form-group form-group-sm ">
                         <label class="col-sm-2 control-label">减免金额</label>
                         <div class="col-sm-6">
                             <input class="form-control validate[required,custom[number]]" id="reduceMount" value="0.00"
-                                   type="text" placeholder="必填项 " onchange="AccReduce(this.value)"/>
+                                   type="text" placeholder="必填项 " onchange="AccReduce(this.value,'01')"/>
                         </div>
                     </div>
 

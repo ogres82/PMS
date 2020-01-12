@@ -58,6 +58,8 @@ public class ChargeSerialEntity implements Serializable {
 	
 	private String reduce_url;//减免凭证
 
+	private String order_id;
+
 
 	@Id
 	@Column(name = "serial_id")
@@ -327,4 +329,11 @@ public class ChargeSerialEntity implements Serializable {
 		this.reduce_url = reduce_url;
 	}
 
+	public String getOrder_id() {
+		return order_id;
+	}
+
+	public void setOrder_id(String order_id) {
+		this.order_id = order_id;
+	}
 }

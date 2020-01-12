@@ -339,15 +339,15 @@ public class ChargeInfoDao extends HibernateDao {
 
 	public BigDecimal getPayCountByIds(String ids) {
 
-		String[] charges = ids.split(",");
-		String chargeIds = "";
-		for (int i = 0; i < charges.length; i++) {
-			chargeIds += "'" + charges[i] + "',";
-		}
-		chargeIds = chargeIds.substring(0, chargeIds.length() - 1);
+//		String[] charges = ids.split(",");
+//		String chargeIds = "";
+//		for (int i = 0; i < charges.length; i++) {
+//			chargeIds += "'" + charges[i] + "',";
+//		}
+//		chargeIds = chargeIds.substring(0, chargeIds.length() - 1);
 
-		String sql = " SELECT SUM(t.receive_amount)*100 FROM t_charge_info t WHERE t.state='03' AND t.charge_id IN (" + chargeIds + ") ";
-
+		//String sql = " SELECT SUM(t.receive_amount)*100 FROM t_charge_info t WHERE t.state='03' AND t.charge_id IN (" + chargeIds + ") ";
+		String sql = " select SUM(arr_amount)*100 from v_room_billing_info where room_id ='" + ids+"'" ;
 		Session session = this.getSessionFactory().openSession();
 		List result = session.createSQLQuery(sql).list();
 
