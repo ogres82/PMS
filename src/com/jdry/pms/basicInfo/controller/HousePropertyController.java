@@ -18,6 +18,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.jdry.pms.basicInfo.pojo.*;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
@@ -31,16 +32,6 @@ import com.bstek.bdf2.core.context.ContextHolder;
 import com.bstek.bdf2.core.controller.IController;
 import com.bstek.bdf2.core.model.DefaultUser;
 import com.bstek.dorado.data.provider.Page;
-import com.jdry.pms.basicInfo.pojo.AllArea;
-import com.jdry.pms.basicInfo.pojo.AreaProperty;
-import com.jdry.pms.basicInfo.pojo.BuildingProperty;
-import com.jdry.pms.basicInfo.pojo.DecorateInfo;
-import com.jdry.pms.basicInfo.pojo.HouseOwner;
-import com.jdry.pms.basicInfo.pojo.HouseProperty;
-import com.jdry.pms.basicInfo.pojo.VHouseOwner;
-import com.jdry.pms.basicInfo.pojo.VHouseProperty;
-import com.jdry.pms.basicInfo.pojo.VRoomCharge;
-import com.jdry.pms.basicInfo.pojo.VRoomChargeTypeRela;
 import com.jdry.pms.basicInfo.service.AllAreaService;
 import com.jdry.pms.basicInfo.service.AreaPropertyService;
 import com.jdry.pms.basicInfo.service.BuildingPropertyService;
@@ -690,7 +681,50 @@ public class HousePropertyController implements IController {
 				out.print(b);
 				out.flush();
 			}
+			if (method.equalsIgnoreCase("roomOfownerInfo")) {
 
+				String ownerId= arg0.getParameter("ownerId") == null ? "" : arg0.getParameter("ownerId").toString();
+				String communityId= arg0.getParameter("communityId") == null ? "" : arg0.getParameter("communityId").toString();
+				String storiedBuildId= arg0.getParameter("storiedBuildId") == null ? "": arg0.getParameter("storiedBuildId").toString();
+				String roomState= arg0.getParameter("roomState") == null ? "": arg0.getParameter("roomState").toString();
+				String roomType= arg0.getParameter("roomType") == null ? "": arg0.getParameter("roomType").toString();
+				String unitId= arg0.getParameter("unitId") == null ? "": arg0.getParameter("unitId").toString();
+
+				Map<String, Object> param = new HashMap<String, Object>();
+				if(!"".equals(roomId)){
+					param.put("roomId",roomId);
+				}
+				if(!"".equals(ownerId)){
+					param.put("ownerId",ownerId);
+				}
+				if(!"".equals(communityId)){
+					param.put("communityId",communityId);
+				}
+				if(!"".equals(storiedBuildId)){
+					param.put("storiedBuildId",storiedBuildId);
+				}
+				if(!"".equals(roomState)){
+					param.put("roomState",roomState);
+				}
+				if(!"".equals(roomType)){
+					param.put("roomType",roomType);
+				}
+				if(!"".equals(unitId)){
+					param.put("unitId",unitId);
+				}
+				List<RoomOfOwnerInfo> lists  = service.queryRoomOfOwnerInfo(param);
+				jsonString = JSON.toJSONString(lists);
+				// 传输JSON
+				out.println(jsonString);
+				out.flush();
+			}
+			if (method.equalsIgnoreCase("unOwner")) {
+
+				jsonString = JSON.toJSONString("success");
+				// 传输JSON
+				out.println(jsonString);
+				out.flush();
+			}
 			arg0.setAttribute("loginUser", user);
 
 		} catch (Exception e) {

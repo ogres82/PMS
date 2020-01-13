@@ -4,18 +4,11 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+import com.jdry.pms.basicInfo.pojo.*;
 import org.springframework.stereotype.Repository;
 
 import com.bstek.dorado.data.provider.Criteria;
 import com.bstek.dorado.data.provider.Page;
-import com.jdry.pms.basicInfo.pojo.BuildingProperty;
-import com.jdry.pms.basicInfo.pojo.DecorateInfo;
-import com.jdry.pms.basicInfo.pojo.HouseOwner;
-import com.jdry.pms.basicInfo.pojo.HouseProperty;
-import com.jdry.pms.basicInfo.pojo.VHouseOwner;
-import com.jdry.pms.basicInfo.pojo.VHouseProperty;
-import com.jdry.pms.basicInfo.pojo.VRoomCharge;
-import com.jdry.pms.basicInfo.pojo.VRoomChargeTypeRela;
 import com.jdry.pms.chargeManager.pojo.ChargeInfoEntity;
 import com.jdry.pms.chargeManager.pojo.ChargeSerialViewEntity;
 import com.jdry.pms.chargeManager.pojo.ChargeTypeSettingViewEntity;
@@ -88,4 +81,8 @@ public interface HousePropertyService {
 	public void updateHouseProperty(HouseProperty houseProperty);
 	
 	public void changeOwnerInfo(String ownerId,String operId,String operType);
+
+	public List<RoomOfOwnerInfo> queryRoomOfOwnerInfo(Map<String, Object> params);
+
+    List<RoomOfOwnerInfo> queryHouseOwnerByParam(Map<String, Object> param);
 }

@@ -7,56 +7,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="badc33fd-fff5-498f-b8a2-43d8ea9b3c40" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/jdry/pms/chargeManager/pojo/ChargeSerialInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/jdry/pms/chargeManager/pojo/RoomVsFee.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/jdry/pms/dir/controller" afterDir="true" />
-      <change afterPath="$PROJECT_DIR$/src/com/jdry/pms/dir/controller/DirDirectoryController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/Hplus/bootstrap/css/bootstrap-spinner.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/Hplus/bootstrap/js/jquery.spinner.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jdry/pms/chargeManager/controller/BeeCloudController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jdry/pms/chargeManager/controller/BeeCloudController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jdry/pms/chargeManager/controller/ChargeInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jdry/pms/chargeManager/controller/ChargeInfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jdry/pms/chargeManager/controller/ChargeRoomInfoViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jdry/pms/chargeManager/controller/ChargeRoomInfoViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jdry/pms/chargeManager/controller/ChargeSerialController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jdry/pms/chargeManager/controller/ChargeSerialController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jdry/pms/chargeManager/controller/ChargeServiceInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jdry/pms/chargeManager/controller/ChargeServiceInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jdry/pms/chargeManager/dao/ChargeRoomInfoViewDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jdry/pms/chargeManager/dao/ChargeRoomInfoViewDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jdry/pms/chargeManager/dao/ChargeSerialDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jdry/pms/chargeManager/dao/ChargeSerialDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jdry/pms/chargeManager/dao/ChargeTypeSettingDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jdry/pms/chargeManager/dao/ChargeTypeSettingDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jdry/pms/chargeManager/pojo/ChargeRoomInfoViewEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jdry/pms/chargeManager/pojo/ChargeRoomInfoViewEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jdry/pms/chargeManager/pojo/ChargeSerialEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jdry/pms/chargeManager/pojo/ChargeSerialEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jdry/pms/chargeManager/pojo/ChargeSerialViewEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jdry/pms/chargeManager/pojo/ChargeSerialViewEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jdry/pms/chargeManager/pojo/ChargeTypeRoomRelaEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jdry/pms/chargeManager/pojo/ChargeTypeRoomRelaEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jdry/pms/chargeManager/pojo/ChargeTypeSettingEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jdry/pms/chargeManager/pojo/ChargeTypeSettingEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jdry/pms/chargeManager/service/ChargeRoomInfoViewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jdry/pms/chargeManager/service/ChargeRoomInfoViewService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jdry/pms/chargeManager/service/ChargeSerialService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jdry/pms/chargeManager/service/ChargeSerialService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jdry/pms/chargeManager/service/impl/ChargeRoomInfoViewImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jdry/pms/chargeManager/service/impl/ChargeRoomInfoViewImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jdry/pms/chargeManager/service/impl/ChargeSerialImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jdry/pms/chargeManager/service/impl/ChargeSerialImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jdry/pms/dir/dao/DirectoryDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jdry/pms/dir/dao/DirectoryDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jdry/pms/dir/service/DirectoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jdry/pms/dir/service/DirectoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jdry/pms/dir/service/impl/DirectoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jdry/pms/dir/service/impl/DirectoryServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jdry/pms/mainFrame/controller/MainFrameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jdry/pms/mainFrame/controller/MainFrameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jdry/pms/test/Demo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jdry/pms/test/Demo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jdry/pms/ztree/pojo/HouseZtree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jdry/pms/ztree/pojo/HouseZtree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/ChargeManager/ChargeAdvance.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/ChargeManager/ChargeAdvance.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/ChargeManager/ChargeAdvance.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/ChargeManager/ChargeAdvance.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/ChargeManager/ChargeArrearInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/ChargeManager/ChargeArrearInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/ChargeManager/ChargeArrearInfo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/ChargeManager/ChargeArrearInfo.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/ChargeManager/ChargeCustomer.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/ChargeManager/ChargeCustomer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/ChargeManager/ChargeCustomer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/ChargeManager/ChargeCustomer.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/ChargeManager/ChargeRoomInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/ChargeManager/ChargeRoomInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/ChargeManager/ChargeRoomInfo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/ChargeManager/ChargeRoomInfo.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/ChargeManager/ChargeSerial.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/ChargeManager/ChargeSerial.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/ChargeManager/ChargeSerialAdvance.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/ChargeManager/ChargeSerialAdvance.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/ChargeManager/ChargeSerialReceive.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/ChargeManager/ChargeSerialReceive.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/ChargeManager/ChargeTypeRela.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/ChargeManager/ChargeTypeRela.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/dorado-home/datasources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/dorado-home/datasources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/lib/lombok-1.18.6.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/common/js/util.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/common/js/util.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/common/taglibs.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/common/taglibs.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/generalService/generalService.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/generalService/generalService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/generalService/generalService.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/generalService/generalService.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/mainFrame/MainFrame.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/mainFrame/MainFrame.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/文档" beforeDir="true" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/jdry/pms/basicInfo/pojo/RoomOfOwnerInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/69d46b9c-63ce-47d5-806c-3e9929cab814.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/69d46b9c-63ce-47d5-806c-3e9929cab814.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jdry/pms/basicInfo/controller/HousePropertyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jdry/pms/basicInfo/controller/HousePropertyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jdry/pms/basicInfo/dao/HousePropertyDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jdry/pms/basicInfo/dao/HousePropertyDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jdry/pms/basicInfo/service/BuildingPropertyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jdry/pms/basicInfo/service/BuildingPropertyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jdry/pms/basicInfo/service/HousePropertyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jdry/pms/basicInfo/service/HousePropertyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jdry/pms/basicInfo/service/impl/HousePropertyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jdry/pms/basicInfo/service/impl/HousePropertyServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/basicInfo/HouseProperty.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/basicInfo/HouseProperty.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/basicInfo/HouseProperty.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/basicInfo/HouseProperty.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +52,14 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="F:\IdeaProjects\PMS\.idea" />
+      </set>
+    </option>
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -122,6 +91,7 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -358,7 +328,69 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="tomcat" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.0.53" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="C:/Program Files/Java/jdk1.8.0_201">
+    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
+      <deployment />
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="_PMS" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="53913" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="tomcat" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.0.53" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="C:/Program Files/Java/jdk1.8.0_121">
       <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
       <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
       <deployment>
@@ -497,6 +529,7 @@
       <workItem from="1578665207359" duration="3619000" />
       <workItem from="1578708270476" duration="2283000" />
       <workItem from="1578730061236" duration="7821000" />
+      <workItem from="1578877565905" duration="19646000" />
     </task>
     <servers />
   </component>
@@ -531,6 +564,10 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="432" y="163" key="#Big_Data_Tools_Connections/0.0.1680.1010@0.0.1680.1010" timestamp="1577319448708" />
+    <state x="432" y="164" key="#Template_Data_Languages" timestamp="1578901148809">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state x="432" y="164" key="#Template_Data_Languages/0.0.1680.1010@0.0.1680.1010" timestamp="1578901148809" />
     <state x="432" y="163" key="#Tomcat_Server" timestamp="1578534560187">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
@@ -540,16 +577,20 @@
     </state>
     <state x="377" y="41" key="#Web_Browsers/0.0.1366.728@0.0.1366.728" timestamp="1576591215006" />
     <state x="464" y="57" key="#Web_Browsers/0.0.1680.1010@0.0.1680.1010" timestamp="1578534520494" />
-    <state x="239" y="38" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578671711185">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="570" y="260" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1578882852046">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state x="570" y="260" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1680.1010@0.0.1680.1010" timestamp="1578882852046" />
+    <state x="294" y="160" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578883798999">
+      <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="239" y="38" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1578671711185" />
-    <state x="294" y="160" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1680.1010@0.0.1680.1010" timestamp="1578534565127" />
-    <state x="524" y="96" key="#com.intellij.ide.util.MemberChooser" timestamp="1578734392590">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="294" y="160" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1680.1010@0.0.1680.1010" timestamp="1578883798999" />
+    <state x="645" y="189" key="#com.intellij.ide.util.MemberChooser" timestamp="1578883342247">
+      <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="524" y="96" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1578734392590" />
-    <state x="645" y="189" key="#com.intellij.ide.util.MemberChooser/0.0.1680.1010@0.0.1680.1010" timestamp="1578475512705" />
+    <state x="645" y="189" key="#com.intellij.ide.util.MemberChooser/0.0.1680.1010@0.0.1680.1010" timestamp="1578883342247" />
     <state x="413" y="110" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1578326315608">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -558,118 +599,118 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state width="453" height="466" key="DebuggerActiveHint/0.0.1680.1010@0.0.1680.1010" timestamp="1577956887309" />
-    <state x="504" y="177" key="FileChooserDialogImpl" timestamp="1578671708497">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="620" y="245" key="FileChooserDialogImpl" timestamp="1578878282981">
+      <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="504" y="177" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1578671708497" />
-    <state x="620" y="245" key="FileChooserDialogImpl/0.0.1680.1010@0.0.1680.1010" timestamp="1578536881239" />
-    <state width="1172" height="250" key="GridCell.Tab.0.bottom" timestamp="1578833534090">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="620" y="245" key="FileChooserDialogImpl/0.0.1680.1010@0.0.1680.1010" timestamp="1578878282981" />
+    <state width="1456" height="357" key="GridCell.Tab.0.bottom" timestamp="1578904908787">
+      <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state width="1172" height="250" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1578833534090" />
-    <state width="1456" height="357" key="GridCell.Tab.0.bottom/0.0.1680.1010@0.0.1680.1010" timestamp="1578618497794" />
-    <state width="1172" height="250" key="GridCell.Tab.0.center" timestamp="1578833534090">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1456" height="357" key="GridCell.Tab.0.bottom/0.0.1680.1010@0.0.1680.1010" timestamp="1578904908787" />
+    <state width="1456" height="357" key="GridCell.Tab.0.center" timestamp="1578904908785">
+      <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state width="1172" height="250" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1578833534090" />
-    <state width="1456" height="357" key="GridCell.Tab.0.center/0.0.1680.1010@0.0.1680.1010" timestamp="1578618497794" />
-    <state width="1172" height="250" key="GridCell.Tab.0.left" timestamp="1578833534089">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1456" height="357" key="GridCell.Tab.0.center/0.0.1680.1010@0.0.1680.1010" timestamp="1578904908785" />
+    <state width="1456" height="357" key="GridCell.Tab.0.left" timestamp="1578904908785">
+      <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state width="1172" height="250" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1578833534089" />
-    <state width="1456" height="357" key="GridCell.Tab.0.left/0.0.1680.1010@0.0.1680.1010" timestamp="1578618497794" />
-    <state width="1172" height="250" key="GridCell.Tab.0.right" timestamp="1578833534090">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1456" height="357" key="GridCell.Tab.0.left/0.0.1680.1010@0.0.1680.1010" timestamp="1578904908785" />
+    <state width="1456" height="357" key="GridCell.Tab.0.right" timestamp="1578904908786">
+      <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state width="1172" height="250" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1578833534090" />
-    <state width="1456" height="357" key="GridCell.Tab.0.right/0.0.1680.1010@0.0.1680.1010" timestamp="1578618497794" />
-    <state width="1172" height="250" key="GridCell.Tab.1.bottom" timestamp="1578833534090">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1456" height="357" key="GridCell.Tab.0.right/0.0.1680.1010@0.0.1680.1010" timestamp="1578904908786" />
+    <state width="1456" height="357" key="GridCell.Tab.1.bottom" timestamp="1578904908789">
+      <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state width="1172" height="250" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1578833534090" />
-    <state width="1456" height="357" key="GridCell.Tab.1.bottom/0.0.1680.1010@0.0.1680.1010" timestamp="1578618497795" />
-    <state width="1172" height="250" key="GridCell.Tab.1.center" timestamp="1578833534090">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1456" height="357" key="GridCell.Tab.1.bottom/0.0.1680.1010@0.0.1680.1010" timestamp="1578904908789" />
+    <state width="1456" height="357" key="GridCell.Tab.1.center" timestamp="1578904908788">
+      <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state width="1172" height="250" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1578833534090" />
-    <state width="1456" height="357" key="GridCell.Tab.1.center/0.0.1680.1010@0.0.1680.1010" timestamp="1578618497794" />
-    <state width="1172" height="250" key="GridCell.Tab.1.left" timestamp="1578833534090">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1456" height="357" key="GridCell.Tab.1.center/0.0.1680.1010@0.0.1680.1010" timestamp="1578904908788" />
+    <state width="1456" height="357" key="GridCell.Tab.1.left" timestamp="1578904908788">
+      <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state width="1172" height="250" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1578833534090" />
-    <state width="1456" height="357" key="GridCell.Tab.1.left/0.0.1680.1010@0.0.1680.1010" timestamp="1578618497794" />
-    <state width="1172" height="250" key="GridCell.Tab.1.right" timestamp="1578833534090">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1456" height="357" key="GridCell.Tab.1.left/0.0.1680.1010@0.0.1680.1010" timestamp="1578904908788" />
+    <state width="1456" height="357" key="GridCell.Tab.1.right" timestamp="1578904908788">
+      <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state width="1172" height="250" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1578833534090" />
-    <state width="1456" height="357" key="GridCell.Tab.1.right/0.0.1680.1010@0.0.1680.1010" timestamp="1578618497794" />
-    <state width="1172" height="250" key="GridCell.Tab.2.bottom" timestamp="1578833534091">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1456" height="357" key="GridCell.Tab.1.right/0.0.1680.1010@0.0.1680.1010" timestamp="1578904908788" />
+    <state width="1456" height="357" key="GridCell.Tab.2.bottom" timestamp="1578904908789">
+      <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state width="1172" height="250" key="GridCell.Tab.2.bottom/0.0.1366.728@0.0.1366.728" timestamp="1578833534091" />
-    <state width="1456" height="357" key="GridCell.Tab.2.bottom/0.0.1680.1010@0.0.1680.1010" timestamp="1578618497795" />
-    <state width="1172" height="250" key="GridCell.Tab.2.center" timestamp="1578833534090">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1456" height="357" key="GridCell.Tab.2.bottom/0.0.1680.1010@0.0.1680.1010" timestamp="1578904908789" />
+    <state width="1456" height="357" key="GridCell.Tab.2.center" timestamp="1578904908789">
+      <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state width="1172" height="250" key="GridCell.Tab.2.center/0.0.1366.728@0.0.1366.728" timestamp="1578833534090" />
-    <state width="1456" height="357" key="GridCell.Tab.2.center/0.0.1680.1010@0.0.1680.1010" timestamp="1578618497795" />
-    <state width="1172" height="250" key="GridCell.Tab.2.left" timestamp="1578833534090">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1456" height="357" key="GridCell.Tab.2.center/0.0.1680.1010@0.0.1680.1010" timestamp="1578904908789" />
+    <state width="1456" height="357" key="GridCell.Tab.2.left" timestamp="1578904908789">
+      <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state width="1172" height="250" key="GridCell.Tab.2.left/0.0.1366.728@0.0.1366.728" timestamp="1578833534090" />
-    <state width="1456" height="357" key="GridCell.Tab.2.left/0.0.1680.1010@0.0.1680.1010" timestamp="1578618497795" />
-    <state width="1172" height="250" key="GridCell.Tab.2.right" timestamp="1578833534090">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1456" height="357" key="GridCell.Tab.2.left/0.0.1680.1010@0.0.1680.1010" timestamp="1578904908789" />
+    <state width="1456" height="357" key="GridCell.Tab.2.right" timestamp="1578904908789">
+      <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state width="1172" height="250" key="GridCell.Tab.2.right/0.0.1366.728@0.0.1366.728" timestamp="1578833534090" />
-    <state width="1456" height="357" key="GridCell.Tab.2.right/0.0.1680.1010@0.0.1680.1010" timestamp="1578618497795" />
-    <state width="1172" height="250" key="GridCell.Tab.3.bottom" timestamp="1578833534091">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1456" height="357" key="GridCell.Tab.2.right/0.0.1680.1010@0.0.1680.1010" timestamp="1578904908789" />
+    <state width="1456" height="357" key="GridCell.Tab.3.bottom" timestamp="1578904908791">
+      <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state width="1172" height="250" key="GridCell.Tab.3.bottom/0.0.1366.728@0.0.1366.728" timestamp="1578833534091" />
-    <state width="1456" height="357" key="GridCell.Tab.3.bottom/0.0.1680.1010@0.0.1680.1010" timestamp="1578618497795" />
-    <state width="1172" height="250" key="GridCell.Tab.3.center" timestamp="1578833534091">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1456" height="357" key="GridCell.Tab.3.bottom/0.0.1680.1010@0.0.1680.1010" timestamp="1578904908791" />
+    <state width="1456" height="357" key="GridCell.Tab.3.center" timestamp="1578904908790">
+      <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state width="1172" height="250" key="GridCell.Tab.3.center/0.0.1366.728@0.0.1366.728" timestamp="1578833534091" />
-    <state width="1456" height="357" key="GridCell.Tab.3.center/0.0.1680.1010@0.0.1680.1010" timestamp="1578618497795" />
-    <state width="1172" height="250" key="GridCell.Tab.3.left" timestamp="1578833534091">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1456" height="357" key="GridCell.Tab.3.center/0.0.1680.1010@0.0.1680.1010" timestamp="1578904908790" />
+    <state width="1456" height="357" key="GridCell.Tab.3.left" timestamp="1578904908790">
+      <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state width="1172" height="250" key="GridCell.Tab.3.left/0.0.1366.728@0.0.1366.728" timestamp="1578833534091" />
-    <state width="1456" height="357" key="GridCell.Tab.3.left/0.0.1680.1010@0.0.1680.1010" timestamp="1578618497795" />
-    <state width="1172" height="250" key="GridCell.Tab.3.right" timestamp="1578833534091">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1456" height="357" key="GridCell.Tab.3.left/0.0.1680.1010@0.0.1680.1010" timestamp="1578904908790" />
+    <state width="1456" height="357" key="GridCell.Tab.3.right" timestamp="1578904908791">
+      <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state width="1172" height="250" key="GridCell.Tab.3.right/0.0.1366.728@0.0.1366.728" timestamp="1578833534091" />
-    <state width="1456" height="357" key="GridCell.Tab.3.right/0.0.1680.1010@0.0.1680.1010" timestamp="1578618497795" />
+    <state width="1456" height="357" key="GridCell.Tab.3.right/0.0.1680.1010@0.0.1680.1010" timestamp="1578904908791" />
     <state width="220" height="477" key="HiddenNamespacesPopup" timestamp="1577319993817">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state width="220" height="477" key="HiddenNamespacesPopup/0.0.1680.1010@0.0.1680.1010" timestamp="1577319993817" />
-    <state x="341" y="147" key="SettingsEditor" timestamp="1578618458338">
+    <state x="341" y="147" key="SettingsEditor" timestamp="1578879385122">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="341" y="147" key="SettingsEditor/0.0.1680.1010@0.0.1680.1010" timestamp="1578618458338" />
+    <state x="341" y="147" key="SettingsEditor/0.0.1680.1010@0.0.1680.1010" timestamp="1578879385122" />
     <state width="254" height="198" key="ShowFilterAction_Filter_Popup" timestamp="1578279707411">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state width="254" height="198" key="ShowFilterAction_Filter_Popup/0.0.1680.1010@0.0.1680.1010" timestamp="1578279707411" />
-    <state x="194" y="232" key="com.intellij.ide.util.TipDialog" timestamp="1578730061255">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="520" y="329" key="com.intellij.ide.util.TipDialog" timestamp="1578877567429">
+      <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="194" y="232" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1578730061255" />
-    <state x="520" y="329" key="com.intellij.ide.util.TipDialog/0.0.1680.1010@0.0.1680.1010" timestamp="1578537168448" />
+    <state x="520" y="329" key="com.intellij.ide.util.TipDialog/0.0.1680.1010@0.0.1680.1010" timestamp="1578877567429" />
     <state x="364" y="241" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1578560955355">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="296" y="174" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1366.728@0.0.1366.728" timestamp="1578325291810" />
     <state x="364" y="241" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1680.1010@0.0.1680.1010" timestamp="1578560955355" />
-    <state x="426" y="68" width="827" height="941" key="search.everywhere.popup" timestamp="1578560527249">
+    <state x="426" y="68" width="827" height="941" key="search.everywhere.popup" timestamp="1578904193596">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1577813450542" />
-    <state x="426" y="68" width="827" height="941" key="search.everywhere.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1578560527249" />
+    <state x="426" y="68" width="827" height="941" key="search.everywhere.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1578904193596" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

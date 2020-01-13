@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import com.jdry.pms.basicInfo.pojo.*;
 import org.apache.poi.ss.formula.functions.T;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,15 +17,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.bstek.dorado.data.provider.Criteria;
 import com.bstek.dorado.data.provider.Page;
 import com.jdry.pms.basicInfo.dao.HousePropertyDao;
-import com.jdry.pms.basicInfo.pojo.BuildingProperty;
-import com.jdry.pms.basicInfo.pojo.DecorateInfo;
-import com.jdry.pms.basicInfo.pojo.HouseOwner;
-import com.jdry.pms.basicInfo.pojo.HouseProperty;
-import com.jdry.pms.basicInfo.pojo.PropertyOwner;
-import com.jdry.pms.basicInfo.pojo.VHouseOwner;
-import com.jdry.pms.basicInfo.pojo.VHouseProperty;
-import com.jdry.pms.basicInfo.pojo.VRoomCharge;
-import com.jdry.pms.basicInfo.pojo.VRoomChargeTypeRela;
 import com.jdry.pms.basicInfo.service.HousePropertyService;
 import com.jdry.pms.basicInfo.service.OwnerInfoService;
 import com.jdry.pms.chargeManager.pojo.ChargeInfoEntity;
@@ -275,6 +267,16 @@ public class HousePropertyServiceImpl implements HousePropertyService {
 				}
 			}
 		}		
+	}
+
+	@Override
+	public List<RoomOfOwnerInfo> queryRoomOfOwnerInfo(Map<String, Object> params) {
+		return dao.queryRoomOfOwnerInfo(params);
+	}
+
+	@Override
+	public List<RoomOfOwnerInfo> queryHouseOwnerByParam(Map<String, Object> param) {
+		return null;
 	}
 
 }

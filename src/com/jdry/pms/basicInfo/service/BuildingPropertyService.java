@@ -4,15 +4,11 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+import com.jdry.pms.basicInfo.pojo.*;
 import org.springframework.stereotype.Repository;
 
 import com.bstek.dorado.data.provider.Criteria;
 import com.bstek.dorado.data.provider.Page;
-import com.jdry.pms.basicInfo.pojo.AreaProperty;
-import com.jdry.pms.basicInfo.pojo.BuildingHousetype;
-import com.jdry.pms.basicInfo.pojo.BuildingProperty;
-import com.jdry.pms.basicInfo.pojo.VBuildingProperty;
-import com.jdry.pms.basicInfo.pojo.VHouseOwner;
 
 @Repository
 public interface BuildingPropertyService {
@@ -47,4 +43,5 @@ public interface BuildingPropertyService {
 
 	public List<BuildingHousetype> queryHouseType();
 	public List queryBuildingImgById(String buildingId);
+
 }
