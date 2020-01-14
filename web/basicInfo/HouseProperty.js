@@ -1,3 +1,4 @@
+var ChargeType;
 selections = [];
 var options = {
     buildCtrlId: "buildId",
@@ -18,6 +19,8 @@ $(function () {
     initPermissions();
     init();
     initDrops();
+    initSearch();
+    initChargeNoDrops();
     roomFilter = new RoomFilter(options);
     roomSearch = new RoomFilter(optionsSearch);
     // 定位表格查询框
@@ -153,6 +156,9 @@ var TableInit = function () {
                 visible: false
             }, {
                 field: 'chargeStateName',
+                visible: false
+            },  {
+                field: 'lzRoomOwnerId',
                 visible: false
             }, {
                 field: 'monthsPrice',
@@ -472,7 +478,6 @@ function getDataForm() {
 
 // 清空表单
 function clearForm() {
-
     $("#roomId").val("");
     $("#roomNo").val("");
     $("#belongSbId").val("");
@@ -487,7 +492,6 @@ function clearForm() {
     $("#buildId").val("");
     $("#communityId").val("");
     roomFilter.init();
-
 }
 
 // 查看和编辑
@@ -561,19 +565,19 @@ function editOrCheck(obj, type) {
     $("#roomAddrs").val(obj.roomAddrs);
     $("#ownerInfo").val(obj.ownerName + "-" + obj.phone);
     $("#onwerId").val(obj.ownerId);
-    $("#lzId").val(obj.roomLzId);
+    $("#lzRoomId").val(obj.roomLzId);
+    $("#lzRoomOwnerId").val(obj.lzRoomOwnerId);
     $("#chargeInfo").val("面积：" + obj.buildArea + "² |" + "物业费名称：" + obj.chargeTypeName + " | " + "单价：" + obj.chargePrice + "元 | " + " 每月物业费：" + obj.monthsPrice + "元");
     if (obj.roomLzId === null || obj.roomLzId === "") {
-        $("#lzmhInfo").val("未同步联掌系统!");
+        $("#lzmhInfo").val("房间信息未同步联掌系统!");
     } else {
-        $("#lzmhInfo").val("已同步联掌系统!");
+        $("#lzmhInfo").val("房间信息已同步联掌系统!");
     }
     $('#myModal1').modal({
         backdrop: 'static',
         keyboard: false
     });
 }
-
 function clearSearch() {
     $("#roomTypeSearch").val("");
     $("#roomStateSearch").val("");
@@ -583,11 +587,11 @@ function clearSearch() {
     roomSearch.init();
     $('#buttonSearch').click();
 }
-
 function manage(type) {
     var ownerId = $("#onwerId").val() || '';
     var roomId = $("#roomId").val();
-    if (type === "unOwner" && ownerId != "") {
+
+    if (type === "unOwner") {
         layer.confirm('您确认要解除该房间绑定的业主吗？', {btn: ['确定', '取消'], title: "提示"}, function () {
             $.ajax({
                 type: "post",
@@ -598,18 +602,21 @@ function manage(type) {
                 success: function (data) {
                     //console.log(data);
                     if (data == "success") {
-                        layer.msg('重置成功', {icon: 1});
+                        layer.msg('解除房间绑定成功', {icon: 1});
                     } else {
-                        layer.msg('重置失败', {icon: 2});
+                        layer.msg('解除房间绑定失败', {icon: 2});
                     }
                 }
             });
         });
-    } else {
+    }/* else {
         alert("房间未绑定业主，无法进行解除绑定");
-    }
+    }*/
     if (type === "repOwner") {
-        alert(1);
+        $("#modalOwnerInfo").modal({
+            backdrop: 'static',
+            keyboard: false
+        });
     }
     if (type === "repCharge") {
         alert(2);
@@ -617,4 +624,63 @@ function manage(type) {
     if (type === "sycnLz") {
         alert(3);
     }
+}
+
+
+/* 搜索框初始化 */
+function initSearch() {
+    // 业主下拉框
+    $("#owner").bsSuggest({
+        url : encodeURI("./../ownerInfo/ownerList.app?code=utf-8&method=ownerInfo&keyword="),
+        showHeader : true,
+        allowNoKeyword : true,
+        keyField : 'keyword',
+        getDataMethod : "url",
+        delayUntilKeyup : true,
+        effectiveFields : [ "ownerName", "phone" ],
+        effectiveFieldsAlias : {
+            ownerName : "业主姓名",
+            phone : "电话号码"
+        },
+        // 预处理
+        fnPreprocessKeyword : function(keyword) {
+            // 请求数据前，对输入关键字作预处理
+            return encodeURI(encodeURI(keyword));
+        },
+        processData : function(json) { // url 获取数据时，对数据的处理，作为 getData 的回调函数
+            var index, len, data = {
+                value : []
+            };
+            if (!json || json.length === 0) {
+                return false;
+            }
+            data.value = json;
+            // 字符串转化为 json 对象
+            return data;
+        }
+    }).on("onDataRequestSuccess", function(e, result) {
+        console.log("onDataRequestSuccess: ", result)
+    }).on("onSetSelectValue", function(e, keyword, data) {
+        console.log("onSetSelectValue: ", keyword, data);
+        $("#ownerId").val(data.ownerId);
+        $("#owner").val(data.ownerName);
+    }).on("onUnsetSelectValue", function(e) {
+        console.log("onUnsetSelectValue")
+    });
+}
+function initChargeNoDrops() {
+    var url = getRootPath() + "ChargeManager/ChargeType.app?method=dropdownChargeType";
+    $.post(url, function (data) {
+        ChargeType = eval(data);
+        for (var j = 0; j < ChargeType.length; j++) {
+            var detailList = ChargeType[j];
+            //不添加家政费用和维修费用
+            if ((detailList[3] != '01' )) {
+                continue;
+            }
+            // 收费类型
+            $("<option value='" + detailList + "'>" + detailList[2] +
+                "</option>").appendTo("#chargeType");
+        };
+    });
 }

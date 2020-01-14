@@ -719,16 +719,32 @@ public class HousePropertyController implements IController {
 				out.flush();
 			}
 			if (method.equalsIgnoreCase("unOwner")) {
-
+				Integer lzRoomOwnerId =  arg0.getParameter("lzRoomOwnerId") == null ? 0 :  Integer.parseInt(arg0.getParameter("lzRoomOwnerId"));
+				service.unOwner(roomId,lzRoomOwnerId,CommUser.getUserName());
 				jsonString = JSON.toJSONString("success");
 				// 传输JSON
 				out.println(jsonString);
 				out.flush();
 			}
+			if (method.equalsIgnoreCase("repOwner")) {
+				Integer lzRoomOwnerId =  arg0.getParameter("lzRoomOwnerId") == null ? 0 :  Integer.parseInt(arg0.getParameter("lzRoomOwnerId"));
+				String newOwnerId = arg0.getParameter("newOwnerId") ;
+				String lzRoomId = arg0.getParameter("lzRoomId") ;
+				String phone = arg0.getParameter("phone") ;
+				service.repOwner(roomId,lzRoomOwnerId,CommUser.getUserName(),newOwnerId,phone,lzRoomId);
+				jsonString = JSON.toJSONString("success");
+				// 传输JSON
+				out.println(jsonString);
+				out.flush();
+			}
+			if (method.equalsIgnoreCase("repCharge")) {
+
+			}
+			if (method.equalsIgnoreCase("sycnLz")) {
+
+			}
 			arg0.setAttribute("loginUser", user);
-
 		} catch (Exception e) {
-
 			e.printStackTrace();
 		}
 	}

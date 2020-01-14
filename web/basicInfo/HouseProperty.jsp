@@ -97,8 +97,7 @@
     </div>
 
     <!-- 弹出窗口区域，触发事件后弹出  -->
-    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog"
-         aria-labelledby="myModalLabel">
+    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" style="width: 1020px">
             <div class="modal-content">
                 <div class="modal-header" style="background: #18a689">
@@ -228,6 +227,44 @@
                                             <input class="form-control" id="lzmhInfo" type="text" readonly="readonly"/>
                                         </div>
                                     </div>
+                                    <div class="form-group form-group-sm ">
+                                        <label class="col-sm-2 control-label">客户</label>
+                                        <div class="col-sm-8">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control validate[required]" id="owner"
+                                                       placeholder="业主姓名/电话号码">
+                                                <div class="input-group-btn">
+                                                    <button type="button" class="btn btn-white btn-sm dropdown-toggle"
+                                                            data-toggle="dropdown">
+                                                        <span class="caret"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group-sm ">
+                                        <label class="col-sm-2 control-label">新业主信息</label>
+                                        <div class="col-sm-8">
+                                            <input class="form-control" id="newOwnerInfo" type="text" readonly="readonly"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group-sm ">
+                                        <label class="col-sm-2 control-label">收费项</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control" id="chargeType">
+                                                <option value="">---请选择---</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group-sm ">
+                                        <label class="col-sm-2 control-label">新费用信息</label>
+                                        <div class="col-sm-8">
+                                            <input class="form-control" id="newChargeInfo" type="text"
+                                                   readonly="readonly"/>
+                                        </div>
+                                    </div>
                                 </fieldset>
                             </form>
                         </div>
@@ -251,7 +288,8 @@
                     </button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                     <input class="form-control" id="roomId" type="hidden"/>
-                    <input class="form-control" id="lzId" type="hidden"/>
+                    <input class="form-control" id="lzRoomId" type="hidden"/>
+                    <input class="form-control" id="lzRoomOwnerId" type="hidden"/>
                     <input class="form-control" id="onwerId" type="hidden"/>
                 </div>
             </div>
@@ -259,6 +297,7 @@
         <!-- 弹出窗口区域，触发事件后弹出   结束 -->
     </div>
 </div>
+
 </body>
 
 </html>

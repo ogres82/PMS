@@ -31,7 +31,7 @@ import com.jdry.pms.chargeManager.pojo.ChargeTypeSettingViewEntity;
 
 @Repository
 @Transactional
-public class HousePropertyDao extends HibernateDao {
+public class HousePropertyDao extends HibernateDao  {
 
     @Resource
     AreaPropertyDao areaProperty;
@@ -886,6 +886,17 @@ public class HousePropertyDao extends HibernateDao {
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
         list = query.list();
         return list;
+    }
+
+    //解除房间绑定用户
+    public void unOwner(String roomId, String operId) {
+        Session session = this.getSession();
+        session.beginTransaction();
+        SQLQuery query = session.createSQLQuery("{CALL pro_relieve_owner(?,?)}");
+        query.setString(0, roomId);
+        query.setString(1, operId);
+        query.executeUpdate();
+        session.getTransaction().commit();
     }
 
     public List<RoomOfOwnerInfo> queryRoomOfOwnerInfo(Map<String, Object> params) {

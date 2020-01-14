@@ -84,5 +84,9 @@ public interface HousePropertyService {
 
 	public List<RoomOfOwnerInfo> queryRoomOfOwnerInfo(Map<String, Object> params);
 
-    List<RoomOfOwnerInfo> queryHouseOwnerByParam(Map<String, Object> param);
+    public List<RoomOfOwnerInfo> queryHouseOwnerByParam(Map<String, Object> param);
+
+	public void unOwner(String roomId,Integer lzRoomOwnerId,String operId);
+
+	public void repOwner(String roomId,Integer lzRoomOwnerId,String operId,String newOwnerId,String phone,String lzRoomId);
 }

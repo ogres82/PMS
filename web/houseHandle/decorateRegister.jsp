@@ -290,8 +290,8 @@
 							onclick="openDecorateFinishButton()" class="btn btn-primary "
 							type="button">保存</button>
 					</div>
-					<input class="form-control" id="roomId" type="hidden" /> <input
-						class="form-control" id="ownerId_f" type="hidden" />
+					<input class="form-control" id="roomId" type="hidden" />
+					<input class="form-control" id="ownerId_f" type="hidden" />
 				</div>
 			</div>
 		</div>

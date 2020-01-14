@@ -80,6 +80,16 @@ public class RoomOfOwnerInfo implements Serializable {
     private String cardId;
     @Column(name = "birth_date") //生日
     private String birthDate;
+    @Column(name = "lz_room_owner_id") //生日
+    private String lzRoomOwnerId;
+
+    public String getLzRoomOwnerId() {
+        return lzRoomOwnerId;
+    }
+
+    public void setLzRoomOwnerId(String lzRoomOwnerId) {
+        this.lzRoomOwnerId = lzRoomOwnerId;
+    }
 
     public String getRoomAddrs() {
         return roomAddrs;
