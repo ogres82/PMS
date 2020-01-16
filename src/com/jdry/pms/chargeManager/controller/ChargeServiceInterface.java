@@ -1,9 +1,7 @@
 package com.jdry.pms.chargeManager.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 import javax.annotation.Resource;
 
@@ -40,10 +38,6 @@ public class ChargeServiceInterface {
     @SuppressWarnings({"rawtypes", "unchecked"})
     public String getArrearInfoByRoom(String data) {
         //初始化上下文环境
-//		if(service == null){
-//			service = (ChargeInfoService) SpringUtil.getObjectFromApplication("chargeInfoImpl");
-//		}
-
         if (service == null) {
             service = (ChargeRoomInfoViewService) SpringUtil.getObjectFromApplication("chargeRoomInfoViewImpl");
         }
@@ -52,6 +46,10 @@ public class ChargeServiceInterface {
         JSONObject parm = JSON.parseObject(data);
         String roomId = parm.getString("roomId");
         Map<String, Object> parameter = new HashMap();
+        Date beginTime ;
+        Date endTime;
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
         Map map = new HashMap();
         Map mapRes = new HashMap();
@@ -68,6 +66,8 @@ public class ChargeServiceInterface {
 
             for (int i = 0, len = chargeInfoViewEntities.size(); i < len; i++) {
                 Map mp = new HashMap();
+                beginTime =  chargeInfoViewEntities.get(i).getBeginDate();
+                endTime = chargeInfoViewEntities.get(i).getEndDate();
                 mp.put("charge_type_no", chargeInfoViewEntities.get(i).getChargeTypeNo());
                 mp.put("charge_type_name", chargeInfoViewEntities.get(i).getChargeTypeName());
                 mp.put("work_id", "");
@@ -75,8 +75,8 @@ public class ChargeServiceInterface {
                 mp.put("owner_name", chargeInfoViewEntities.get(i).getOwnerName());
                 mp.put("room_id", chargeInfoViewEntities.get(i).getRoomId());
                 mp.put("room_no", chargeInfoViewEntities.get(i).getRoomNo());
-                mp.put("begin_time", chargeInfoViewEntities.get(i).getBeginDate());
-                mp.put("end_time", chargeInfoViewEntities.get(i).getEndDate());
+                mp.put("begin_time",sdf.format(beginTime));
+                mp.put("end_time", sdf.format(endTime));
                 mp.put("arrearage_amount", chargeInfoViewEntities.get(i).getReceiveAmount());
                 mp.put("charge_ids", roomId);
                 res.add(mp);

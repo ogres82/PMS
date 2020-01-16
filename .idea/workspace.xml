@@ -7,18 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="badc33fd-fff5-498f-b8a2-43d8ea9b3c40" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/jdry/pms/basicInfo/pojo/RoomOfOwnerInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/69d46b9c-63ce-47d5-806c-3e9929cab814.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/69d46b9c-63ce-47d5-806c-3e9929cab814.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jdry/pms/basicInfo/controller/HousePropertyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jdry/pms/basicInfo/controller/HousePropertyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jdry/pms/basicInfo/dao/HousePropertyDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jdry/pms/basicInfo/dao/HousePropertyDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jdry/pms/basicInfo/service/BuildingPropertyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jdry/pms/basicInfo/service/BuildingPropertyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jdry/pms/basicInfo/service/HousePropertyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jdry/pms/basicInfo/service/HousePropertyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jdry/pms/basicInfo/service/impl/HousePropertyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jdry/pms/basicInfo/service/impl/HousePropertyServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/basicInfo/HouseProperty.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/basicInfo/HouseProperty.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/basicInfo/HouseProperty.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/basicInfo/HouseProperty.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jdry/pms/chargeManager/controller/ChargeServiceInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jdry/pms/chargeManager/controller/ChargeServiceInterface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,12 +93,12 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\HC\PMS\web\common\js" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\HC\PMS\web\Hplus\bootstrap\css" />
       <recent name="E:\HC\PMS\web\Hplus\bootstrap\js" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\HC\PMS\web\common\js" />
     </key>
   </component>
   <component name="RestClientSettings">
@@ -475,17 +467,15 @@
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
               </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="Running" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
             </expand>
             <select />
           </treeState>
         </serviceView>
       </list>
     </option>
+  </component>
+  <component name="SshConsoleOptionsProvider">
+    <option name="myEncoding" value="UTF-8" />
   </component>
   <component name="SvnConfiguration" cleanupOnStartRun="true">
     <configuration>C:\Users\GS-CXK\AppData\Roaming\Subversion</configuration>
@@ -530,6 +520,10 @@
       <workItem from="1578708270476" duration="2283000" />
       <workItem from="1578730061236" duration="7821000" />
       <workItem from="1578877565905" duration="19646000" />
+      <workItem from="1579141898490" duration="165000" />
+      <workItem from="1579142266307" duration="1357000" />
+      <workItem from="1579161211682" duration="18000" />
+      <workItem from="1579161250511" duration="148000" />
     </task>
     <servers />
   </component>
@@ -591,6 +585,10 @@
     </state>
     <state x="524" y="96" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1578734392590" />
     <state x="645" y="189" key="#com.intellij.ide.util.MemberChooser/0.0.1680.1010@0.0.1680.1010" timestamp="1578883342247" />
+    <state x="520" y="232" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1579161218958">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state x="520" y="232" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1680.1010@0.0.1680.1010" timestamp="1579161218958" />
     <state x="413" y="110" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1578326315608">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -696,11 +694,11 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state width="254" height="198" key="ShowFilterAction_Filter_Popup/0.0.1680.1010@0.0.1680.1010" timestamp="1578279707411" />
-    <state x="520" y="329" key="com.intellij.ide.util.TipDialog" timestamp="1578877567429">
+    <state x="520" y="329" key="com.intellij.ide.util.TipDialog" timestamp="1579161386457">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="194" y="232" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1578730061255" />
-    <state x="520" y="329" key="com.intellij.ide.util.TipDialog/0.0.1680.1010@0.0.1680.1010" timestamp="1578877567429" />
+    <state x="520" y="329" key="com.intellij.ide.util.TipDialog/0.0.1680.1010@0.0.1680.1010" timestamp="1579161386457" />
     <state x="364" y="241" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1578560955355">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
