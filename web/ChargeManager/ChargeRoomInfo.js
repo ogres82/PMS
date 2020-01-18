@@ -44,7 +44,7 @@ var TableInit = function () {
             showToggle: true, // 是否显示详细视图和列表视图的切换按钮
             sortable: false,
             sortOrder: "asc",
-            sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
+            sidePagination: "server", // 分页方式：client客户端分页，server 服务端分页（*）
             cache: false,
             // clickToSelect: true,
             queryParams: oTableInit.queryParams,

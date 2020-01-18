@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.bstek.dorado.data.provider.Page;
 import org.springframework.stereotype.Repository;
 
 import com.alibaba.fastjson.JSON;
@@ -52,6 +53,9 @@ public class ChargeRoomInfoViewController implements IController {
         String roomId = arg0.getParameter("roomId") == null ? "" : arg0.getParameter("roomId").toString();
         String typeFlag = arg0.getParameter("typeFlag") == null ? "" : arg0.getParameter("typeFlag").toString();
         String ArrNum = arg0.getParameter("ArrNum") == null ? "" : arg0.getParameter("ArrNum").toString();
+        int currentPage = arg0.getParameter("offset") == null ? 1
+                : Integer.parseInt(arg0.getParameter("offset"));// 每页行数
+        int showCount = arg0.getParameter("limit") == null ? 10 : Integer.parseInt(arg0.getParameter("limit"));
 
         Map<String, Object> parameter = new HashMap<String, Object>();
         parameter.put("communityId", communityId);
@@ -66,8 +70,11 @@ public class ChargeRoomInfoViewController implements IController {
         parameter.put("ArrNum", ArrNum);
         try {
             if (method.equalsIgnoreCase("list")) {
-                List<ChargeRoomInfoViewEntity> lists = service.queryAll(parameter);
-                jsonString = JSON.toJSONString(lists);
+                currentPage += 1;
+                Page<ChargeRoomInfoViewEntity> page = new Page<ChargeRoomInfoViewEntity>(showCount, currentPage);
+                service.queryAll(page,parameter);
+                List<ChargeRoomInfoViewEntity> lists = (List<ChargeRoomInfoViewEntity>) page.getEntities();
+                jsonString = "{\"total\":" + page.getEntityCount() + ",\"rows\":" + JSON.toJSONString(lists) + "}"; // 服务端分页必须返回total和rows,rows为每页记录
             }
             if (method.equalsIgnoreCase("payRec")) {
                 List<Map<String, Object>> lists = service.queryPayRec(parameter);

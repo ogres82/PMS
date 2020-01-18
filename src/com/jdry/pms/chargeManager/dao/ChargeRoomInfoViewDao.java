@@ -1,21 +1,49 @@
 package com.jdry.pms.chargeManager.dao;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
-import com.jdry.pms.chargeManager.pojo.ChargeSerialInfo;
-import com.jdry.pms.chargeManager.pojo.RoomVsFee;
+import com.bstek.dorado.data.provider.Page;
+import com.jdry.pms.chargeManager.pojo.*;
 import org.hibernate.Session;
 import org.hibernate.criterion.CriteriaSpecification;
 import org.springframework.stereotype.Repository;
 
 import com.bstek.bdf2.core.orm.hibernate.HibernateDao;
-import com.jdry.pms.chargeManager.pojo.ChargeInfoViewEntity;
-import com.jdry.pms.chargeManager.pojo.ChargeRoomInfoViewEntity;
 
 @Repository
 public class ChargeRoomInfoViewDao extends HibernateDao {
+    public void queryAll(Page<ChargeRoomInfoViewEntity> page, Map<String, Object> parameter) throws Exception {
+        String hql = " from " + ChargeRoomInfoViewEntity.class.getName() + " a where 1=1 ";
+        String sqlCount = "select count(roomId) from " + ChargeRoomInfoViewEntity.class.getName() + " b where 1=1 ";
+
+        String communityId = parameter.get("communityId").toString();
+        String roomType = parameter.get("roomType").toString();
+        String roomState = parameter.get("roomState").toString();
+        String roomId = parameter.get("roomId").toString();
+
+        if (parameter != null) {
+            if (!"".equals(communityId)) {
+                hql += " and a.communityId ="+communityId;
+                sqlCount += " and b.communityId ="+communityId;
+            }
+            if (!"".equals(roomType)) {
+                hql += " and a.roomType ="+roomType;
+                sqlCount +=  " and b.roomType ="+roomType;
+            }
+            if (!"".equals(roomState)) {
+                hql += " and a.roomState ="+roomState;
+                sqlCount +=" and b.roomState ="+roomState;
+            }
+            if (!"".equals(roomId)) {
+                hql += " and a.roomId ="+roomId;
+                sqlCount += " and b.roomId ="+roomId;
+            }
+        }
+        this.pagingQuery(page, hql, sqlCount);
+       //this.pagingQuery(page, hql, sqlCount, parameter);
+    }
 
     public List<ChargeRoomInfoViewEntity> queryAll(Map<String, Object> parameter) {
         String hql = " FROM ChargeRoomInfoViewEntity a";
@@ -83,7 +111,7 @@ public class ChargeRoomInfoViewDao extends HibernateDao {
         Integer ArrNum = Integer.parseInt(parameter.get("ArrNum").toString());
         hql += " and a.receiveAmount >" + ArrNum + "*a.monthsPrice";
         if (!"".equals(roomId)) {
-            hql += " and a.roomId ='" + roomId+"'";
+            hql += " and a.roomId ='" + roomId + "'";
         }
         if (!"".equals(communityId)) {
             hql += " and a.communityId =" + communityId;
@@ -91,8 +119,8 @@ public class ChargeRoomInfoViewDao extends HibernateDao {
         return this.query(hql);
     }
 
-    public List<RoomVsFee> getRoomOfChargeInfo(String roomId){
-        String hql = " FROM RoomVsFee a WHERE roomId ='"+roomId+"'";
+    public List<RoomVsFee> getRoomOfChargeInfo(String roomId) {
+        String hql = " FROM RoomVsFee a WHERE roomId ='" + roomId + "'";
         return this.query(hql);
     }
 }

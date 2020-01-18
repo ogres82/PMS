@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import com.bstek.dorado.data.provider.Page;
 import com.jdry.pms.chargeManager.pojo.RoomVsFee;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
@@ -26,6 +27,11 @@ public class ChargeRoomInfoViewImpl implements ChargeRoomInfoViewService {
 	public List<ChargeRoomInfoViewEntity> queryAll(Map<String, Object> parameter) {
 		// TODO Auto-generated method stub
 		return dao.queryAll(parameter);
+	}
+
+	@Override
+	public void queryAll(Page<ChargeRoomInfoViewEntity> page, Map<String, Object> parameter) throws Exception {
+		dao.queryAll(page, parameter);
 	}
 
 	@Override
