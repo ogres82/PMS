@@ -25,15 +25,10 @@ import com.jdry.pms.comm.util.SpringUtil;
 @Repository
 @Component
 public class ChargeServiceInterface {
-
-    //	@Resource
-//	private ChargeInfoService service;
-//
     @Resource
     private ChargeSerialService serialService;
     @Resource
     private ChargeRoomInfoViewService service;
-
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     public String getArrearInfoByRoom(String data) {
@@ -41,16 +36,12 @@ public class ChargeServiceInterface {
         if (service == null) {
             service = (ChargeRoomInfoViewService) SpringUtil.getObjectFromApplication("chargeRoomInfoViewImpl");
         }
-
-
         JSONObject parm = JSON.parseObject(data);
         String roomId = parm.getString("roomId");
         Map<String, Object> parameter = new HashMap();
         Date beginTime ;
         Date endTime;
-
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
         Map map = new HashMap();
         Map mapRes = new HashMap();
         String status = "";
@@ -63,7 +54,6 @@ public class ChargeServiceInterface {
             parameter.put("roomType", "");
             parameter.put("roomState", "");
             List<ChargeRoomInfoViewEntity> chargeInfoViewEntities = service.queryArrearage(parameter);
-
             for (int i = 0, len = chargeInfoViewEntities.size(); i < len; i++) {
                 Map mp = new HashMap();
                 beginTime =  chargeInfoViewEntities.get(i).getBeginDate();
@@ -81,7 +71,6 @@ public class ChargeServiceInterface {
                 mp.put("charge_ids", roomId);
                 res.add(mp);
             }
-
             List<ChargeRoomInfoViewEntity> roomVsFees = service.queryAll(parameter);
             if (roomVsFees.size() > 0) {
                 for (int i = 0, len = roomVsFees.size(); i < len; i++) {
@@ -102,17 +91,13 @@ public class ChargeServiceInterface {
                 mapRes.put("amount", null);
                 mapRes.put("room_id", roomId);
             }
-
             mapRes.put("arrearageInfo", res);
-
-
             status = "1";
             message = "成功，欠费信息有" + chargeInfoViewEntities.size() + "条";
         } else {
             status = "0";
             message = "失败，业主房间ID为空";
         }
-
         // 传输JSON
         map.put("status", status);
         map.put("message", message);
@@ -129,11 +114,8 @@ public class ChargeServiceInterface {
         if (serialService == null) {
             serialService = (ChargeSerialService) SpringUtil.getObjectFromApplication("chargeSerialImpl");
         }
-
-
         JSONObject obj = JSON.parseObject(data);
         String roomId = obj.getString("roomId");
-
         Map map = new HashMap();
         String status = "";
         String message = "";
@@ -148,12 +130,10 @@ public class ChargeServiceInterface {
             status = "0";
             message = "失败，业主房间ID为空";
         }
-
         // 传输JSON
         map.put("status", status);
         map.put("message", message);
         map.put("data", result);
-//		String paidInfo = JSON.toJSONString(map);
         String paidInfo = JSON.toJSONString(map, SerializerFeature.WriteMapNullValue);
         return paidInfo;
     }
@@ -161,14 +141,8 @@ public class ChargeServiceInterface {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     public String getArrearInfoByWorkId(String data) {
-        //初始化上下文环境
-//        if (service == null) {
-//            service = (ChargeInfoService) SpringUtil.getObjectFromApplication("chargeInfoImpl");
-//        }
-
         JSONObject parm = JSON.parseObject(data);
         String workId = parm.getString("workId");
-
         Map map = new HashMap();
         String status = "";
         String message = "";
@@ -218,15 +192,11 @@ public class ChargeServiceInterface {
 //            status = "0";
 //            message = "失败，业主房间ID为空";
 //        }
-
         // 传输JSON
         map.put("status", status);
         map.put("message", message);
         map.put("data", res);
         String arrearInfo = JSON.toJSONString(map, SerializerFeature.WriteMapNullValue);
-
-        System.out.println(arrearInfo);
         return arrearInfo;
     }
-
 }

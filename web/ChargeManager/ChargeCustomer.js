@@ -119,8 +119,6 @@ function paid() {
         Object.assign(newObj, userInfo, charge);
         data.push(newObj)
     }
-    console.log(data);
-
     pay(data);
 }
 

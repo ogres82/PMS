@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.jdry.pms.basicInfo.pojo.*;
+import com.jdry.pms.chargeManager.pojo.ChargeRoomInfoViewEntity;
 import org.springframework.stereotype.Repository;
 
 import com.bstek.dorado.data.provider.Criteria;
@@ -82,7 +83,7 @@ public interface HousePropertyService {
 	
 	public void changeOwnerInfo(String ownerId,String operId,String operType);
 
-	public List<RoomOfOwnerInfo> queryRoomOfOwnerInfo(Map<String, Object> params);
+	public void queryRoomOfOwnerInfo(Page<RoomOfOwnerInfo> page, Map<String, Object> params) throws Exception;
 
     public List<RoomOfOwnerInfo> queryHouseOwnerByParam(Map<String, Object> param);
 

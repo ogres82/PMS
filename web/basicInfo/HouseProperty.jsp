@@ -227,11 +227,12 @@
                                             <input class="form-control" id="lzmhInfo" type="text" readonly="readonly"/>
                                         </div>
                                     </div>
-                                    <div class="form-group form-group-sm ">
+                                    <div class="form-group form-group-sm " id="newOwnerDiv">
                                         <label class="col-sm-2 control-label">客户</label>
                                         <div class="col-sm-8">
                                             <div class="input-group">
-                                                <input type="text" class="form-control validate[required]" id="owner"
+                                                <input type="text" class="form-control"
+                                                       id="ownerSelect"
                                                        placeholder="业主姓名/电话号码">
                                                 <div class="input-group-btn">
                                                     <button type="button" class="btn btn-white btn-sm dropdown-toggle"
@@ -244,25 +245,33 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group form-group-sm ">
+                                    <div class="form-group form-group-sm " id="newOwnerInfoDiv">
                                         <label class="col-sm-2 control-label">新业主信息</label>
                                         <div class="col-sm-8">
-                                            <input class="form-control" id="newOwnerInfo" type="text" readonly="readonly"/>
+                                            <input class="form-control" id="newOwnerInfo" type="text"
+                                                   readonly="readonly"/>
                                         </div>
                                     </div>
-                                    <div class="form-group form-group-sm ">
+                                    <div class="form-group form-group-sm " id="newChargeSelectDiv">
                                         <label class="col-sm-2 control-label">收费项</label>
                                         <div class="col-sm-8">
-                                            <select class="form-control" id="chargeType">
+                                            <select class="form-control" id="newChargeType" onchange="setChargeInfo(this.value)">
                                                 <option value="">---请选择---</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group form-group-sm ">
+                                    <div class="form-group form-group-sm" id="newChargeInfoDiv">
                                         <label class="col-sm-2 control-label">新费用信息</label>
                                         <div class="col-sm-8">
                                             <input class="form-control" id="newChargeInfo" type="text"
                                                    readonly="readonly"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group-sm" id="chargeDateDiv">
+                                        <label class="col-sm-2 control-label">起征日期</label>
+                                        <div class="col-sm-8">
+                                            <input class="form-control laydate-icon layer-date" id="chargeDate"
+                                                   type="text"/>
                                         </div>
                                     </div>
                                 </fieldset>
@@ -281,16 +290,22 @@
                             onclick="manage('repOwner')">更换业主
                     </button>
                     <button type="button" id="repCharge" class="btn btn-primary"
-                            onclick="manage('repCharge')">修改房间费用
+                            onclick="manage('repCharge')" >修改房间费用
                     </button>
-                    <button type="button" id="sycnLz" class="btn btn-primary"
-                            onclick="manage('sycnLz')">同步联掌
-                    </button>
+                    <%--                    <button type="button" id="sycnLz" class="btn btn-primary"--%>
+                    <%--                            onclick="manage('sycnLz')">同步联掌--%>
+                    <%--                    </button>--%>
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <input class="form-control" id="roomId" type="hidden"/>
-                    <input class="form-control" id="lzRoomId" type="hidden"/>
-                    <input class="form-control" id="lzRoomOwnerId" type="hidden"/>
-                    <input class="form-control" id="onwerId" type="hidden"/>
+                    <input id="roomId" type="text" />
+                    <input id="phone" type="text" />
+                    <input id="lzRoomId" type="text" />
+                    <input id="chargeTypeNo" type="text" />
+                    <input id="chargeTypeId" type="text"/>
+                    <input id="lzRoomOwnerId" type="text" />
+                    <input id="ownerId" type="text" />
+                    <input id="newChargeTypeId" type="text" />
+                    <input id="newChargeTypeNo" type="text" />
+                    <input id="newOwnerId" type="text" />
                 </div>
             </div>
         </div>
