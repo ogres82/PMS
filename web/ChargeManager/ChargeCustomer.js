@@ -558,15 +558,19 @@ function chargeTypeChange() {
 
 function AccReduce(value,type) {
     //调整减免
+    var receiveAmount = $("#receiveAmount").val();
+    var reduceMount = $("#reduceMount").val();
+    var paidAmount = receiveAmount;
+    //调整减免
     if(type=='01'){
-        var receiveAmount = $("#receiveAmount").val();
-        var paidAmount = Number(receiveAmount) - Number(value);
+        paidAmount = Number(receiveAmount) - Number(value);
         if (paidAmount < 0) {
+            $("#reduceMount").val(0)
+            paidAmount = receiveAmount;
             alert("减免金额已经大于应收金额，请重新填写");
         }
     }else{
-        var reduceMount = $("#reduceMount").val();
-        var paidAmount = Number(value) - Number(reduceMount)
+        paidAmount = Number(value) - Number(reduceMount)
     }
     $("#paidAmount").val(paidAmount);
 };
