@@ -22,22 +22,33 @@ public class ChargeTypeRoomRelaEntity implements Serializable {
 	
 	
 	private String	type_flag;
-	private String charge_type_id;		//主键,收费项目ID
-	private String charge_type_no;		//收费项目编号
-	private String room_id;				//房间id
-	private String room_no;				//房间编号
-	private String owner_id;			//业主ID
-	private	String update_emp_id = "admin";		//录入人员ID
-	private Date update_date = new Date();			//录入时间
-	private Date charge_date;			//起征时间
-	private String charge_state;		//是否生效费用
-	private BigDecimal amount = new BigDecimal(0);          //余额
-    private String is_del = "0";				//逻辑删除字段 0：未删除；1：删除
+	//主键,收费项目ID
+	private String charge_type_id;
+	//收费项目编号
+	private String charge_type_no;
+	//房间id
+	private String room_id;
+	//房间编号
+	private String room_no;
+	//业主ID
+	private String owner_id;
+	//录入人员ID
+	private	String update_emp_id = "admin";
+	//录入时间
+	private Date update_date = new Date();
+	//起征时间
+	private Date charge_date;
+	//是否生效费用
+	private String charge_state= "0";
+	//余额
+	private BigDecimal amount = new BigDecimal(0);
+	//逻辑删除字段 0：未删除；1：删除
+    private String is_del = "0";
 
     
 	
 
-	@Id
+
 	public String getCharge_type_id() {
 		return charge_type_id;
 	}
@@ -50,7 +61,7 @@ public class ChargeTypeRoomRelaEntity implements Serializable {
 	public void setCharge_type_no(String charge_type_no) {
 		this.charge_type_no = charge_type_no;
 	}
-	
+
 	@Id
 	public String getRoom_id() {
 		return room_id;

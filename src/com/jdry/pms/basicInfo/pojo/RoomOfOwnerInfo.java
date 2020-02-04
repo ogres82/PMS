@@ -11,77 +11,124 @@ import java.util.Date;
 @Entity
 @Table(name = "v_room_vs_owner_info")
 public class RoomOfOwnerInfo implements Serializable {
-    @Column(name = "room_addrs") //房间编号
+    //房间编号
+    @Column(name = "room_addrs")
     private String roomAddrs;
-    @Column(name = "build_id") //楼盘id
+    //楼盘id
+    @Column(name = "build_id")
     private String buildId;
-    @Column(name = "build_name") //楼盘名称
+    //楼盘名称
+    @Column(name = "build_name")
     private String buildName;
-    @Column(name = "community_id") //小区id
+    //小区id
+    @Column(name = "community_id")
     private String communityId;
-    @Column(name = "community_name") //小区名称
+    //小区名称
+    @Column(name = "community_name")
     private String communityName;
-    @Column(name = "storied_build_id") //楼宇id
+    //楼宇id
+    @Column(name = "storied_build_id")
     private String storiedBuildId;
-    @Column(name = "storied_build_name") //楼宇id
+    //楼宇id
+    @Column(name = "storied_build_name")
     private String storiedBuildName;
-    @Column(name = "unit_id") //单元id
+    //单元id
+    @Column(name = "unit_id")
     private String unitId;
-    @Column(name = "unit_name") //单元名称
+    //单元名称
+    @Column(name = "unit_name")
     private String unitName;
     @Id
-    @Column(name = "room_id") //房间id
+    //房间id
+    @Column(name = "room_id")
     private String roomId;
-    @Column(name = "room_no") //房间编号
+    //房间编号
+    @Column(name = "room_no")
     private String roomNo;
-    @Column(name = "room_lz_id") //联掌住户ID
+    //联掌住户ID
+    @Column(name = "room_lz_id")
     private String roomLzId;
-    @Column(name = "build_area") //建筑面积
+    //建筑面积
+    @Column(name = "build_area")
     private BigDecimal buildArea;
-    @Column(name = "within_area") //套内面积
+    //套内面积
+    @Column(name = "within_area")
     private BigDecimal withinArea;
-    @Column(name = "room_state") //房间状态
+    //房间状态
+    @Column(name = "room_state")
     private String roomState;
-    @Column(name = "room_state_name") //房间状态名称
+    //房间状态名称
+    @Column(name = "room_state_name")
     private String roomStateName;
-    @Column(name = "room_type") //房间类型
+    //房间类型
+    @Column(name = "room_type")
     private String roomType;
-    @Column(name = "room_type_name") //房屋类型名称
+    //房屋类型名称
+    @Column(name = "room_type_name")
     private String roomTypeName;
-    @Column(name = "make_room_date") //合同收费日期
+    //合同收费日期
+    @Column(name = "make_room_date")
     private Date makeRoomDate;
-    @Column(name = "receive_room_date") //业主收房日期
+    //业主收房日期
+    @Column(name = "receive_room_date")
     private Date receiveRoomDate;
-    @Column(name = "charge_date") //起征日期
+    //起征日期
+    @Column(name = "charge_date")
     private Date chargeDate;
-    @Column(name = "charge_type_no") //收费项目ID
+    //收费项目ID
+    @Column(name = "charge_type_no")
     private String chargeTypeNo;
-    @Column(name = "charge_price") //单价
+    //单价
+    @Column(name = "charge_price")
     private BigDecimal chargePrice;
-    @Column(name = "charge_type_name") //收费名称
+    //收费名称
+    @Column(name = "charge_type_name")
     private String chargeTypeName;
-    @Column(name = "charge_state") //收费状态
+    //收费状态
+    @Column(name = "charge_state")
     private String chargeState;
-    @Column(name = "charge_state_name") //收费状态名称
+    //收费状态名称
+    @Column(name = "charge_state_name")
     private String chargeStateName;
-    @Column(name = "months_price") //每月物业费
+    //每月物业费
+    @Column(name = "months_price")
     private BigDecimal monthsPrice;
-    @Column(name = "days_price") //每天物业费
+    //每天物业费
+    @Column(name = "days_price")
     private BigDecimal daysPrice;
-    @Column(name = "owner_id") //业主ID
+    //业主ID
+    @Column(name = "owner_id")
     private String ownerId;
-    @Column(name = "owner_name") //名字
+    //名字
+    @Column(name = "owner_name")
     private String ownerName;
-    @Column(name = "sex") //性别
+    //性别
+    @Column(name = "sex")
     private String sex;
-    @Column(name = "phone") //电话
+    //电话
+    @Column(name = "phone")
     private String phone;
-    @Column(name = "card_id") //身份证
+    //身份证
+    @Column(name = "card_id")
     private String cardId;
-    @Column(name = "birth_date") //生日
+    //生日
+    @Column(name = "birth_date")
     private String birthDate;
-    @Column(name = "lz_room_owner_id") //生日
+    //联掌住户ID
+    @Column(name = "lz_room_owner_id")
     private String lzRoomOwnerId;
+
+    //收费项目ID
+    @Column(name = "charge_type_id")
+    private String chargeTypeId;
+
+    public String getChargeTypeId() {
+        return chargeTypeId;
+    }
+
+    public void setChargeTypeId(String chargeTypeId) {
+        this.chargeTypeId = chargeTypeId;
+    }
 
     public String getLzRoomOwnerId() {
         return lzRoomOwnerId;

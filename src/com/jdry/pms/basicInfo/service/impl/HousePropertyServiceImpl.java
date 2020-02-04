@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.jdry.pms.basicInfo.pojo.*;
+import com.jdry.pms.chargeManager.pojo.ChargeRoomInfoViewEntity;
 import org.apache.poi.ss.formula.functions.T;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -269,8 +270,8 @@ public class HousePropertyServiceImpl implements HousePropertyService {
     }
 
     @Override
-    public List<RoomOfOwnerInfo> queryRoomOfOwnerInfo(Map<String, Object> params) {
-        return dao.queryRoomOfOwnerInfo(params);
+    public void queryRoomOfOwnerInfo(Page<RoomOfOwnerInfo> page,Map<String, Object> params) throws Exception {
+        dao.queryRoomOfOwnerInfo(page,params);
     }
 
     @Override

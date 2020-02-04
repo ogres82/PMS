@@ -12,6 +12,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import com.jdry.pms.basicInfo.pojo.*;
+import com.jdry.pms.chargeManager.pojo.ChargeRoomInfoViewEntity;
 import org.hibernate.Query;
 import org.hibernate.Criteria;
 import org.hibernate.SQLQuery;
@@ -899,14 +900,46 @@ public class HousePropertyDao extends HibernateDao  {
         session.getTransaction().commit();
     }
 
-    public List<RoomOfOwnerInfo> queryRoomOfOwnerInfo(Map<String, Object> params) {
-        Criteria criteria = this.getSession().createCriteria(RoomOfOwnerInfo.class);
-        if (params != null && params.size() > 0) {
-            for (Map.Entry<String, Object> entry : params.entrySet()) {
-                criteria.add(Restrictions.eq(entry.getKey(),entry.getValue()));
-            }
+    public void queryRoomOfOwnerInfo(Page<RoomOfOwnerInfo> page,Map<String, Object> params) throws Exception {
+        String hql = " from " + RoomOfOwnerInfo.class.getName() + " a where 1=1 ";
+        String sqlCount = "select count(roomId) from " + RoomOfOwnerInfo.class.getName() + " b where 1=1 ";
+
+        String roomId = params.get("roomId").toString();
+        String ownerId = params.get("ownerId").toString();
+        String communityId = params.get("communityId").toString();
+        String storiedBuildId = params.get("storiedBuildId").toString();
+        String roomState = params.get("roomState").toString();
+        String roomType = params.get("roomType").toString();
+        String unitId = params.get("unitId").toString();
+
+        if (!"".equals(roomId)) {
+            hql += " and a.roomId ="+roomId;
+            sqlCount += " and b.roomId ="+roomId;
         }
-        List<RoomOfOwnerInfo> lists = criteria.list();
-        return lists;
+        if (!"".equals(ownerId)) {
+            hql += " and a.ownerId ="+ownerId;
+            sqlCount += " and b.ownerId ="+ownerId;
+        }
+        if (!"".equals(communityId)) {
+            hql += " and a.communityId ="+communityId;
+            sqlCount += " and b.communityId ="+communityId;
+        }
+        if (!"".equals(storiedBuildId)) {
+            hql += " and a.storiedBuildId ="+storiedBuildId;
+            sqlCount += " and b.storiedBuildId ="+storiedBuildId;
+        }
+        if (!"".equals(roomState)) {
+            hql += " and a.roomState ="+roomState;
+            sqlCount += " and b.roomState ="+roomState;
+        }
+        if (!"".equals(roomType)) {
+            hql += " and a.roomType ="+roomType;
+            sqlCount += " and b.roomType ="+roomType;
+        }
+        if (!"".equals(unitId)) {
+            hql += " and a.unitId ="+unitId;
+            sqlCount += " and b.unitId ="+unitId;
+        }
+        this.pagingQuery(page, hql, sqlCount);
     }
 }

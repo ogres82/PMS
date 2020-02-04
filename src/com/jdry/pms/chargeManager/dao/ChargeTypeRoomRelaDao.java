@@ -131,7 +131,6 @@ public class ChargeTypeRoomRelaDao extends HibernateDao {
 			Session session = this.getSessionFactory().openSession();
 			
 			chargeType.setUpdate_date(new Date());
-			chargeType.setUpdate_emp_id(CommUser.getUserName());
 			session.saveOrUpdate(chargeType);		
 			
 			session.flush();

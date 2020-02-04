@@ -12,62 +12,93 @@ import java.util.Date;
 @Table(name = "t_house_vs_fee")
 public class RoomVsFee implements Serializable {
     @Id
+    //房间ID
     @Column(name = "room_id")
-    private String roomId;    //房间ID
+    private String roomId;
+    //房屋地址
     @Column(name = "room_addrs")
-    private String roomAddrs;    //房屋地址
+    private String roomAddrs;
+    //楼盘ID
     @Column(name = "build_id")
-    private String buildId;    //楼盘ID
+    private String buildId;
+    //楼盘名称
     @Column(name = "build_name")
-    private String buildName;    //楼盘名称
+    private String buildName;
+    //小区ID
     @Column(name = "community_id")
-    private String communityId;    //小区ID
+    private String communityId;
+    //小区名称
     @Column(name = "community_name")
-    private String communityName;    //小区名称
+    private String communityName;
+    //所属楼栋ID
     @Column(name = "storied_build_id")
-    private String storiedBuildId;    //所属楼栋ID
+    private String storiedBuildId;
+    //楼栋名称
     @Column(name = "storied_build_name")
-    private String storiedBuildName;    //楼栋名称
+    private String storiedBuildName;
+    //单元ID
     @Column(name = "unit_id")
-    private String unitId;    //单元ID
+    private String unitId;
+    //单元名称
     @Column(name = "unit_name")
-    private String unitName;    //单元名称
+    private String unitName;
+    //房间号
     @Column(name = "room_no")
-    private String roomNo;    //房间号
+    private String roomNo;
+    //联掌房间ID
     @Column(name = "room_lz_id")
-    private String roomLzId; //联掌房间ID
+    private String roomLzId;
+    //建筑面积
     @Column(name = "build_area")
-    private BigDecimal buildArea;    //建筑面积
+    private BigDecimal buildArea;
+    //套内面积
     @Column(name = "within_area")
-    private BigDecimal withinArea;    //套内面积
+    private BigDecimal withinArea;
+    //房间状态 0未售1交房2接房3入住4出租
     @Column(name = "room_state")
-    private String roomState;    //房间状态 0未售1交房2接房3入住4出租
+    private String roomState;
+    //房间状态名称
     @Column(name = "room_state_name")
-    private String roomStateName;    //房间状态名称
+    private String roomStateName;
+    //房间类型 0高层1洋房2别墅
     @Column(name = "room_type")
-    private String roomType;    //房间类型 0高层1洋房2别墅
+    private String roomType;
+    //房间类型名称 0高层1洋房2别墅
     @Column(name = "room_type_name")
-    private String roomTypeName;    //房间类型名称 0高层1洋房2别墅
+    private String roomTypeName;
+    //收房日期（地产通知收房的日期）
     @Column(name = "make_room_date")
-    private Date makeRoomDate;    //收房日期（地产通知收房的日期）
+    private Date makeRoomDate;
+    //业主实际收房日期
     @Column(name = "receive_room_date")
-    private Date receiveRoomDate;    //业主实际收房日期
+    private Date receiveRoomDate;
+    //收费开始时间
     @Column(name = "charge_date")
-    private Date chargeDate;    //收费开始时间
+    private Date chargeDate;
+    //收费项编码ID
+    @Column(name = "charge_type_id")
+    private String chargeTypeId;
+    //收费项编码
     @Column(name = "charge_type_no")
-    private String chargeTypeNo;    //收费项编码
+    private String chargeTypeNo;
+    //单价
     @Column(name = "charge_price")
-    private BigDecimal chargePrice;    //单价
+    private BigDecimal chargePrice;
+    //收费项名称
     @Column(name = "charge_type_name")
-    private String chargeTypeName;    //收费项名称
+    private String chargeTypeName;
+    //是否开始出账（1：开始出账；0：不出账）
     @Column(name = "charge_state")
-    private String chargeState;    //是否开始出账（1：开始出账；0：不出账）
+    private String chargeState;
+    //是否开始出账名称（1：开始出账；0：不出账）
     @Column(name = "charge_state_name")
-    private String chargeStateName;    //是否开始出账名称（1：开始出账；0：不出账）
+    private String chargeStateName;
+    //每月物业费
     @Column(name = "months_price")
-    private BigDecimal monthsPrice;    //每月物业费
+    private BigDecimal monthsPrice;
+    //每天物业费（每月按30天计算）
     @Column(name = "days_price")
-    private BigDecimal daysPrice;    //每天物业费（每月按30天计算）
+    private BigDecimal daysPrice;
 
     public String getRoomId() {
         return roomId;
@@ -291,5 +322,13 @@ public class RoomVsFee implements Serializable {
 
     public void setDaysPrice(BigDecimal daysPrice) {
         this.daysPrice = daysPrice;
+    }
+
+    public String getChargeTypeId() {
+        return chargeTypeId;
+    }
+
+    public void setChargeTypeId(String chargeTypeId) {
+        this.chargeTypeId = chargeTypeId;
     }
 }

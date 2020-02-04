@@ -397,3 +397,36 @@ Date.prototype.format = function (fmt) {
 				(("00" + o[k]).substr(("" + o[k]).length)));
 	return fmt;
 }
+Date.prototype.DateDiff = function(strInterval, dtEnd) {
+	var dtStart = this;
+	//如果是字符串转换为日期型
+	if (typeof dtEnd == 'string' )
+	{
+		dtEnd = StringToDate(dtEnd);
+	}
+	switch (strInterval) {
+		case 's' :return parseInt((dtEnd - dtStart) / 1000);
+		case 'n' :return parseInt((dtEnd - dtStart) / 60000);
+		case 'h' :return parseInt((dtEnd - dtStart) / 3600000);
+		case 'd' :return parseInt((dtEnd - dtStart) / 86400000);
+		case 'w' :return parseInt((dtEnd - dtStart) / (86400000 * 7));
+		case 'm' :return (dtEnd.getMonth()+1)+((dtEnd.getFullYear()-dtStart.getFullYear())*12) - (dtStart.getMonth()+1);
+		case 'y' :return dtEnd.getFullYear() - dtStart.getFullYear();
+	}
+}
+
+//+---------------------------------------------------
+//| 字符串转成日期类型
+//| 格式 MM/dd/YYYY MM-dd-YYYY YYYY/MM/dd YYYY-MM-dd
+//+---------------------------------------------------
+function StringToDate(DateStr)
+{
+	var converted = Date.parse(DateStr);
+	var myDate = new Date(converted);
+	if (isNaN(myDate))
+	{
+		var arys= DateStr.split('-');
+		myDate = new Date(arys[0],--arys[1],arys[2]);
+	}
+	return myDate;
+}
