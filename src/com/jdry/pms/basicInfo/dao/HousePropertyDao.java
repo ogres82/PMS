@@ -321,7 +321,7 @@ public class HousePropertyDao extends HibernateDao  {
             map.put("unitId", roomState);
             sql += " and du.unitId =:unitId";
         }
-
+        sql += " order by du.roomNo";
         return this.query(sql, map);
     }
 

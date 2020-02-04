@@ -195,7 +195,7 @@ public class OwnerInfoView {
 	
 	/**
 	 * 随机生成4位数验证码
-	 * @param phone
+	 * @paramphone
 	 * @return
 	 * @throws IOException 
 	 */
@@ -334,7 +334,7 @@ public class OwnerInfoView {
 	
 	/**
 	 * 校验验证码
-	 * @param phone
+	 * @param data
 	 * @return
 	 */
 	@Expose
@@ -762,11 +762,25 @@ public class OwnerInfoView {
 		}
 		List<HouseProperty> houseProperty = (List<HouseProperty>) housePropertyService.queryHousePropertyByParam(param);
 		List list = new ArrayList();
+		String unitName  = "";
+		String roomNo = "";
+
 		for(int i=0;i<houseProperty.size();i++){
 			Map map = new HashMap();
+			StringBuffer buf=new StringBuffer();
+			unitName  = houseProperty.get(i).getUnitName();
+			roomNo =houseProperty.get(i).getRoomNo();
+			if(unitName.contains("单元")){
+				buf.append(unitName);
+				buf.append("-");
+				buf.append(roomNo);
+			}else {
+				buf.append(roomNo);
+			}
+
 			map.put("belongSbId", houseProperty.get(i).getBelongSbId());
 			map.put("roomId", houseProperty.get(i).getRoomId());
-			map.put("roomNo", houseProperty.get(i).getRoomNo());
+			map.put("roomNo",buf.toString());
 			list.add(map);
 		}
 		String jsonString = JSON.toJSONString(list);
