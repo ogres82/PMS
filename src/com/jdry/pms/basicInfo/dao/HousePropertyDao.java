@@ -911,34 +911,39 @@ public class HousePropertyDao extends HibernateDao  {
         String roomState = params.get("roomState").toString();
         String roomType = params.get("roomType").toString();
         String unitId = params.get("unitId").toString();
+        String search = params.get("search").toString();
 
         if (!"".equals(roomId)) {
-            hql += " and a.roomId ="+roomId;
-            sqlCount += " and b.roomId ="+roomId;
+            hql += " and a.roomId ='"+roomId+"'";
+            sqlCount += " and b.roomId ='"+roomId+"'";
         }
         if (!"".equals(ownerId)) {
-            hql += " and a.ownerId ="+ownerId;
-            sqlCount += " and b.ownerId ="+ownerId;
+            hql += " and a.ownerId ='"+ownerId+"'";
+            sqlCount += " and b.ownerId ='"+ownerId+"'";
         }
         if (!"".equals(communityId)) {
-            hql += " and a.communityId ="+communityId;
-            sqlCount += " and b.communityId ="+communityId;
+            hql += " and a.communityId ='"+communityId+"'";
+            sqlCount += " and b.communityId ='"+communityId+"'";
         }
         if (!"".equals(storiedBuildId)) {
-            hql += " and a.storiedBuildId ="+storiedBuildId;
-            sqlCount += " and b.storiedBuildId ="+storiedBuildId;
+            hql += " and a.storiedBuildId ='"+storiedBuildId+"'";
+            sqlCount += " and b.storiedBuildId ='"+storiedBuildId+"'";
         }
         if (!"".equals(roomState)) {
-            hql += " and a.roomState ="+roomState;
-            sqlCount += " and b.roomState ="+roomState;
+            hql += " and a.roomState ='"+roomState+"'";
+            sqlCount += " and b.roomState ='"+roomState+"'";
         }
         if (!"".equals(roomType)) {
-            hql += " and a.roomType ="+roomType;
-            sqlCount += " and b.roomType ="+roomType;
+            hql += " and a.roomType ='"+roomType+"'";
+            sqlCount += " and b.roomType ='"+roomType+"'";
         }
         if (!"".equals(unitId)) {
-            hql += " and a.unitId ="+unitId;
-            sqlCount += " and b.unitId ="+unitId;
+            hql += " and a.unitId ='"+unitId+"'";
+            sqlCount += " and b.unitId ='"+unitId+"'";
+        }
+        if (!"".equals(search)&&!"undefined".equals(search)) {
+            hql += " and a.roomNo like'%"+search+"%'";
+            sqlCount += " and b.roomNo like'%"+search+"%'";
         }
         this.pagingQuery(page, hql, sqlCount);
     }

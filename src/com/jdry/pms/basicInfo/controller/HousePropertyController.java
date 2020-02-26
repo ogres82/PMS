@@ -458,6 +458,7 @@ public class HousePropertyController implements IController {
                 parameter.put("roomState", roomState);
                 parameter.put("roomType", roomType);
                 parameter.put("unitId", unitId);
+                parameter.put("search", search);
 
                 Page<RoomOfOwnerInfo> page = new Page<RoomOfOwnerInfo>(showCount, currentPage);
                 service.queryRoomOfOwnerInfo(page, parameter);
