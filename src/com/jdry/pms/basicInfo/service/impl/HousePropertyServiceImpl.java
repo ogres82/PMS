@@ -7,7 +7,8 @@ import javax.annotation.Resource;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.jdry.pms.basicInfo.pojo.*;
-import com.jdry.pms.chargeManager.pojo.ChargeRoomInfoViewEntity;
+import com.jdry.pms.chargeManager.dao.ChargeTypeRoomRelaDao;
+import com.jdry.pms.chargeManager.pojo.*;
 import org.apache.poi.ss.formula.functions.T;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,9 +20,6 @@ import com.bstek.dorado.data.provider.Page;
 import com.jdry.pms.basicInfo.dao.HousePropertyDao;
 import com.jdry.pms.basicInfo.service.HousePropertyService;
 import com.jdry.pms.basicInfo.service.OwnerInfoService;
-import com.jdry.pms.chargeManager.pojo.ChargeInfoEntity;
-import com.jdry.pms.chargeManager.pojo.ChargeSerialViewEntity;
-import com.jdry.pms.chargeManager.pojo.ChargeTypeSettingViewEntity;
 import com.jdry.pms.lzmh.dao.LzmhDao;
 import com.jdry.pms.lzmh.service.LzmhService;
 
@@ -35,6 +33,9 @@ public class HousePropertyServiceImpl implements HousePropertyService {
     private LzmhService lzmhService;
     @Resource
     private OwnerInfoService ownerInfoService;
+
+    @Autowired
+    private ChargeTypeRoomRelaDao chargeTypeRoomRelaDao;
 
     @Override
     public void query(Page<HouseProperty> page, Map<String, Object> parameter, Criteria criteria) {
@@ -309,7 +310,12 @@ public class HousePropertyServiceImpl implements HousePropertyService {
         return;
     }
     public void repOwner(String roomId,Integer lzRoomOwnerId,String operId,String newOwnerId,String phone,String lzRoomId){
-        dao.unOwner(roomId,operId);
+        //删除联掌中的关联用户
+        this.batchDelLzOwner(roomId, Integer.parseInt(lzRoomId));
+        ChargeTypeRoomRelaEntity chargeTypeRoomRelaEntity= dao.getChargeTypeRoomRelaEntityByRoomId(roomId);
+        //删除物业平台关联用户
+        dao.delHouseOwners(roomId);
+        //新增物业平台关联用户
         HouseOwner houseOwner = new HouseOwner();
         houseOwner.setRoomId(roomId);
         houseOwner.setOwnerId(newOwnerId);
@@ -317,6 +323,11 @@ public class HousePropertyServiceImpl implements HousePropertyService {
         houseOwner.setBandingMark("0");
         houseOwner.setDefaultMark("0");
         this.addHouseOwner(houseOwner);
+        //修改物业平台收费项关联业主
+        chargeTypeRoomRelaEntity.setOwner_id(newOwnerId);
+        chargeTypeRoomRelaEntity.setUpdate_emp_id(operId);
+        chargeTypeRoomRelaDao.saveAll(chargeTypeRoomRelaEntity);
+        //重新添加联掌用户
         lzmhService.addOwnerInfo(houseOwner);
     }
 }

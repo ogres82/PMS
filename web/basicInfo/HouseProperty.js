@@ -223,8 +223,7 @@ var TableInit = function () {
                 field: 'roomNo',
                 visible: false
             }, {
-                field: 'roomLzId',
-                visible: false
+                field: 'roomLzId'
             }, {
                 field: 'roomState',
                 visible: false
@@ -401,7 +400,8 @@ function openSaveButton() {
     var flag = $('#myForm1').validationEngine('validate');
     if (flag) {
         var addJson = getDataForm("edit");
-        $.ajax({
+        console.log(addJson);
+       $.ajax({
             type: "post",
             url: getRootPath() + "houseProperty/housePropertyList.app?method=checkRoomNo",
             data: addJson,
@@ -492,6 +492,7 @@ function getDataForm(type) {
             chargeObject: "0",
             unitId: unitId,
             unitName: unitName,
+            lzId :parseInt($("#lzRoomId").val()||0),
             remark: $("#remark").val()
         };
     }
@@ -701,7 +702,7 @@ function manage(type) {
         url = url + "houseProperty/housePropertyList.app?method=repOwner";
         strConfirm = "您确认要更换该房间的业主吗？";
 
-        data ={roomId:roomId, lzRoomOwnerId:$("#lzRoomOwnerId").val(), newOwnerId:$("#newOwnerId").val(), phone:$("#phone").val(), lzRoomId:$("#lzRoomId").val()};
+        data ={roomId:roomId, lzRoomOwnerId:$("#lzRoomOwnerId").val(), newOwnerId:$("#newOwnerId").val(), phone:$("#phone").val(), lzRoomId:$("#lzRoomId").val()||0};
     }
     if (type === "repCharge") {
         url = url + "houseProperty/housePropertyList.app?method=repCharge";

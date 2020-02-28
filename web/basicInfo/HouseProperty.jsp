@@ -296,16 +296,16 @@
                     <%--                            onclick="manage('sycnLz')">同步联掌--%>
                     <%--                    </button>--%>
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <input id="roomId" type="text" />
-                    <input id="phone" type="text" />
-                    <input id="lzRoomId" type="text" />
-                    <input id="chargeTypeNo" type="text" />
-                    <input id="chargeTypeId" type="text"/>
-                    <input id="lzRoomOwnerId" type="text" />
-                    <input id="ownerId" type="text" />
-                    <input id="newChargeTypeId" type="text" />
-                    <input id="newChargeTypeNo" type="text" />
-                    <input id="newOwnerId" type="text" />
+                    <input id="roomId" type="hidden" />
+                    <input id="phone" type="hidden" />
+                    <input id="lzRoomId" type="hidden" />
+                    <input id="chargeTypeNo" type="hidden" />
+                    <input id="chargeTypeId" type="hidden"/>
+                    <input id="lzRoomOwnerId" type="hidden" />
+                    <input id="ownerId" type="hidden" />
+                    <input id="newChargeTypeId" type="hidden" />
+                    <input id="newChargeTypeNo" type="hidden" />
+                    <input id="newOwnerId" type="hidden" />
                 </div>
             </div>
         </div>

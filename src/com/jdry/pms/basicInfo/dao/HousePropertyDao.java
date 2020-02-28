@@ -12,7 +12,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import com.jdry.pms.basicInfo.pojo.*;
-import com.jdry.pms.chargeManager.pojo.ChargeRoomInfoViewEntity;
+import com.jdry.pms.chargeManager.pojo.*;
 import org.hibernate.Query;
 import org.hibernate.Criteria;
 import org.hibernate.SQLQuery;
@@ -26,9 +26,6 @@ import com.bstek.bdf2.core.orm.hibernate.HibernateDao;
 import com.bstek.dorado.data.entity.EntityState;
 import com.bstek.dorado.data.entity.EntityUtils;
 import com.bstek.dorado.data.provider.Page;
-import com.jdry.pms.chargeManager.pojo.ChargeInfoEntity;
-import com.jdry.pms.chargeManager.pojo.ChargeSerialViewEntity;
-import com.jdry.pms.chargeManager.pojo.ChargeTypeSettingViewEntity;
 
 @Repository
 @Transactional
@@ -632,7 +629,6 @@ public class HousePropertyDao extends HibernateDao  {
             map.put("roomId", "");
             sql += " and du.room_id =:roomId";
         }
-
         return this.query(sql, map);
     }
 
@@ -946,5 +942,25 @@ public class HousePropertyDao extends HibernateDao  {
             sqlCount += " and b.roomNo like'%"+search+"%'";
         }
         this.pagingQuery(page, hql, sqlCount);
+    }
+
+    public ChargeTypeRoomRelaEntity getChargeTypeRoomRelaEntityByRoomId(String roomId){
+        ChargeTypeRoomRelaEntity chargeTypeRoomRelaEntity;
+        String hql = " from ChargeTypeRoomRelaEntity where room_id='"+roomId+"'";
+        chargeTypeRoomRelaEntity = (ChargeTypeRoomRelaEntity) this.query(hql).get(0);
+        return chargeTypeRoomRelaEntity;
+    }
+
+    public void delHouseOwners(String roomId){
+        Session session = this.getSessionFactory().openSession();
+        String hql = " from HouseOwner where roomId='"+roomId+"'";
+        List<HouseOwner> lists =  this.query(hql);
+        if(lists!=null&&lists.size()>0){
+            for(int i=0,len =lists.size();i<len;i++){
+                session.delete(lists.get(i));
+            }
+        }
+        session.flush();
+        session.close();
     }
 }

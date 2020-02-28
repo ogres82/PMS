@@ -24,9 +24,9 @@ public class Demo {
 	
 		// 组装正文 
 		Map<String, Object> body = new HashMap<String, Object>();
-		body.put("add_type",1);
-		body.put("mobile_phone","13985003206");
-		body.put("room_id",1717599);
+		body.put("add_type",2);
+		body.put("mobile_phone","18008512569");
+		body.put("room_id",1571790);
 		body.put("cycle_type",1);
 		body.put("time_type", 1);
 		//body.put("add_type", 1);// (添加类型 1：户主 2：住户，必填): integer
