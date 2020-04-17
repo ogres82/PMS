@@ -176,7 +176,7 @@ public class OwnerController implements IController {
 				service.addPropertyOwner(owner);
 				// 判断业主手机号是否修改
 				if ("1".equals(isChange)) {
-					housePropertyService.changeOwnerInfo(owner.getOwnerId(), "admin", "0");
+					housePropertyService.changeOwnerInfo(owner.getOwnerId(), "admin", "1");
 				}
 
 				// 传输JSON
