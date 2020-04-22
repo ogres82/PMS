@@ -5,7 +5,12 @@
       <element id="javaee-facet-resources" facet="PMS/web/Web" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
+          <element id="javaee-facet-classes" facet="PMS/web/Web" />
           <element id="module-output" name="PMS" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="lib" />
+          <element id="library" level="project" name="jsp-api" />
         </element>
       </element>
     </root>
